@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -19,10 +20,28 @@ public class Stats : ScriptableObject
     private float realReload_ = 1.0f;
 
     private List<Upgrade> upgrades_;
+    private float radiusToTogleSpawners = 5.0f;
+
+    public CapsuleCollider spawnerCollider;
 
     private void Awake()
     {
         ResetHP();
+    }
+
+    public void resetRadiusForSpawners()
+    {
+        spawnerCollider.radius = 0.0f;
+    }
+
+    public IEnumerator lerpRadiusForSpawners()
+    {
+        float aux = 0.0f;
+        while (aux < radiusToTogleSpawners)
+        {
+            aux += Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void ResetHP()
