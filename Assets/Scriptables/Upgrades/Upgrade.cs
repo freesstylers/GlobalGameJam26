@@ -7,10 +7,11 @@ public class Upgrade : ScriptableObject
 {
     public enum UpgradeClass
     {
-        NONE, DMG, SPEED, AMMO, RELOAD
+        NONE, DMG, RATE, SPEED, AMMO, RELOAD, HP
     }
 
     public UpgradeClass class_ = UpgradeClass.NONE;
     public float mult_ = 2.0f;
+    public int value_ = 10;
     
 }
