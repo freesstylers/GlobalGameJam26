@@ -12,11 +12,12 @@ public class Stats : ScriptableObject
     public float baseSpeed_ = 10.0f;
     public float baseReload_ = 1.0f;
 
-    private float realDmg_ = 1;
-    private float realRate_ = 1.0f;
-    private int realAmmo_ = 100;
-    private float realSpeed_ = 10.0f;
-    private float realReload_ = 1.0f;
+    public int basePlayerHP_ = 10;
+    public float realDmg_ = 1;
+    public float realRate_ = 1.0f;
+    public int realAmmo_ = 100;
+    public float realSpeed_ = 10.0f;
+    public float realReload_ = 1.0f;
 
     private List<Upgrade> upgrades_;
 
@@ -65,5 +66,16 @@ public class Stats : ScriptableObject
     public void AddUpgrade(Upgrade u)
     {
         upgrades_.Add(u);
+    }
+
+    public void ResetStats()
+    {
+        upgrades_.Clear();
+        ResetHP();
+        realDmg_ = baseDmg_;
+        realRate_ = baseRate_;
+        realAmmo_ = baseAmmo_;
+        realReload_ = baseReload_;
+        realSpeed_ = baseSpeed_;
     }
 }

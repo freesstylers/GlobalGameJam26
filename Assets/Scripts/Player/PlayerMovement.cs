@@ -1,8 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public List<Mask> masks_;
+    private Mask currentMask_;
+    private int currentMaskId_ = 0;
+
     public Camera playerCamera;
     public float cameraLeanAccumulation = 0.15f;
     public float cameraLeanMax = 30f;
@@ -31,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerCamera != null)
             _cameraBasePosition = playerCamera.transform.localPosition;
+
+        currentMask_ = masks_[currentMaskId_];
 
         //Cursor.lockState = CursorLockMode.Locked;
     }
@@ -69,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
         Vector3 moveInput = (transform.forward * vertical + transform.right * horizontal).normalized;
         _moveDirection = moveInput;
-        float currentSpeed = _isDashing ? dashSpeed : moveSpeed;
+        float currentSpeed = _isDashing ? dashSpeed : currentMask_.stats_.realSpeed_;
         transform.position += _moveDirection * currentSpeed * Time.deltaTime;
     }
 
@@ -127,5 +133,12 @@ public class PlayerMovement : MonoBehaviour
             newCameraPosition.y += bobOffset;
             playerCamera.transform.localPosition = newCameraPosition;
         }
+    }
+
+    private void ChangeMask()
+    {
+        currentMaskId_ += 1;
+        if (currentMaskId_ == 3) currentMaskId_ = 0;
+        currentMask_ = masks_[currentMaskId_];
     }
 }
