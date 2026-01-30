@@ -39,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleMovement();
         HandleMouseLook();
-        //HandleDash();
+        HandleDash();
         //HandleCameraLean();
-        //HandleSteps();
+        HandleSteps();
     }
 
     private void HandleMouseLook()
@@ -115,7 +115,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleSteps()
     {
-        return;
         if (_moveDirection.sqrMagnitude > 0.01f)
             _stepCycle += Time.deltaTime * 5f;
         else
