@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentMaskId_ = 0;
 
     public Camera playerCamera;
+    public GameObject cameraContainer;
     public float cameraLeanAccumulation = 0.15f;
     public float cameraLeanMax = 30f;
     public float cameraLeanRecoverySpeed = 5f;
@@ -37,8 +38,7 @@ public class PlayerMovement : MonoBehaviour
             _cameraBasePosition = playerCamera.transform.localPosition;
 
         currentMask_ = masks_[currentMaskId_];
-
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked; //pilla el foco
     }
 
     void Update()
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         HandleMouseLook();
         HandleDash();
-        //HandleCameraLean();
+        HandleCameraLean();
         HandleSteps();
     }
 
@@ -103,30 +103,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleCameraLean()
     {
-        return;
         float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
         float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
         Vector3 targetLean = Vector3.zero;
 
         if (Mathf.Abs(horizontal) > 0.01f)
             targetLean.z -= horizontal * cameraLeanAccumulation;
-
         if (Mathf.Abs(vertical) > 0.01f)
             targetLean.x += vertical * cameraLeanAccumulation;
 
         _currentLean = Vector3.Lerp(_currentLean, targetLean, cameraLeanRecoverySpeed * Time.deltaTime);
         _currentLean.x = Mathf.Clamp(_currentLean.x, -cameraLeanMax, cameraLeanMax);
         _currentLean.z = Mathf.Clamp(_currentLean.z, -cameraLeanMax, cameraLeanMax);
+
+        if (cameraContainer != null)
+            cameraContainer.transform.localRotation = Quaternion.Euler(_currentLean.x, 0f, _currentLean.z);
     }
 
     private void HandleSteps()
     {
-        if (_moveDirection.sqrMagnitude > 0.01f)
+        bool isMoving = _moveDirection.sqrMagnitude > 0.01f;
+        if (isMoving)
             _stepCycle += Time.deltaTime * 5f;
         else
             _stepCycle = Mathf.Lerp(_stepCycle, 0f, 5f * Time.deltaTime);
 
-        float bobOffset = Mathf.Sin(_stepCycle * Mathf.PI) * 0.1f;
+        float bobOffset = isMoving ? (Mathf.Sin(_stepCycle * Mathf.PI) * 0.1f) : 0;
         if (playerCamera)
         {
             Vector3 newCameraPosition = _cameraBasePosition;
