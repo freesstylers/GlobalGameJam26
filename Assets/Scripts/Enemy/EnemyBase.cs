@@ -2,20 +2,74 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    public int maxHp_;
+    private int hp_;
+    public bool spawning_;
+    public bool dying_;
 
+    //private BasicEnemyMovement movement_;
+    private Transform transform_;
+
+    public float scaleChangeRate_ = 0.5f;
 
     void Awake()
     {
-        
+        hp_ = maxHp_;
     }
 
-    void Start()
+    private void Start()
     {
-        
+        //movement_ = GetComponent<BasicEnemyMovement>();
+        transform_ = GetComponent<Transform>();
     }
 
-    void Update()
+    private void Update()
     {
-        
+        if (spawning_) SpawnUpdate();
+        if (dying_) DieUpdate();
+    }
+
+    public void Spawn()
+    {
+        spawning_ = true;
+    }
+
+    public void Die()
+    {
+        //movement_.Stop();
+        dying_ = true;
+    }
+
+    public void ReceiveDamage(int dmg)
+    {
+        hp_ -= dmg;
+        if (hp_ <= 0) Die();
+    }
+
+    private void SpawnUpdate()
+    {
+        if(transform_.localScale.x <= 1.0)
+        {
+            transform_.localScale += new Vector3(scaleChangeRate_, scaleChangeRate_, scaleChangeRate_) * Time.deltaTime;
+        }
+        else
+        {
+            transform_.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            spawning_ = false;
+        }
+    }
+
+    private void DieUpdate()
+    {
+        if (transform_.localScale.x >= 0.0)
+        {
+            transform_.localScale -= new Vector3(scaleChangeRate_, scaleChangeRate_, scaleChangeRate_) * Time.deltaTime;
+        }
+        else
+        {
+            transform_.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+            dying_ = false;
+            Destroy(this.gameObject);
+        }
     }
 }
