@@ -8,6 +8,11 @@ public class FlowManager : MonoBehaviour
     public int[] timers = { 10, 5, 60, -1, -1 };
     public static FlowManager instance;
 
+    [SerializeField]
+    GameObject spawnerParent;
+
+    public EnemySpawner[] spawners;
+
     public State currentState
     { 
         get { 
@@ -30,6 +35,8 @@ public class FlowManager : MonoBehaviour
     void Start()
     {
         currentState = State.Cooldown;
+
+        spawners = spawnerParent.transform.GetComponentsInChildren<EnemySpawner>();
     }
 
     private void onStateChanged()
@@ -71,6 +78,12 @@ public class FlowManager : MonoBehaviour
         {
             case State.Cooldown:
                 setState(State.Spawn);
+
+                foreach (EnemySpawner eS in spawners)
+                {
+                   StartCoroutine(eS.Spawn());
+                }
+
                 break;
             case State.Spawn:
                 setState(State.Round);
