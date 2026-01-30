@@ -8,40 +8,96 @@ public class PlayerMovement : MonoBehaviour
     public float cameraLeanMax = 30f;
     public float cameraLeanRecoverySpeed = 5f;
 
-    public float stepBobSpeed = 5f;
-    public float stepHeight = 0.1f;
-    public float stepBobSmoothing = 5f;
+    [Header("Dash")]
+    public float dashSpeed = 25f;
+    public float dashDuration = 0.3f;
+    public float dashCooldown = 0.5f;
+
+    [Header("Mouse Look")]
+    public float mouseSensitivity = 2f;
+    public float maxLookAngle = 90f;
 
     public Vector3 _currentLean;
     public Vector3 _moveDirection;
+
     private Vector3 _cameraBasePosition;
     private float _stepCycle;
+
+    private float _dashTimer;
+    private float _dashCooldownTimer;
+    private bool _isDashing;
 
     void Start()
     {
         if (playerCamera != null)
             _cameraBasePosition = playerCamera.transform.localPosition;
+
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         HandleMovement();
-        HandleCameraLean();
-        HandleSteps();
-        ApplyCameraLean();
+        HandleMouseLook();
+        //HandleDash();
+        //HandleCameraLean();
+        //HandleSteps();
+    }
+
+    private void HandleMouseLook()
+    {
+        float mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
+        float mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
+        float xRotation = mouseX * mouseSensitivity;
+        float yRotation = mouseY * mouseSensitivity;
+
+        if (!playerCamera)
+            return;
+        float currentXRotation = playerCamera.transform.localEulerAngles.x;
+        if (currentXRotation > 180f)
+            currentXRotation -= 360f;
+
+        float newXRotation = currentXRotation - yRotation;
+        newXRotation = Mathf.Clamp(newXRotation, -maxLookAngle, maxLookAngle);
+        playerCamera.transform.localRotation = Quaternion.Euler(newXRotation, 0f, 0f);
+        transform.Rotate(new Vector3(0, xRotation, 0));
     }
 
     private void HandleMovement()
     {
         float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
         float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
-        _moveDirection = new Vector3(horizontal, 0f, vertical);
-        _moveDirection.Normalize();
-        transform.position += _moveDirection * moveSpeed * Time.deltaTime;
+        Vector3 moveInput = (transform.forward * vertical + transform.right * horizontal).normalized;
+        _moveDirection = moveInput;
+        float currentSpeed = _isDashing ? dashSpeed : moveSpeed;
+        transform.position += _moveDirection * currentSpeed * Time.deltaTime;
+    }
+
+    private void HandleDash()
+    {
+        bool dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
+        if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
+        {
+            _isDashing = true;
+            _dashTimer = dashDuration;
+        }
+
+        if (_isDashing && _dashTimer <= 0f)
+        {
+            _isDashing = false;
+            _dashCooldownTimer = dashCooldown;
+        }
+
+        if (_isDashing)
+            _dashTimer -= Time.deltaTime;
+
+        if (_dashCooldownTimer > 0f)
+            _dashCooldownTimer -= Time.deltaTime;
     }
 
     private void HandleCameraLean()
     {
+        return;
         float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
         float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
         Vector3 targetLean = Vector3.zero;
@@ -59,28 +115,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleSteps()
     {
+        return;
         if (_moveDirection.sqrMagnitude > 0.01f)
-            _stepCycle += Time.deltaTime * stepBobSpeed;
+            _stepCycle += Time.deltaTime * 5f;
         else
-            _stepCycle = Mathf.Lerp(_stepCycle, 0f, stepBobSmoothing * Time.deltaTime);
+            _stepCycle = Mathf.Lerp(_stepCycle, 0f, 5f * Time.deltaTime);
 
-        float bobOffset = Mathf.Sin(_stepCycle * Mathf.PI) * stepHeight;
+        float bobOffset = Mathf.Sin(_stepCycle * Mathf.PI) * 0.1f;
         if (playerCamera)
         {
             Vector3 newCameraPosition = _cameraBasePosition;
             newCameraPosition.y += bobOffset;
             playerCamera.transform.localPosition = newCameraPosition;
         }
-    }
-
-    private void ApplyCameraLean()
-    {
-        if (!playerCamera)
-            return;
-
-        Vector3 cameraEuler = playerCamera.transform.localEulerAngles;
-        cameraEuler.x = _currentLean.x;
-        cameraEuler.z = _currentLean.z;
-        playerCamera.transform.localEulerAngles = cameraEuler;
     }
 }
