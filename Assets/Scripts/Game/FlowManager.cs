@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,20 +8,49 @@ public class FlowManager : MonoBehaviour
     public int[] timers = { 10, 5, 60, -1, -1 };
     public static FlowManager instance;
 
-    public State currentState;
+    public State currentState
+    { 
+        get { 
+            return currentState_;
+        }
+        set {
+            currentState_ = value;
+
+            onStateChanged();
+        }
+    }
+
+    private State currentState_;
 
     float timerValue = 0.0f;
+
+    public static event Action<State> onStateChange;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentState = State.Cooldown;
+    }
+
+    private void onStateChanged()
+    {
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentState == State.Cooldown || currentState == State.Spawn || currentState == State.Round)
+        {
+            if (timerValue < timers[(int)currentState])
+            {
+                timerValue += Time.deltaTime;
+            }
+            else
+            {
+                advanceState();
+                timerValue = 0.0f;
+            }
+        }
     }
 
     public void setState (State state)
@@ -35,6 +65,8 @@ public class FlowManager : MonoBehaviour
 
     public void advanceState()
     {
+        Debug.LogError("Changing State: " + currentState);
+
         switch (currentState)
         {
             case State.Cooldown:
