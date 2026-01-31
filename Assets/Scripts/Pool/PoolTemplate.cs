@@ -9,7 +9,7 @@ public class PoolTemplate : MonoBehaviour
 
     protected ObjectPool<GameObject> pool_;
 
-    private void Awake()
+    public void Awake()
     {
         // Create a pool with the four core callbacks.
         pool_ = new ObjectPool<GameObject>(
@@ -21,6 +21,11 @@ public class PoolTemplate : MonoBehaviour
             defaultCapacity: defaultCapacity,
             maxSize: size
         );
+    }
+
+    public GameObject Get()
+    {
+        return pool_.Get();
     }
 
     

@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
+using static FlowManager;
 
 public class EnemyBase : MonoBehaviour
 {
+    public Mask.MaskColor enemyColor;
     public int maxHp_;
     private int hp_;
     public bool spawning_;
     public bool dying_;
+
+    FlowManager.enemyType type;
 
     //private BasicEnemyMovement movement_;
     private Transform transform_;
@@ -20,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     void Awake()
     {
         hp_ = maxHp_;
+
+        enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
     }
 
     private void Start()

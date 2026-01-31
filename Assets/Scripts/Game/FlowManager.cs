@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 public class FlowManager : MonoBehaviour
 {
+    public enum enemyType { dolphin, skibido }
+
+
     public enum State { Cooldown, Spawn, Round, Improvement, EndGame };
     public int[] timers = { 10, 5, 60, -1, -1 };
     public static FlowManager instance;
@@ -12,7 +15,7 @@ public class FlowManager : MonoBehaviour
     [SerializeField]
     GameObject spawnerParent;
 
-    public EnemySpawner[] spawners;
+    public EnemyPoolManager spawnerManager;
 
     public Material[] enemyFilters_;
     //Mask
@@ -36,6 +39,7 @@ public class FlowManager : MonoBehaviour
     private State currentState_;
 
     float timerValue = 0.0f;
+    public int currentRound;
 
     public static event Action<State> onStateChange;
 
@@ -44,7 +48,7 @@ public class FlowManager : MonoBehaviour
     {
         currentState = State.Cooldown;
 
-        spawners = spawnerParent.transform.GetComponentsInChildren<EnemySpawner>();
+        spawnerManager = spawnerParent.transform.GetComponentInChildren<EnemyPoolManager>();
     }
 
     private void onStateChanged()
@@ -87,10 +91,7 @@ public class FlowManager : MonoBehaviour
             case State.Cooldown:
                 setState(State.Spawn);
 
-                foreach (EnemySpawner eS in spawners)
-                {
-                   StartCoroutine(eS.Spawn());
-                }
+                spawnerManager.onRoundChange(currentRound);
 
                 break;
             case State.Spawn:
