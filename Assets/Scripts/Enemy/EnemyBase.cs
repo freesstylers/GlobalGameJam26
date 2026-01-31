@@ -104,6 +104,10 @@ public class EnemyBase : MonoBehaviour
             dying_ = false;
             FlowManager.instance.currentPoints += 15 + UnityEngine.Random.Range(0, 10);
             FlowManager.instance.currentAliveEnemies -= 1;
+            if(FlowManager.instance.currentAliveEnemies == 0)
+            {
+                FlowManager.instance.advanceState();
+            }
             reference.Release(gameObject);
         }
     }
