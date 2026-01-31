@@ -5,7 +5,7 @@ public class Mask : ScriptableObject
 {
     public enum MaskColor
     {
-        NONE = -1, RED, GREEN, BLUE
+        NONE = -1, RED, YELLOW, BLUE
     }
 
     public MaskColor color_ = MaskColor.NONE;

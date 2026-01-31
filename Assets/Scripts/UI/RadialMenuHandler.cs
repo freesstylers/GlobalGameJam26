@@ -79,7 +79,7 @@ public class RadialMenuHandler : MonoBehaviour
             if (deg < 300 && deg >= 180)
                 selected = MaskColor.BLUE;
             else if (deg < 180 && deg >= 60)
-                selected = MaskColor.GREEN;
+                selected = MaskColor.YELLOW;
             else
                 selected = MaskColor.RED;
 

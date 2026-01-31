@@ -45,16 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd1a1c33a49d434d8a2ebbd457b1531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timers: 0a000000050000003c000000ffffffffffffffff
+  timers: 020000000500000003000000ffffffffffffffff
   spawnerManager: {fileID: 0}
   enemyFilters_:
-  - {fileID: 2100000, guid: a3626f5ed8b515741ab0c0e4f628c41b, type: 2}
-  - {fileID: 2100000, guid: 122261989cfe740448c5b52dac3f1572, type: 2}
-  - {fileID: 2100000, guid: 81d1f143dd265504c923b38e18ea75d4, type: 2}
+  - {fileID: 2100000, guid: 95f243d0e9e2a3c44aeb963e86648d49, type: 2}
+  - {fileID: 2100000, guid: 8612550c6c5dc35469d3acba63ee58da, type: 2}
+  - {fileID: 2100000, guid: fc7688f91f676614bad79ecf6009334a, type: 2}
   masks_:
   - {fileID: 11400000, guid: b09701f7bb5273a4b803d14029de8676, type: 2}
   - {fileID: 11400000, guid: 4eb775b8b6a884b4bb30e3bca42d4a54, type: 2}
   - {fileID: 11400000, guid: 64beb598082607742af679a2ab0496b0, type: 2}
+  redCamera: {fileID: 0}
+  blueCamera: {fileID: 0}
+  yellowCamera: {fileID: 0}
   currentRound: 0
   currentPlayer: {fileID: 0}
   currentPoints: 0
