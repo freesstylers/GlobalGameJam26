@@ -72,6 +72,13 @@ public class FlowManager : MonoBehaviour
     {
     }
 
+    public float slowTimeScale = 0.1f;
+
+    public void SlowDown(bool state)
+    {
+        Time.timeScale = state ? slowTimeScale : 1.0f;
+    }
+
     // Update is called once per frame
     void Update()
     {
