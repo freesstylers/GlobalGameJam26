@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("AUDIO")]
     private FMOD.Studio.EventInstance dashInstance_;
+    private FMOD.Studio.EventInstance stepsInstance_;
 
 
     ////////////////////////////////////////////
@@ -51,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 _currentLean;
 
     private bool _isSprinting = false;
+    private bool _isMoving = false;
 
     private float _dashTimer;
     private float _dashCooldownTimer;
@@ -73,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
 
         dashInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Dash");
+        stepsInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Steps");
     }
 
     void Update()
@@ -145,6 +148,17 @@ public class PlayerMovement : MonoBehaviour
         _moveDirection = moveInput;
         float movementSpeed = _isDashing ? dashSpeed : (_isSprinting ? sprintSpeed : currentMask_.stats_.realSpeed_);
         transform.position += (_moveDirection * movementSpeed * Time.deltaTime);
+
+        if(_moveDirection != Vector3.zero && !_isMoving)
+        {
+            _isMoving = true;
+            stepsInstance_.start();
+        }
+        if(_moveDirection == Vector3.zero && _isMoving)
+        {
+            _isMoving = false;
+            stepsInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
     }
 
     private void HandleSprint()
@@ -153,9 +167,16 @@ public class PlayerMovement : MonoBehaviour
         if(playerCanInteract)
             sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
         if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
+        {
+            if (!_isSprinting) stepsInstance_.setParameterByName("Running", 1.0f);
             _isSprinting = true;
+        }
         else
+        {
+            if (_isSprinting) stepsInstance_.setParameterByName("Running", 0.0f);
             _isSprinting = false;
+        }
+
     }
 
     private void HandleDash()
@@ -169,7 +190,6 @@ public class PlayerMovement : MonoBehaviour
             _isDashing = true;
             _dashTimer = dashDuration;
             dashInstance_.start();
-            FlowManager.instance.NextMask();
         }
 
         if (_isDashing && _dashTimer <= 0f)
