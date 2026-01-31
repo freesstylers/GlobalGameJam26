@@ -28,6 +28,15 @@ public class FlowManager : MonoBehaviour
     private int currentMaskId_ = 0;
     private Action<Mask> onMaskChange;
 
+    [SerializeField]
+    Camera redCamera;
+
+    [SerializeField]
+    Camera blueCamera;
+
+    [SerializeField]
+    Camera yellowCamera;
+
     public State currentState
     { 
         get { 
@@ -177,11 +186,39 @@ public class FlowManager : MonoBehaviour
             Debug.Log("Changing Mask from " + currentMaskId_ + " to " + maskId);
             //enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", 0);
             //enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", 1);
-            StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity",value), 1, 0, .5f));
-            StartCoroutine(LerpFloat(value => enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity",value), 0, 1, .5f));
+            StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", value), 1, 0, .5f));
+            StartCoroutine(LerpFloat(value => enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", value), 0, 1, .5f));
 
             currentMaskId_ = maskId;
-            onMaskChange.Invoke(GetCurrentMask());
+
+            if (onMaskChange != null)
+            {
+                onMaskChange.Invoke(GetCurrentMask());
+            }
+
+            switch ((Mask.MaskColor)GetCurrentMask().color_)
+            {
+                case Mask.MaskColor.RED:
+                    redCamera.gameObject.SetActive(true);
+                    blueCamera.gameObject.SetActive(false);
+                    yellowCamera.gameObject.SetActive(false);
+                    break;
+                case Mask.MaskColor.YELLOW:
+                    redCamera.gameObject.SetActive(false);
+                    blueCamera.gameObject.SetActive(false);
+                    yellowCamera.gameObject.SetActive(true);
+                    break;
+                case Mask.MaskColor.BLUE:
+                    redCamera.gameObject.SetActive(false);
+                    blueCamera.gameObject.SetActive(true);
+                    yellowCamera.gameObject.SetActive(false);
+                    break;
+                case Mask.MaskColor.NONE:
+                    redCamera.gameObject.SetActive(false);
+                    blueCamera.gameObject.SetActive(false);
+                    yellowCamera.gameObject.SetActive(false);
+                    break;
+            }
         }
     }
 

@@ -261,17 +261,21 @@ PrefabInstance:
       value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: 'm_Cameras.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 573003327}
     - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: 'm_Cameras.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 573003328}
     - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: 'm_Cameras.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 573003329}
     - target: {fileID: 5207386138296855447, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.15
@@ -327,6 +331,14 @@ PrefabInstance:
     - target: {fileID: 6436032727010865052, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: spreadIntensity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801613791750011127, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801613791750011127, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7779029095823078111, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_Name
@@ -388,6 +400,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8719059613975129718, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2498521082665541821, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
     m_RemovedGameObjects: []
@@ -397,6 +413,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2035697053}
   m_SourcePrefab: {fileID: 100100000, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+--- !u!20 &573003327 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7116068800542959440, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+  m_PrefabInstance: {fileID: 573003326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &573003328 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6733365717481982374, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+  m_PrefabInstance: {fileID: 573003326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &573003329 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7386724438057310812, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+  m_PrefabInstance: {fileID: 573003326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &862239141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,25 +1066,17 @@ PrefabInstance:
       value: FlowManagerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
-      propertyPath: 'timers.Array.data[0]'
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
-      propertyPath: 'timers.Array.data[2]'
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
-      propertyPath: 'enemyFilters_.Array.data[0]'
+      propertyPath: redCamera
       value: 
-      objectReference: {fileID: 2100000, guid: 95f243d0e9e2a3c44aeb963e86648d49, type: 2}
+      objectReference: {fileID: 573003329}
     - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
-      propertyPath: 'enemyFilters_.Array.data[1]'
+      propertyPath: blueCamera
       value: 
-      objectReference: {fileID: 2100000, guid: 8612550c6c5dc35469d3acba63ee58da, type: 2}
+      objectReference: {fileID: 573003328}
     - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
-      propertyPath: 'enemyFilters_.Array.data[2]'
+      propertyPath: yellowCamera
       value: 
-      objectReference: {fileID: 2100000, guid: fc7688f91f676614bad79ecf6009334a, type: 2}
+      objectReference: {fileID: 573003327}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

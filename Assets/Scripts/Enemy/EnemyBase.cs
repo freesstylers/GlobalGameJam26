@@ -45,7 +45,7 @@ public class EnemyBase : MonoBehaviour
             case Mask.MaskColor.BLUE:
                 filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
                 break;
-            case Mask.MaskColor.GREEN:
+            case Mask.MaskColor.YELLOW:
                 filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
                 break;
             case Mask.MaskColor.NONE:
