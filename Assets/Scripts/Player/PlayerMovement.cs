@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     public float cameraLeanMax = 30f;
     public float cameraLeanRecoverySpeed = 5f;
 
+
+    [Header("Steps")]
+    public float stepHeightDelta = 0.25f;
+    public float stepCadence = 5f;
+
     [Header("Dash")]
     public float dashSpeed = 25f;
     public float dashDuration = 0.3f;
@@ -124,11 +129,11 @@ public class PlayerMovement : MonoBehaviour
     {
         bool isMoving = _moveDirection.sqrMagnitude > 0.01f;
         if (isMoving)
-            _stepCycle += Time.deltaTime * 5f;
+            _stepCycle += Time.deltaTime * stepCadence;
         else
-            _stepCycle = Mathf.Lerp(_stepCycle, 0f, 5f * Time.deltaTime);
+            _stepCycle = Mathf.Lerp(_stepCycle, 0f, stepCadence * Time.deltaTime);
 
-        float bobOffset = isMoving ? (Mathf.Sin(_stepCycle * Mathf.PI) * 0.1f) : 0;
+        float bobOffset = isMoving ? (Mathf.Sin(_stepCycle * Mathf.PI) * stepHeightDelta) : 0;
         if (playerCamera)
         {
             Vector3 newCameraPosition = _cameraBasePosition;
