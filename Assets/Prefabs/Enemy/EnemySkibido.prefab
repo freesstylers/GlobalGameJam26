@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 344482237723236231}
   - component: {fileID: 7539880357299997776}
+  - component: {fileID: 4482180803566831676}
+  - component: {fileID: -5305606310951680256}
   m_Layer: 0
   m_Name: EnemySkibido
   m_TagString: Untagged
@@ -46,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyColor: 0
-  maxHp_: 20
+  maxHp_: 1
   spawning_: 0
   dying_: 0
   scaleChangeRate_: 0.8
@@ -54,6 +56,42 @@ MonoBehaviour:
   filter_: {fileID: 0}
   hurtAnimation_: {fileID: 8239305069247775940}
   reference: {fileID: 0}
+--- !u!195 &4482180803566831676
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024735737356066189}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-5305606310951680256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024735737356066189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accc765aeb29ee34fb0fd5f6991281a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  minDist: 2
 --- !u!1 &1437818560261948746
 GameObject:
   m_ObjectHideFlags: 0
