@@ -61,6 +61,8 @@ public class FlowManager : MonoBehaviour
 
     public int currentPoints = 0;
 
+    public int currentAliveEnemies = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -78,6 +80,7 @@ public class FlowManager : MonoBehaviour
     void Start()
     {
         currentPoints = 0;
+        currentAliveEnemies = 0;
         currentState = State.Cooldown;
 
         spawnerManager = GameObject.FindAnyObjectByType<EnemyPoolManager>();
@@ -97,7 +100,7 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == State.Cooldown || currentState == State.Spawn || currentState == State.Round)
+        if (currentState == State.Cooldown)
         {
             if (timerValue < timers[(int)currentState])
             {
@@ -139,7 +142,7 @@ public class FlowManager : MonoBehaviour
                 setState(State.Round);
                 break;
             case State.Round:
-                if (true)
+                if (currentAliveEnemies == 0)
                 {
                     setState(State.Improvement);
                 }

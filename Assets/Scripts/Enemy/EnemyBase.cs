@@ -22,6 +22,8 @@ public class EnemyBase : MonoBehaviour
 
     public Animator hurtAnimation_;
 
+    public PoolTemplate reference;
+
     void Awake()
     {
         hp_ = maxHp_;
@@ -101,7 +103,8 @@ public class EnemyBase : MonoBehaviour
             transform_.localScale = new Vector3(0.0f, 0.0f, 0.0f);
             dying_ = false;
             FlowManager.instance.currentPoints += 15 + UnityEngine.Random.Range(0, 10);
-            Destroy(this.gameObject);
+            FlowManager.instance.currentAliveEnemies -= 1;
+            reference.Release(gameObject);
         }
     }
 }
