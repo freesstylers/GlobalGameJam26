@@ -12,6 +12,9 @@ public class EnemyBase : MonoBehaviour
 
     public float scaleChangeRate_ = 0.5f;
 
+    public Mask.MaskColor color_;
+    public GameObject filter_;
+
     void Awake()
     {
         hp_ = maxHp_;
@@ -21,6 +24,24 @@ public class EnemyBase : MonoBehaviour
     {
         //movement_ = GetComponent<BasicEnemyMovement>();
         transform_ = GetComponent<Transform>();
+    }
+
+    public void EnemyInit(Mask.MaskColor c)
+    {
+        switch (c)
+        {
+            case Mask.MaskColor.RED:
+                filter_.GetComponent<MeshRenderer>().materials[1] = Resources.Load("RedFilter", typeof(Material)) as Material;
+                break;
+            case Mask.MaskColor.BLUE:
+                filter_.GetComponent<MeshRenderer>().materials[1] = Resources.Load("BlueFilter", typeof(Material)) as Material;
+                break;
+            case Mask.MaskColor.GREEN:
+                filter_.GetComponent<MeshRenderer>().materials[1] = Resources.Load("GreenFilter", typeof(Material)) as Material;
+                break;
+            case Mask.MaskColor.NONE:
+                break;
+        }
     }
 
     private void Update()
