@@ -17,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     public float stepHeightDelta = 0.25f;
     public float stepCadence = 5f;
 
+    [Header("GUN STEPS")]
+    public GameObject gunContainer;
+    public float gunBobHeightDelta = 0.15f;
+    public float gunBobHorizontalDelta = 0.1f;
+    public float gunBobRotationDelta = 5f;
+
     [Header("LEANING")]
     public float cameraLeanAccumulation = 0.15f;
     public float cameraLeanMax = 15f;
@@ -43,10 +49,12 @@ public class PlayerMovement : MonoBehaviour
     ////////////////////////////////////////////
 
     public Vector3 _moveDirection;
-    
+
     private Vector3 _cameraBasePosition;
+    private Vector3 _gunBasePosition;
+    private Quaternion _gunBaseRotation;
     private float _baseFOV;
-    
+
     private float _stepCycle;
 
     public Vector3 _currentLean;
@@ -70,6 +78,13 @@ public class PlayerMovement : MonoBehaviour
             _cameraBasePosition = playerCamera.transform.localPosition;
             _baseFOV = playerCamera.fieldOfView;
         }
+
+        if (gunContainer != null)
+        {
+            _gunBasePosition = gunContainer.transform.localPosition;
+            _gunBaseRotation = gunContainer.transform.localRotation;
+        }
+
         //FlowManager.instance.SuscribeMaskChange(OnMaskChange);
         //currentMask_ = FlowManager.instance.GetCurrentMask();
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
@@ -87,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         HandleCameraLean();
         HandleCameraFOV();
         HandleSteps();
+        HandleGunStep();
     }
 
     public void SetPlayerCanInteract(bool newValue)
@@ -108,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
         float mouseX = 0;
         float mouseY = 0;
-        if(playerCanInteract)
+        if (playerCanInteract)
         {
             mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
             mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
@@ -138,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = 0;
         float vertical = 0;
-        if(playerCanInteract)
+        if (playerCanInteract)
         {
             horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
             vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
@@ -164,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleSprint()
     {
         bool sprintInput = false;
-        if(playerCanInteract)
+        if (playerCanInteract)
             sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
         if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
         {
@@ -182,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleDash()
     {
         bool dashInput = false;
-        if(playerCanInteract)
+        if (playerCanInteract)
             dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
 
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
@@ -209,13 +225,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = 0;
         float vertical = 0;
-        if(!playerCanInteract)
+        if (!playerCanInteract)
         {
             //Saca el lado al que inclinarse segun input
             horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
             vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
         }
-        
+
         Vector3 targetLean = Vector3.zero;
         if (Mathf.Abs(horizontal) > 0.01f)
             targetLean.z -= horizontal * cameraLeanAccumulation;
@@ -260,6 +276,40 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newCameraPosition = _cameraBasePosition;
             newCameraPosition.y += bobOffset;
             playerCamera.transform.localPosition = newCameraPosition;
+        }
+    }
+
+    private void HandleGunStep()
+    {
+        if (gunContainer == null)
+            return;
+
+        bool isMoving = _moveDirection.sqrMagnitude > 0.01f && !_isDashing;
+        if (isMoving)
+        {
+            float speedRatio = _isSprinting ? (sprintSpeed / currentMask_.stats_.realSpeed_) : 1f;
+            float adjustedCadence = stepCadence * speedRatio;
+            // desfasado un poco para que no vaya al unisono con los steps normales
+            float gunCycle = (_stepCycle*0.75f) + Mathf.PI * 0.5f;
+            //Desfase de posicio
+            float verticalDelta = Mathf.Sin(gunCycle * Mathf.PI) * gunBobHeightDelta;
+            float horizontalDelta = Mathf.Sin(gunCycle * Mathf.PI * 0.5f) * gunBobHorizontalDelta;
+            Vector3 newGunPosition = _gunBasePosition;
+            newGunPosition.y += verticalDelta;
+            newGunPosition.x += horizontalDelta;
+            gunContainer.transform.localPosition = newGunPosition;
+
+            // Desfase de rotacion
+            float rotationX = Mathf.Sin(gunCycle * Mathf.PI) * gunBobRotationDelta;
+            float rotationZ = Mathf.Sin(gunCycle * Mathf.PI * 0.5f) * (gunBobRotationDelta * 0.5f);
+            Quaternion newGunRotation = _gunBaseRotation * Quaternion.Euler(rotationX, 0f, rotationZ);
+            gunContainer.transform.localRotation = newGunRotation;
+        }
+        else
+        {
+            //lerp pa posicion original
+            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, _gunBasePosition, stepCadence * Time.deltaTime);
+            gunContainer.transform.localRotation = Quaternion.Lerp(gunContainer.transform.localRotation, _gunBaseRotation, stepCadence * Time.deltaTime);
         }
     }
 

@@ -52,10 +52,15 @@ public class EnemyPoolManager : MonoBehaviour
                 int aux = UnityEngine.Random.Range(0, spawnersInMind.Count);
 
                 g.transform.SetPositionAndRotation(spawnersInMind[aux].transform.position, new Quaternion());
+                g.GetComponent<EnemyBase>().reference = enemyPools[(int)enemy.Key];
+
+                FlowManager.instance.currentAliveEnemies += 1;
 
                 spawnersInMind.RemoveAt(aux); //Para que no spawnee 2 en el mismo por ronda
 
             }
         }
+
+        FlowManager.instance.advanceState();
     }
 }

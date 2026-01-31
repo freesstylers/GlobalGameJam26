@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class mainMenuScript : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class mainMenuScript : MonoBehaviour
 
     public void Play()
     {
-
+        SceneManager.LoadScene("gameScreen");
     }
 
     [SerializeField]

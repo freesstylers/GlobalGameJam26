@@ -476,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5358938711601456355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -886,9 +886,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4454772116851210927}
     m_Modifications:
+    - target: {fileID: 266139837230344157, guid: c26c4ed330f1f844bb7074140d9b09ed, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2622614952335597259, guid: c26c4ed330f1f844bb7074140d9b09ed, type: 3}
       propertyPath: m_Name
       value: MaskRadialButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063394391839296004, guid: c26c4ed330f1f844bb7074140d9b09ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519490866427080652, guid: c26c4ed330f1f844bb7074140d9b09ed, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519490866427080652, guid: c26c4ed330f1f844bb7074140d9b09ed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7987775639730240796, guid: c26c4ed330f1f844bb7074140d9b09ed, type: 3}
       propertyPath: m_Pivot.x
