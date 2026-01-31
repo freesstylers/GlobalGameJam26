@@ -168,7 +168,8 @@ public class PlayerShooting : MonoBehaviour
         {
             yield return new WaitForSeconds(seconds);
             // Give it back to the pool.
-            shPool.Release(gameObject);
+            if(gameObject.activeInHierarchy)
+                shPool.Release(gameObject);
         }
     }
 
