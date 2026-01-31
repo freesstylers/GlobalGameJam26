@@ -50,6 +50,8 @@ public class FlowManager : MonoBehaviour
     [HideInInspector]
     public PlayerMovement currentPlayer;
 
+    public int currentPoints = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -66,6 +68,7 @@ public class FlowManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentPoints = 0;
         currentState = State.Cooldown;
 
         spawnerManager = GameObject.FindAnyObjectByType<EnemyPoolManager>();
