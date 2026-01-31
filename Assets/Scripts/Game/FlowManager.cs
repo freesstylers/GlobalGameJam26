@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class FlowManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class FlowManager : MonoBehaviour
     public EnemySpawner[] spawners;
 
     public Material[] enemyFilters_;
+    //Mask
+    public List<Mask> masks_;
+    private Mask currentMask_;
+    private int currentMaskId_ = 0;
+    private Action<Mask> onMaskChange;
 
     public State currentState
     { 
@@ -113,4 +119,39 @@ public class FlowManager : MonoBehaviour
     {
         SceneManager.LoadScene("mainMenu");
     }
+
+    #region MASK
+    public Mask GetCurrentMask()
+    {
+        return masks_[currentMaskId_];
+    }
+
+    public void SuscribeMaskChange(Action<Mask> action)
+    {
+        onMaskChange += action;
+    }
+
+    public void SetMask(int maskId)
+    {
+        if(masks_.Count <= maskId)
+        {
+            currentMaskId_ = maskId;
+            onMaskChange.Invoke(GetCurrentMask());
+        }
+    }
+
+    public void NextMask()
+    {
+        currentMaskId_++;
+        currentMaskId_ = currentMaskId_ % masks_.Count;
+        onMaskChange.Invoke(GetCurrentMask());
+    }
+
+    public void PrevMask()
+    {
+        currentMaskId_--;
+        currentMaskId_ = currentMaskId_ < 0 ? 0 : currentMaskId_;
+        onMaskChange.Invoke(GetCurrentMask());
+    }
+    #endregion
 }
