@@ -17,6 +17,15 @@ public class RadialMenuHandler : MonoBehaviour
 
     Vector2 MouseAccumulaMov;
 
+    private FMOD.Studio.EventInstance changeInstance_;
+    private FMOD.Studio.EventInstance chooseInstance_;
+
+    private void Start()
+    {
+        changeInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/ChangeMask");
+        chooseInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Choose");
+    }
+
     void Update()
     {
         if (!radialOn && Rewired.ReInput.players.Players[0].GetButtonDown("radial"))
@@ -27,6 +36,7 @@ public class RadialMenuHandler : MonoBehaviour
             RadialMenuDisplay.SetActive(true);
 
             radialOn = true;
+            chooseInstance_.start();
 
             FlowManager.instance.currentPlayer.SetPlayerLook(false);
         }
@@ -118,7 +128,11 @@ public class RadialMenuHandler : MonoBehaviour
 
     public void SelectMask()
     {
-        if(currentMask != MaskColor.NONE)
+        if (currentMask != MaskColor.NONE)
+        {
             FlowManager.instance.SetMask((int)currentMask);
+            changeInstance_.setParameterByName("Color", (int)currentMask);
+            changeInstance_.start();
+        }
     }
 }
