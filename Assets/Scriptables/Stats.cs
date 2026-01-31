@@ -25,11 +25,6 @@ public class Stats : ScriptableObject
 
     public CapsuleCollider spawnerCollider;
 
-    private void Awake()
-    {
-        ResetHP();
-    }
-
     public void resetRadiusForSpawners()
     {
         spawnerCollider.radius = 0.0f;

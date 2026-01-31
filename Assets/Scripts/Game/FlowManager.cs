@@ -84,6 +84,12 @@ public class FlowManager : MonoBehaviour
         currentState = State.Cooldown;
 
         spawnerManager = GameObject.FindAnyObjectByType<EnemyPoolManager>();
+
+        foreach(Mask m in masks_)
+        {
+            m.stats_.ResetStats();
+            m.stats_.UpdateStats();
+        }
     }
 
     private void onStateChanged()
@@ -180,13 +186,10 @@ public class FlowManager : MonoBehaviour
 
     public void SetMask(int maskId)
     {
-        Debug.Log("PUTA " + maskId + " COUNT: " + masks_.Count);
         if (maskId < masks_.Count)
         {
-            Debug.Log("COÑO " + maskId);
             fadeOutMaterialIndex = currentMaskId_;
             fadeInMaterialIndex = maskId;
-            Debug.Log("Changing Mask from " + currentMaskId_ + " to " + maskId);
             //enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", 0);
             //enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", 1);
             StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", value), 1, 0, .5f));
