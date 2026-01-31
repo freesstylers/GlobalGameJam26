@@ -134,6 +134,7 @@ public class PlayerShooting : MonoBehaviour
         BasicBullet bb = shPool.Get().GetComponent<BasicBullet>();
         bb.dir = dir;
         recoilTimer = recoilDuration;
+        bb.pool = shPool;
         StartCoroutine(ReturnAfter(bb.gameObject, bulletLt));
 
         currentAmo--;
