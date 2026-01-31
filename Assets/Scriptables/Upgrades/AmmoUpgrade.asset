@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   class_: 3
   mult_: 1.2
+  value_: 10
+  pegatina_: {fileID: 2800000, guid: 13a830f129107b04d9a9b213877618f0, type: 3}

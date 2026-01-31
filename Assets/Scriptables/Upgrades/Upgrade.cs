@@ -13,5 +13,7 @@ public class Upgrade : ScriptableObject
     public UpgradeClass class_ = UpgradeClass.NONE;
     public float mult_ = 2.0f;
     public int value_ = 10;
+
+    public Texture2D pegatina_;
     
 }
