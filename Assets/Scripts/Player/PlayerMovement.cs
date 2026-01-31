@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.3f;
     public float dashCooldown = 0.5f;
 
+    [Header("SHADER")]
+    public Material screenMaterial;
+
+
     ////////////////////////////////////////////
 
     public Vector3 _moveDirection;
@@ -158,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         float targetFOV = _isSprinting ? _baseFOV - sprintFOVReduction : _baseFOV;
+        screenMaterial.SetFloat("_mask1VisualObstructionStremgth", 1 - ((Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime) - (_baseFOV - sprintFOVReduction)) / sprintFOVReduction));
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime);
     }
 

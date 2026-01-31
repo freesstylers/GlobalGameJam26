@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FullScreenShader
+  m_Shader: {fileID: -6465566751694194690, guid: cf81d4e2b4d8a0d4885dd38458e8d35b, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_4d9c7d469f9447158e8bfd3391eed661_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4ceaecc402e9593418a4af722c450ae2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_bf2dd3db7f694b399bb60d60f697af55_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4ceaecc402e9593418a4af722c450ae2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_f2736a64b3da4b1aabca59db49661b2b_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4ceaecc402e9593418a4af722c450ae2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _mask1ColorBlendStrength: 0
+    - _mask1VisualObstructionStremgth: 0.77761537
+    - _mask2ColorBlendStrength: 0
+    - _mask2VisualObstructionStrength: 0
+    - _mask3ColorBlendStrength: 0
+    - _mask3VisualObstructionStrength: 0
+    - _strength: 0.9999863
+    m_Colors:
+    - _mask1Color: {r: 1, g: 0, b: 0.018810749, a: 0}
+    - _mask2Color: {r: 0.20064294, g: 1, b: 0, a: 0}
+    - _mask3Color: {r: 0.12673378, g: 0, b: 1, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
