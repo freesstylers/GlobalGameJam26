@@ -9,38 +9,54 @@ public class PlayerMovement : MonoBehaviour
 
     public Camera playerCamera;
     public GameObject cameraContainer;
-    public float cameraLeanAccumulation = 0.15f;
-    public float cameraLeanMax = 30f;
-    public float cameraLeanRecoverySpeed = 5f;
 
+    [Header("MOUSE LOOK")]
+    public float mouseSensitivity = 2f;
+    public float maxLookAngle = 90f;
 
-    [Header("Steps")]
+    [Header("STEPS")]
     public float stepHeightDelta = 0.25f;
     public float stepCadence = 5f;
 
-    [Header("Dash")]
+    [Header("LEANING")]
+    public float cameraLeanAccumulation = 0.15f;
+    public float cameraLeanMax = 15f;
+    public float cameraLeanRecoverySpeed = 5f;
+
+    [Header("SPRINTING")]
+    public float sprintSpeed = 25f;
+    public float sprintFOVReduction = 5f;
+    public float fovTransitionSpeed = 5f;
+
+    [Header("DASH")]
     public float dashSpeed = 25f;
     public float dashDuration = 0.3f;
     public float dashCooldown = 0.5f;
 
-    [Header("Mouse Look")]
-    public float mouseSensitivity = 2f;
-    public float maxLookAngle = 90f;
+    ////////////////////////////////////////////
+
+    public Vector3 _moveDirection;
+    
+    private Vector3 _cameraBasePosition;
+    private float _baseFOV;
+    
+    private float _stepCycle;
 
     public Vector3 _currentLean;
-    public Vector3 _moveDirection;
 
-    private Vector3 _cameraBasePosition;
-    private float _stepCycle;
+    private bool _isSprinting = false;
 
     private float _dashTimer;
     private float _dashCooldownTimer;
-    private bool _isDashing;
+    private bool _isDashing = false;
 
     void Start()
     {
         if (playerCamera != null)
+        {
             _cameraBasePosition = playerCamera.transform.localPosition;
+            _baseFOV = playerCamera.fieldOfView;
+        }
 
         currentMask_ = masks_[currentMaskId_];
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
@@ -48,45 +64,58 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        HandleSprint();
         HandleMovement();
         HandleMouseLook();
         HandleDash();
         HandleCameraLean();
+        HandleCameraFOV();
         HandleSteps();
     }
 
     private void HandleMouseLook()
     {
+        if (!playerCamera)
+            return;
+        //Saca el input de rotacion
         float mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
         float mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
         float xRotation = mouseX * mouseSensitivity;
         float yRotation = mouseY * mouseSensitivity;
 
-        if (!playerCamera)
-            return;
         float currentXRotation = playerCamera.transform.localEulerAngles.x;
         if (currentXRotation > 180f)
             currentXRotation -= 360f;
 
+        //Rota el player entero en X y solo la camara en Y
+        transform.Rotate(new Vector3(0, xRotation, 0));
         float newXRotation = currentXRotation - yRotation;
         newXRotation = Mathf.Clamp(newXRotation, -maxLookAngle, maxLookAngle);
         playerCamera.transform.localRotation = Quaternion.Euler(newXRotation, 0f, 0f);
-        transform.Rotate(new Vector3(0, xRotation, 0));
     }
 
     private void HandleMovement()
     {
         float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
         float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
-        Vector3 moveInput = (transform.forward * vertical + transform.right * horizontal).normalized;
+        Vector3 moveInput = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
         _moveDirection = moveInput;
-        float currentSpeed = _isDashing ? dashSpeed : currentMask_.stats_.realSpeed_;
-        transform.position += _moveDirection * currentSpeed * Time.deltaTime;
+        float movementSpeed = _isDashing ? dashSpeed : (_isSprinting ? sprintSpeed : currentMask_.stats_.realSpeed_);
+        transform.position += (_moveDirection * movementSpeed * Time.deltaTime);
+    }
+
+    private void HandleSprint()
+    {
+        bool sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("Dash");
+        if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
+            _isSprinting = true;
+        else
+            _isSprinting = false;
     }
 
     private void HandleDash()
     {
-        bool dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
+        bool dashInput = false;// Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
         {
             _isDashing = true;
@@ -108,28 +137,43 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleCameraLean()
     {
+        //Saca el lado al que inclinarse segun input
         float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
         float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
         Vector3 targetLean = Vector3.zero;
-
         if (Mathf.Abs(horizontal) > 0.01f)
             targetLean.z -= horizontal * cameraLeanAccumulation;
         if (Mathf.Abs(vertical) > 0.01f)
             targetLean.x += vertical * cameraLeanAccumulation;
-
+        //Inclinate poco a poco
         _currentLean = Vector3.Lerp(_currentLean, targetLean, cameraLeanRecoverySpeed * Time.deltaTime);
         _currentLean.x = Mathf.Clamp(_currentLean.x, -cameraLeanMax, cameraLeanMax);
         _currentLean.z = Mathf.Clamp(_currentLean.z, -cameraLeanMax, cameraLeanMax);
-
+        //Inclina el contenedor de la camara NO la camara directamente
         if (cameraContainer != null)
             cameraContainer.transform.localRotation = Quaternion.Euler(_currentLean.x, 0f, _currentLean.z);
     }
 
+    private void HandleCameraFOV()
+    {
+        if (!playerCamera)
+            return;
+
+        float targetFOV = _isSprinting ? _baseFOV - sprintFOVReduction : _baseFOV;
+        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime);
+    }
+
     private void HandleSteps()
     {
-        bool isMoving = _moveDirection.sqrMagnitude > 0.01f;
+        //Si te estas moviento saca la altura que te toca segun tu velocidad 
+        bool isMoving = _moveDirection.sqrMagnitude > 0.01f && !_isDashing;
         if (isMoving)
-            _stepCycle += Time.deltaTime * stepCadence;
+        {
+            float speedRatio = _isSprinting ? (sprintSpeed / currentMask_.stats_.realSpeed_) : 1f;
+            float adjustedCadence = stepCadence * speedRatio;
+            _stepCycle += Time.deltaTime * adjustedCadence;
+        }
+        //Si esta quieto poco a poco ve a la posicion inicial / cero altura de step
         else
             _stepCycle = Mathf.Lerp(_stepCycle, 0f, stepCadence * Time.deltaTime);
 

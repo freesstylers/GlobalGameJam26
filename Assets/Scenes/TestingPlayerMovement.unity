@@ -248,6 +248,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 868112718497388066, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: sprintSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 868112718497388066, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: cameraLeanMax
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5207386138296855447, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6192694
@@ -291,6 +299,14 @@ PrefabInstance:
     - target: {fileID: 7779029095823078111, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118567347465699439, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[0]._actionId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118567347465699439, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[0]._actionId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
