@@ -12,9 +12,6 @@ public class FlowManager : MonoBehaviour
     public int[] timers = { 10, 5, 60, -1, -1 };
     public static FlowManager instance;
 
-    [SerializeField]
-    GameObject spawnerParent;
-
     public EnemyPoolManager spawnerManager;
 
     public Material[] enemyFilters_;
@@ -48,7 +45,7 @@ public class FlowManager : MonoBehaviour
     {
         currentState = State.Cooldown;
 
-        spawnerManager = spawnerParent.transform.GetComponentInChildren<EnemyPoolManager>();
+        spawnerManager = GameObject.FindAnyObjectByType<EnemyPoolManager>();
     }
 
     private void onStateChanged()
