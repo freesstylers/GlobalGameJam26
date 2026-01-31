@@ -37,6 +37,8 @@ public class FlowManager : MonoBehaviour
     [SerializeField]
     Camera yellowCamera;
 
+    private FMOD.Studio.EventInstance musicInstance_;
+
     public State currentState
     { 
         get { 
@@ -90,6 +92,9 @@ public class FlowManager : MonoBehaviour
             m.stats_.ResetStats();
             m.stats_.UpdateStats();
         }
+
+        musicInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/GameMusic");
+        musicInstance_.start();
     }
 
     private void onStateChanged()
@@ -148,6 +153,7 @@ public class FlowManager : MonoBehaviour
                 setState(State.Round);
                 break;
             case State.Round:
+                musicInstance_.setParameterByName("GameState", 0.0f);
                 if (currentAliveEnemies == 0)
                 {
                     setState(State.Improvement);
@@ -158,6 +164,7 @@ public class FlowManager : MonoBehaviour
                 }
                 break;
             case State.Improvement:
+                musicInstance_.setParameterByName("GameState", 1.0f);
                 setState(State.Cooldown);
                 break;
             //case State.EndGame:

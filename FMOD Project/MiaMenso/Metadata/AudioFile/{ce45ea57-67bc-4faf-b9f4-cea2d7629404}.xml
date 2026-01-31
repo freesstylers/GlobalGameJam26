@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ce45ea57-67bc-4faf-b9f4-cea2d7629404}">
+		<property name="assetPath">
+			<value>Music/Daft Punk - Giorgio By Moroder.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>432.61764583333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5f25657c-18a3-4e35-a1a3-c0c3eff709b7}</destination>
+		</relationship>
+	</object>
+</objects>
