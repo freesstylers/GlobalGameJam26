@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class FlowManager : MonoBehaviour
 {
+    [Serializable]
     public enum enemyType { dolphin, skibido }
 
 
@@ -80,6 +81,10 @@ public class FlowManager : MonoBehaviour
                 timerValue = 0.0f;
             }
         }
+#if UNITY_EDITOR
+        if (currentState == State.Improvement)
+            advanceState();
+#endif
     }
 
     public void setState (State state)
@@ -94,8 +99,6 @@ public class FlowManager : MonoBehaviour
 
     public void advanceState()
     {
-        Debug.LogError("Changing State: " + currentState);
-
         switch (currentState)
         {
             case State.Cooldown:
@@ -124,6 +127,8 @@ public class FlowManager : MonoBehaviour
             //    GoToMenu();
             //    break;
         }
+
+        Debug.LogError("Changing State: " + currentState);
     }
 
     public void GoToMenu()

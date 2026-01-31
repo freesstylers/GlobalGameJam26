@@ -529,6 +529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - {fileID: 11400000, guid: 65fbdce5c91e57249bdef72218eb0d87, type: 2}
+  - {fileID: 11400000, guid: 219e162cbbc506143b6e108ee6c1dbbe, type: 2}
   enemyPools: []
   rounds:
   - {fileID: 11400000, guid: 209ab18407fde44479fd1684e83a4ccb, type: 2}
