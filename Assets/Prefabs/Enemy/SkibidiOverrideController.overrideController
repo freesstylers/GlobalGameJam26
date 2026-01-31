@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkibidiOverrideController
+  m_Controller: {fileID: 9100000, guid: fa4bb554675f8474ea4bbc5a6af97842, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 96cf34d3df967ae4f8c558d9fe99f7e1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 51a21eaa31190d34cad47d0e9faf7bb0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 46d7685397098ac42818b19d570d23a3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 46d7685397098ac42818b19d570d23a3, type: 2}
