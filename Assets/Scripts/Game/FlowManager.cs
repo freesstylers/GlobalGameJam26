@@ -196,24 +196,24 @@ public class FlowManager : MonoBehaviour
                 onMaskChange.Invoke(GetCurrentMask());
             }
 
-            switch ((Mask.MaskColor)GetCurrentMask().color_)
+            switch (currentMaskId_)
             {
-                case Mask.MaskColor.RED:
+                case 0:
                     redCamera.gameObject.SetActive(true);
                     blueCamera.gameObject.SetActive(false);
                     yellowCamera.gameObject.SetActive(false);
                     break;
-                case Mask.MaskColor.YELLOW:
+                case 1:
                     redCamera.gameObject.SetActive(false);
                     blueCamera.gameObject.SetActive(false);
                     yellowCamera.gameObject.SetActive(true);
                     break;
-                case Mask.MaskColor.BLUE:
+                case 2:
                     redCamera.gameObject.SetActive(false);
                     blueCamera.gameObject.SetActive(true);
                     yellowCamera.gameObject.SetActive(false);
                     break;
-                case Mask.MaskColor.NONE:
+                case -1:
                     redCamera.gameObject.SetActive(false);
                     blueCamera.gameObject.SetActive(false);
                     yellowCamera.gameObject.SetActive(false);
