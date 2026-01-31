@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{e13812b4-7085-47d2-8f89-a91a3040625e}">
+		<property name="assetPath">
+			<value>MaskGearOpen/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5f25657c-18a3-4e35-a1a3-c0c3eff709b7}</destination>
+		</relationship>
+	</object>
+</objects>
