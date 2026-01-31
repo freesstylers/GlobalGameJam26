@@ -29,16 +29,30 @@ public class PlayerShooting : MonoBehaviour
     private Quaternion gunBaseRotation;
     private float recoilTimer = 0f;
 
+    private FMOD.Studio.EventInstance shootInstance_;
+    private FMOD.Studio.EventInstance reloadInstance_;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        FlowManager.instance.SuscribeMaskChange(OnMaskChange);
+
         shPool = new ShootingPool();
         shPool.Init();
         shPool.size = maxSize;
         shPool.spawnPoint = spawnPoint;
         shPool.prefab = prefab.gameObject;
 
+        Stats maskStats = FlowManager.instance.GetCurrentMask().stats_;
+        maxAmo = maskStats.realAmmo_;
+        cadence = maskStats.realRate_;
+        reloadTime = maskStats.realReload_;
+
         currentAmo = maxAmo;
+
+        shootInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Shoot");
+        reloadInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Reload");
+        
         gunBasePosition = gunObject.transform.localPosition;
         gunBaseRotation = gunObject.transform.localRotation;
     }
@@ -105,6 +119,7 @@ public class PlayerShooting : MonoBehaviour
     {
         reload = true;
         currentReloadTime = 0;
+        reloadInstance_.start();
     }
 
     Vector3 CalculateDirectionSpread()
@@ -143,6 +158,8 @@ public class PlayerShooting : MonoBehaviour
             Reload();
         }
         currentCadence = 0f;
+
+        shootInstance_.start();
     }
 
     private System.Collections.IEnumerator ReturnAfter(GameObject gameObject, float seconds)
@@ -153,5 +170,14 @@ public class PlayerShooting : MonoBehaviour
             // Give it back to the pool.
             shPool.Release(gameObject);
         }
+    }
+
+    private void OnMaskChange(Mask m)
+    {
+        Reload();
+        Stats maskStats = m.stats_;
+        maxAmo = maskStats.realAmmo_;
+        cadence = maskStats.realRate_;
+        reloadTime = maskStats.realReload_;
     }
 }

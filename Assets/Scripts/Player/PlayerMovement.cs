@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("AUDIO")]
     private FMOD.Studio.EventInstance dashInstance_;
+    private FMOD.Studio.EventInstance stepsInstance_;
 
 
     ////////////////////////////////////////////
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 _currentLean;
 
     private bool _isSprinting = false;
+    private bool _isMoving = false;
 
     private float _dashTimer;
     private float _dashCooldownTimer;
@@ -88,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
 
         dashInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Dash");
+        stepsInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Steps");
     }
 
     void Update()
@@ -161,6 +164,17 @@ public class PlayerMovement : MonoBehaviour
         _moveDirection = moveInput;
         float movementSpeed = _isDashing ? dashSpeed : (_isSprinting ? sprintSpeed : currentMask_.stats_.realSpeed_);
         transform.position += (_moveDirection * movementSpeed * Time.deltaTime);
+
+        if(_moveDirection != Vector3.zero && !_isMoving)
+        {
+            _isMoving = true;
+            stepsInstance_.start();
+        }
+        if(_moveDirection == Vector3.zero && _isMoving)
+        {
+            _isMoving = false;
+            stepsInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
     }
 
     private void HandleSprint()
@@ -169,9 +183,16 @@ public class PlayerMovement : MonoBehaviour
         if (playerCanInteract)
             sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
         if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
+        {
+            if (!_isSprinting) stepsInstance_.setParameterByName("Running", 1.0f);
             _isSprinting = true;
+        }
         else
+        {
+            if (_isSprinting) stepsInstance_.setParameterByName("Running", 0.0f);
             _isSprinting = false;
+        }
+
     }
 
     private void HandleDash()
@@ -185,7 +206,6 @@ public class PlayerMovement : MonoBehaviour
             _isDashing = true;
             _dashTimer = dashDuration;
             dashInstance_.start();
-            FlowManager.instance.NextMask();
         }
 
         if (_isDashing && _dashTimer <= 0f)
@@ -248,7 +268,12 @@ public class PlayerMovement : MonoBehaviour
         }
         //Si esta quieto poco a poco ve a la posicion inicial / cero altura de step
         else
-            _stepCycle = Mathf.Lerp(_stepCycle, 0f, stepCadence * Time.deltaTime);
+        {
+            float speedRatio = 0.2f;
+            float adjustedCadence = stepCadence * speedRatio;
+            _stepCycle += Time.deltaTime * adjustedCadence;
+            //_stepCycle = Mathf.Lerp(_stepCycle, 0f, stepCadence * Time.deltaTime);
+        }
 
         float bobOffset = isMoving ? (Mathf.Sin(_stepCycle * Mathf.PI) * stepHeightDelta) : 0;
         if (playerCamera)
@@ -277,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newGunPosition = _gunBasePosition;
             newGunPosition.y += verticalDelta;
             newGunPosition.x += horizontalDelta;
-            gunContainer.transform.localPosition = newGunPosition;
+            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, newGunPosition, fovTransitionSpeed * 2 * Time.deltaTime);
 
             // Desfase de rotacion
             float rotationX = Mathf.Sin(gunCycle * Mathf.PI) * gunBobRotationDelta;
@@ -285,11 +310,30 @@ public class PlayerMovement : MonoBehaviour
             Quaternion newGunRotation = _gunBaseRotation * Quaternion.Euler(rotationX, 0f, rotationZ);
             gunContainer.transform.localRotation = newGunRotation;
         }
+        //En idle haz la misma animacion pero lento y con menos amplitud
         else
         {
+            float speedRatio = _isSprinting ? (sprintSpeed / currentMask_.stats_.realSpeed_) : 0.1f;
+            float adjustedCadence = stepCadence * speedRatio;
+            // desfasado un poco para que no vaya al unisono con los steps normales
+            float gunCycle = (_stepCycle * 0.75f) + Mathf.PI * 0.5f;
+            //Desfase de posicio
+            float verticalDelta = Mathf.Sin(gunCycle * Mathf.PI) * gunBobHeightDelta * 0.1f;
+            float horizontalDelta = Mathf.Sin(gunCycle * Mathf.PI * 0.5f) * gunBobHorizontalDelta * 0.1f;
+            Vector3 newGunPosition = _gunBasePosition;
+            newGunPosition.y += verticalDelta;
+            newGunPosition.x += horizontalDelta;
+            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, newGunPosition, fovTransitionSpeed * 2 * Time.deltaTime);
+
+            // Desfase de rotacion
+            float rotationX = Mathf.Sin(gunCycle * Mathf.PI) * gunBobRotationDelta * 0.25f;
+            float rotationZ = Mathf.Sin(gunCycle * Mathf.PI * 0.5f) * (gunBobRotationDelta * 0.25f);
+            Quaternion newGunRotation = _gunBaseRotation * Quaternion.Euler(rotationX, 0f, rotationZ);
+            gunContainer.transform.localRotation = newGunRotation; 
+
             //lerp pa posicion original
-            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, _gunBasePosition, stepCadence * Time.deltaTime);
-            gunContainer.transform.localRotation = Quaternion.Lerp(gunContainer.transform.localRotation, _gunBaseRotation, stepCadence * Time.deltaTime);
+            //gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, _gunBasePosition, stepCadence * Time.deltaTime);
+            //gunContainer.transform.localRotation = Quaternion.Lerp(gunContainer.transform.localRotation, _gunBaseRotation, stepCadence * Time.deltaTime);
         }
     }
 
