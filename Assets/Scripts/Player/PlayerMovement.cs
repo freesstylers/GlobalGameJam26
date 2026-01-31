@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleSprint()
     {
-        bool sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("Dash");
+        bool sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
         if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
             _isSprinting = true;
         else
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        bool dashInput = false;// Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
+        bool dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
         {
             _isDashing = true;
