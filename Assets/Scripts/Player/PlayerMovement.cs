@@ -82,6 +82,12 @@ public class PlayerMovement : MonoBehaviour
         //Saca el input de rotacion
         float mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
         float mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
+        //if (mouseX <= 0.02f)
+        //    mouseX = 0;
+
+        //if (mouseY <= 0.02f)
+        //    mouseY = 0;
+
         float xRotation = mouseX * mouseSensitivity;
         float yRotation = mouseY * mouseSensitivity;
 
