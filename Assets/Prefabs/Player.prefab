@@ -139,6 +139,10 @@ MonoBehaviour:
   maxLookAngle: 90
   stepHeightDelta: 0.25
   stepCadence: 5
+  gunContainer: {fileID: 2437297331794706319}
+  gunBobHeightDelta: 0.15
+  gunBobHorizontalDelta: 2
+  gunBobRotationDelta: 5
   cameraLeanAccumulation: 5
   cameraLeanMax: 10
   cameraLeanRecoverySpeed: 5
@@ -311,6 +315,11 @@ PrefabInstance:
 --- !u!4 &727893334519941916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4529983570754823621, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+  m_PrefabInstance: {fileID: 3802237854874988249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2437297331794706319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1519760560948547926, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
   m_PrefabInstance: {fileID: 3802237854874988249}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &4429713558553708375 stripped

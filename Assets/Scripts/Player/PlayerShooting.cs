@@ -57,10 +57,10 @@ public class PlayerShooting : MonoBehaviour
             recoilTimer -= Time.deltaTime;
         }
 
-        // lerp hacia la posicion inicial
+        // lerp a la posicion inicial
         float t = Mathf.Clamp01(1f - (recoilTimer / recoilDuration));
 
-        // Posici�n: retroceso hacia atr�s + variaci�n horizontal aleatoria
+        // Retrocede 
         Vector3 horizontalVariation = new Vector3(
             Random.Range(-recoilHorizontalVariation, recoilHorizontalVariation),
             0,
@@ -69,7 +69,7 @@ public class PlayerShooting : MonoBehaviour
         Vector3 targetPosition = Vector3.Lerp(gunBasePosition + recoilOffset + horizontalVariation, gunBasePosition, t);
         gunObject.transform.localPosition = targetPosition;
 
-        // Rotaci�n: retroceso con rotaci�n suave
+        // Rota un poco para dar variedad
         Vector3 rotationOffset = recoilRotation * (1f - t);
         Quaternion targetRotation = gunBaseRotation * Quaternion.Euler(rotationOffset);
         gunObject.transform.localRotation = Quaternion.Lerp(gunObject.transform.localRotation, targetRotation, Time.deltaTime * 10f);
