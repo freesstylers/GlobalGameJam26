@@ -171,6 +171,12 @@ MonoBehaviour:
   maxAmo: 30
   cadence: 0.1
   reloadTime: 1
+  gunObject: {fileID: 4513209138056664890}
+  recoilOffset: {x: 0, y: 0, z: -0.2}
+  recoilHorizontalVariation: 0.1
+  recoilRotation: {x: 5, y: 0, z: 0}
+  recoilDuration: 0.1
+  recoilReturnSpeed: 10
 --- !u!1 &8034261141244067624
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +316,11 @@ Transform:
 --- !u!20 &4429713558553708375 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 701930611594406286, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+  m_PrefabInstance: {fileID: 3802237854874988249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4513209138056664890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 749392918723688931, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
   m_PrefabInstance: {fileID: 3802237854874988249}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4937823324233529499 stripped
