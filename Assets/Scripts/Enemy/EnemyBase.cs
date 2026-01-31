@@ -15,6 +15,8 @@ public class EnemyBase : MonoBehaviour
     public Mask.MaskColor color_;
     public GameObject filter_;
 
+    public Animator hurtAnimation_;
+
     void Awake()
     {
         hp_ = maxHp_;
@@ -31,13 +33,13 @@ public class EnemyBase : MonoBehaviour
         switch (c)
         {
             case Mask.MaskColor.RED:
-                filter_.GetComponent<MeshRenderer>().materials[1] = Resources.Load("RedFilter", typeof(Material)) as Material;
+                filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[0];
                 break;
             case Mask.MaskColor.BLUE:
-                filter_.GetComponent<MeshRenderer>().materials[1] = Resources.Load("BlueFilter", typeof(Material)) as Material;
+                filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
                 break;
             case Mask.MaskColor.GREEN:
-                filter_.GetComponent<MeshRenderer>().materials[1] = Resources.Load("GreenFilter", typeof(Material)) as Material;
+                filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
                 break;
             case Mask.MaskColor.NONE:
                 break;
@@ -65,6 +67,7 @@ public class EnemyBase : MonoBehaviour
     {
         hp_ -= dmg;
         if (hp_ <= 0) Die();
+        hurtAnimation_.Play("OnHit");
     }
 
     private void SpawnUpdate()

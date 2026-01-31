@@ -13,6 +13,8 @@ public class FlowManager : MonoBehaviour
 
     public EnemySpawner[] spawners;
 
+    public Material[] enemyFilters_;
+
     public State currentState
     { 
         get { 

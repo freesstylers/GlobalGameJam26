@@ -65,7 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d15853a35a83c3e40b695b78a10a8ded, type: 2}
-  - {fileID: 2100000, guid: a3626f5ed8b515741ab0c0e4f628c41b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57885565311918878}
   - component: {fileID: 2253526888614930151}
+  - component: {fileID: 5775390974421184982}
   m_Layer: 0
   m_Name: Sprites
   m_TagString: Untagged
@@ -133,6 +134,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb41f5ad9a03fe49a7d2a48dd9e17e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5775390974421184982
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752001753306849246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa4bb554675f8474ea4bbc5a6af97842, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3439737217358414906
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 5134729464106913167}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -386,3 +409,4 @@ MonoBehaviour:
   scaleChangeRate_: 0.8
   color_: 0
   filter_: {fileID: 1827703847313403345}
+  hurtAnimation_: {fileID: 5775390974421184982}
