@@ -7,7 +7,7 @@ public class PoolTemplate : MonoBehaviour
     public int size = 50;
     public GameObject prefab;
 
-    private ObjectPool<GameObject> pool_;
+    protected ObjectPool<GameObject> pool_;
 
     private void Awake()
     {
@@ -24,25 +24,25 @@ public class PoolTemplate : MonoBehaviour
     }
 
     
-    protected GameObject CreateItem()
+    virtual protected GameObject CreateItem()
     {
-        GameObject gameObject = GameObject.Instantiate(prefab);
+        GameObject gameObject = Instantiate(prefab);
         gameObject.SetActive(false);
         return gameObject;
     }
 
-    protected void OnGet(GameObject gameObject)
+    virtual protected void OnGet(GameObject gameObject)
     {
         gameObject.SetActive(true);
     }
 
 
-    protected void OnRelease(GameObject gameObject)
+    virtual protected void OnRelease(GameObject gameObject)
     {
         gameObject.SetActive(false);
     }
 
-    protected void OnDestroyItem(GameObject gamesObject)
+    virtual protected void OnDestroyItem(GameObject gamesObject)
     {
         Destroy(gameObject);
     }
