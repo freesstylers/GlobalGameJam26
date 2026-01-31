@@ -47,6 +47,9 @@ public class FlowManager : MonoBehaviour
 
     public static event Action<State> onStateChange;
 
+    [HideInInspector]
+    public PlayerMovement currentPlayer;
+
     private void Awake()
     {
         if (instance == null)

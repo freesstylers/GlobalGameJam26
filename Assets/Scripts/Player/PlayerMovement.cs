@@ -56,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
     private float _dashCooldownTimer;
     private bool _isDashing = false;
 
+    private void Awake()
+    {
+        FlowManager.instance.currentPlayer = this;
+    }
+
     void Start()
     {
         if (playerCamera != null)
