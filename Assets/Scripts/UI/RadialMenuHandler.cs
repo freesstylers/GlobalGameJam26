@@ -67,9 +67,6 @@ public class RadialMenuHandler : MonoBehaviour
             MouseAccumulaMov = new Vector2(Rewired.ReInput.players.Players[0].GetAxis("xCamera"), Rewired.ReInput.players.Players[0].GetAxis("yCamera"));
 
 
-
-        Debug.Log(Rewired.ReInput.players.Players[0].controllers.GetLastActiveController());
-
         if (Mathf.Abs(MouseAccumulaMov.magnitude) >= deadzoneJoystick)
         {
             float deg = Mathf.Rad2Deg * Mathf.Atan2(MouseAccumulaMov.x, MouseAccumulaMov.y);

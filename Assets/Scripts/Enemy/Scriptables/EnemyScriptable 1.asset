@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ebfc2d9ff05b3429e0a47677d0068e, type: 3}
   m_Name: EnemyScriptable 1
   m_EditorClassIdentifier: 
-  name: Base
-  prefab: {fileID: 8916043998946422086, guid: dfe2095cbaecad44495ec7a2353990a9, type: 3}
+  name: Skibido
+  type: 1
+  prefab: {fileID: 1024735737356066189, guid: 1c9d3f77a7bdbfc4b8bf730448013381, type: 3}
   maxHP: 0
   speed: 0
   damage: 0
