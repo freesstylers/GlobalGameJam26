@@ -533,6 +533,12 @@ MonoBehaviour:
   enemyPools: []
   rounds:
   - {fileID: 11400000, guid: 209ab18407fde44479fd1684e83a4ccb, type: 2}
+  - {fileID: 11400000, guid: c5c093e11a5d8e942b40bfa9dae85a9e, type: 2}
+  - {fileID: 11400000, guid: 8da5f265ee8f9fb42bffc34cb4b76d54, type: 2}
+  - {fileID: 11400000, guid: 542ffa2c6c28e574c8103af7c9d512af, type: 2}
+  - {fileID: 11400000, guid: 821cb4b7d49748743b64c0b63f7bc7fb, type: 2}
+  - {fileID: 11400000, guid: 61043c6e28457f6488dc72246f81d9b2, type: 2}
+  - {fileID: 11400000, guid: 4ddf7cd4bb98e9a478d57fd3fcfab7fb, type: 2}
   spawners: []
   spawnersInMind: []
 --- !u!1 &8600584435906250638

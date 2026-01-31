@@ -100,6 +100,7 @@ public class EnemyBase : MonoBehaviour
         {
             transform_.localScale = new Vector3(0.0f, 0.0f, 0.0f);
             dying_ = false;
+            FlowManager.instance.currentPoints += 15 + UnityEngine.Random.Range(0, 10);
             Destroy(this.gameObject);
         }
     }

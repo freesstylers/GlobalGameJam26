@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c68812b40f7d2248af01c65dd5c0bfa, type: 3}
-  m_Name: 0
+  m_Name: 2
   m_EditorClassIdentifier: 
   roundNumber: 0
   roundEnemies:
     _serializedList:
     - Key: 1
+      Value: 20
+    - Key: 0
       Value: 10

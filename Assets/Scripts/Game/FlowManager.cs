@@ -9,7 +9,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class FlowManager : MonoBehaviour
 {
     [Serializable]
-    public enum enemyType { dolphin, skibido }
+    public enum enemyType { dolphin, skibido, illumiboy, concha }
 
 
     public enum State { Cooldown, Spawn, Round, Improvement, EndGame };
