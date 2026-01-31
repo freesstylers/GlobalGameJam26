@@ -7,8 +7,16 @@ public class PlayerShooting : MonoBehaviour
     public int maxSize = 50;
     public float bulletLt = 1f;
     public float spreadIntensity = 1f;
+    public int maxAmo = 30;
+    public float cadence = 0.1f;
+    public float reloadTime = 1f;
 
     private ShootingPool shPool;
+     
+    private float currentCadence = 0f;
+    private int currentAmo = 0;
+    private float currentReloadTime = 0f;
+    private bool reload = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
         shPool.size = maxSize;
         shPool.spawnPoint = spawnPoint;
         shPool.prefab = prefab.gameObject;
+
+        currentAmo = maxAmo;
     }
 
     // Update is called once per frame
@@ -28,11 +38,34 @@ public class PlayerShooting : MonoBehaviour
 
     void HandleShooting()
     {
-        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("shoot"))
+        if (Rewired.ReInput.players.GetPlayer(0).GetButton("shoot") && !reload && currentAmo > 0 && currentCadence > cadence)
         {
-            Vector3 dir = CalculateDirectionSpread();
+            Vector3 dir = CalculateDirectionSpread().normalized;
             Shoot(dir);
         }
+
+        if(currentCadence < cadence)
+        {
+            currentCadence += Time.deltaTime;
+        }
+
+        if (reload)
+        {
+            currentReloadTime += Time.deltaTime;
+            if(currentReloadTime >= reloadTime)
+            {
+                reload = false;
+                currentAmo = maxAmo;
+            }
+        }
+
+
+    }
+
+    void Reload()
+    {
+        reload = true;
+        currentReloadTime = 0;
     }
 
     Vector3 CalculateDirectionSpread()
@@ -51,10 +84,10 @@ public class PlayerShooting : MonoBehaviour
         }
 
         Vector3 direction = targetPoint - spawnPoint.transform.position;
-        float x = UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
-        float y = UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
+        float x = UnityEngine.Random.Range(-1f, 1f);
+        float y = UnityEngine.Random.Range(-1f, 1f);
 
-        return direction + new Vector3(x, y, 0);
+        return direction.normalized + new Vector3(x, y, 0)*spreadIntensity*0.1f;
     }
 
     private void Shoot(Vector3 dir)
@@ -62,6 +95,13 @@ public class PlayerShooting : MonoBehaviour
         BasicBullet bb = shPool.Get().GetComponent<BasicBullet>();
         bb.dir = dir;
         StartCoroutine(ReturnAfter(bb.gameObject, bulletLt));
+
+        currentAmo--;
+        if (currentAmo <= 0)
+        {
+            Reload();
+        }
+        currentCadence = 0f;
     }
 
     private System.Collections.IEnumerator ReturnAfter(GameObject gameObject, float seconds)
