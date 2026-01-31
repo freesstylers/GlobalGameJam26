@@ -268,7 +268,12 @@ public class PlayerMovement : MonoBehaviour
         }
         //Si esta quieto poco a poco ve a la posicion inicial / cero altura de step
         else
-            _stepCycle = Mathf.Lerp(_stepCycle, 0f, stepCadence * Time.deltaTime);
+        {
+            float speedRatio = 0.2f;
+            float adjustedCadence = stepCadence * speedRatio;
+            _stepCycle += Time.deltaTime * adjustedCadence;
+            //_stepCycle = Mathf.Lerp(_stepCycle, 0f, stepCadence * Time.deltaTime);
+        }
 
         float bobOffset = isMoving ? (Mathf.Sin(_stepCycle * Mathf.PI) * stepHeightDelta) : 0;
         if (playerCamera)
@@ -297,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newGunPosition = _gunBasePosition;
             newGunPosition.y += verticalDelta;
             newGunPosition.x += horizontalDelta;
-            gunContainer.transform.localPosition = newGunPosition;
+            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, newGunPosition, fovTransitionSpeed * 2 * Time.deltaTime);
 
             // Desfase de rotacion
             float rotationX = Mathf.Sin(gunCycle * Mathf.PI) * gunBobRotationDelta;
@@ -305,11 +310,30 @@ public class PlayerMovement : MonoBehaviour
             Quaternion newGunRotation = _gunBaseRotation * Quaternion.Euler(rotationX, 0f, rotationZ);
             gunContainer.transform.localRotation = newGunRotation;
         }
+        //En idle haz la misma animacion pero lento y con menos amplitud
         else
         {
+            float speedRatio = _isSprinting ? (sprintSpeed / currentMask_.stats_.realSpeed_) : 0.1f;
+            float adjustedCadence = stepCadence * speedRatio;
+            // desfasado un poco para que no vaya al unisono con los steps normales
+            float gunCycle = (_stepCycle * 0.75f) + Mathf.PI * 0.5f;
+            //Desfase de posicio
+            float verticalDelta = Mathf.Sin(gunCycle * Mathf.PI) * gunBobHeightDelta * 0.1f;
+            float horizontalDelta = Mathf.Sin(gunCycle * Mathf.PI * 0.5f) * gunBobHorizontalDelta * 0.1f;
+            Vector3 newGunPosition = _gunBasePosition;
+            newGunPosition.y += verticalDelta;
+            newGunPosition.x += horizontalDelta;
+            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, newGunPosition, fovTransitionSpeed * 2 * Time.deltaTime);
+
+            // Desfase de rotacion
+            float rotationX = Mathf.Sin(gunCycle * Mathf.PI) * gunBobRotationDelta * 0.25f;
+            float rotationZ = Mathf.Sin(gunCycle * Mathf.PI * 0.5f) * (gunBobRotationDelta * 0.25f);
+            Quaternion newGunRotation = _gunBaseRotation * Quaternion.Euler(rotationX, 0f, rotationZ);
+            gunContainer.transform.localRotation = newGunRotation; 
+
             //lerp pa posicion original
-            gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, _gunBasePosition, stepCadence * Time.deltaTime);
-            gunContainer.transform.localRotation = Quaternion.Lerp(gunContainer.transform.localRotation, _gunBaseRotation, stepCadence * Time.deltaTime);
+            //gunContainer.transform.localPosition = Vector3.Lerp(gunContainer.transform.localPosition, _gunBasePosition, stepCadence * Time.deltaTime);
+            //gunContainer.transform.localRotation = Quaternion.Lerp(gunContainer.transform.localRotation, _gunBaseRotation, stepCadence * Time.deltaTime);
         }
     }
 
