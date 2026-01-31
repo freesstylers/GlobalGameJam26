@@ -133,9 +133,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6064759576215911681, guid: 4d75768b38270d343aa8d3121be389dc, type: 3}
-  spawnPoint: {fileID: 2130432929597341546}
+  spawnPoint: {fileID: 0}
   maxSize: 100
   bulletLt: 3
+  spreadIntensity: 1
 --- !u!1 &8034261141244067624
 GameObject:
   m_ObjectHideFlags: 0
