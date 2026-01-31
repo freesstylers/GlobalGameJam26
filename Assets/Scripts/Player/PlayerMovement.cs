@@ -136,8 +136,8 @@ public class PlayerMovement : MonoBehaviour
         //if (mouseY <= 0.02f)
         //    mouseY = 0;
 
-        float xRotation = mouseX * mouseSensitivity;
-        float yRotation = mouseY * mouseSensitivity;
+        float xRotation = mouseX * mouseSensitivity * FlowManager.instance.mouseSpeedMod;
+        float yRotation = mouseY * mouseSensitivity * FlowManager.instance.mouseSpeedMod;
 
         float currentXRotation = playerCamera.transform.localEulerAngles.x;
         if (currentXRotation > 180f)

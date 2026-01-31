@@ -180,6 +180,25 @@ public class FlowManager : MonoBehaviour
         SceneManager.LoadScene("mainMenu");
     }
 
+    public GameObject PauseMenu;
+    public RadialMenuHandler RadialMenuHandler;
+
+    public float mouseSpeedMod = 1.0f;
+
+    public void Pause(bool state)
+    {
+        if (RadialMenuHandler == null || RadialMenuHandler.radialOn)
+            return;
+
+        Time.timeScale = state ? 0.0f : 1.0f;
+        PauseMenu.SetActive(state);
+    }
+
+    public void SetMouseSpeedMod(float mod)
+        { mouseSpeedMod = mod; }
+
+    public List<Animator> Masks;
+
     #region MASK
     public Mask GetCurrentMask()
     {

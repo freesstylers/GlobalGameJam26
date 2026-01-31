@@ -21,14 +21,6 @@ public class mainMenuScript : MonoBehaviour
         SceneManager.LoadScene("gameScreen");
     }
 
-    [SerializeField]
-    GameObject settings;
-
-    public void ToggleSettings()
-    {
-        settings.SetActive(!settings.activeSelf);
-    }
-
     public void Exit()
     {
         Application.Quit();

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MaskRotate
+  m_Controller: {fileID: 9100000, guid: 6749555f677eba6489a6b71d392e7b29, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 2848402958435498688, guid: 6749555f677eba6489a6b71d392e7b29, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d7d37fea68aa37e4fb31b92f3ae4c895, type: 2}
+  - m_OriginalClip: {fileID: -8236959523307975011, guid: 6749555f677eba6489a6b71d392e7b29, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d7d37fea68aa37e4fb31b92f3ae4c895, type: 2}
+  - m_OriginalClip: {fileID: -5046317703117006233, guid: 6749555f677eba6489a6b71d392e7b29, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 044e770a87fa04040a6fa0e92e370134, type: 2}
