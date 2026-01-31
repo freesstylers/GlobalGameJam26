@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Mask currentMask_;
+    public Mask currentMask_;
 
     public Camera playerCamera;
     public GameObject cameraContainer;
@@ -68,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
             _cameraBasePosition = playerCamera.transform.localPosition;
             _baseFOV = playerCamera.fieldOfView;
         }
-        FlowManager.instance.SuscribeMaskChange(OnMaskChange);
-        currentMask_ = FlowManager.instance.GetCurrentMask();
+        //FlowManager.instance.SuscribeMaskChange(OnMaskChange);
+        //currentMask_ = FlowManager.instance.GetCurrentMask();
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
 
         dashInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Dash");

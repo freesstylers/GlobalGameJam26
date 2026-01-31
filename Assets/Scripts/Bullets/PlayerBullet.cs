@@ -18,13 +18,13 @@ public class PlayerBullet : BasicBullet
         //speed = currentMask.stats_.baseBulletSpeed_;
 
         //Le asignamos a lo que necesite el color
-        color = particleColors[((int)currentMask.color_) - 1];
+        //color = particleColors[((int)currentMask.color_)];
     }
 
     public void OnMaskChange(Mask newMask)
     {
 
         //Le asignamos a lo que necesite el color
-        color = particleColors[((int)newMask.color_) - 1];
+        color = particleColors[((int)newMask.color_)];
     }
 }
