@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public List<Mask> masks_;
     private Mask currentMask_;
-    private int currentMaskId_ = 0;
 
     public Camera playerCamera;
     public GameObject cameraContainer;
@@ -57,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
             _cameraBasePosition = playerCamera.transform.localPosition;
             _baseFOV = playerCamera.fieldOfView;
         }
-
-        currentMask_ = masks_[currentMaskId_];
+        FlowManager.instance.SuscribeMaskChange(OnMaskChange);
+        currentMask_ = FlowManager.instance.GetCurrentMask();
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
     }
 
@@ -188,8 +186,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeMask()
     {
-        currentMaskId_ += 1;
-        if (currentMaskId_ == 3) currentMaskId_ = 0;
-        currentMask_ = masks_[currentMaskId_];
+        FlowManager.instance.NextMask();
+        currentMask_ = FlowManager.instance.GetCurrentMask();
+    }
+
+    private void OnMaskChange(Mask newMask)
+    {
+        currentMask_ = newMask;
     }
 }
