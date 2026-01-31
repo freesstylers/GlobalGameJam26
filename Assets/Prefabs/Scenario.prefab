@@ -1,5 +1,147 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &249071804898251840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3544945538375393349}
+  - component: {fileID: 5630576400031644279}
+  m_Layer: 0
+  m_Name: Wall (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3544945538375393349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249071804898251840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.4, y: -18.77, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7761236340509973489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5630576400031644279
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249071804898251840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 50.017834, y: 1.3177662, z: 50.046494}
+  m_Center: {x: 24.508917, y: 20.67672, z: 0.4708786}
+--- !u!1 &2007064914945376678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7761236340509973489}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7761236340509973489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007064914945376678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 638855171259198342}
+  - {fileID: 3544945538375393349}
+  - {fileID: 4158994328535971431}
+  - {fileID: 7585222991350690341}
+  - {fileID: 4806471603595833191}
+  m_Father: {fileID: 7225993812881363073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2259109676269418207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7585222991350690341}
+  - component: {fileID: 422875917165534285}
+  m_Layer: 0
+  m_Name: Wall (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7585222991350690341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259109676269418207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.4, y: 2.43, z: -25.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7761236340509973489}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &422875917165534285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259109676269418207}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 32.099297, y: 22.288868, z: 50.11278}
+  m_Center: {x: 15.549651, y: 10.644434, z: 0.4377365}
 --- !u!1 &2299538689924734847
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3342120123808862758
 Transform:
   m_ObjectHideFlags: 0
@@ -25,9 +167,9 @@ Transform:
   m_GameObject: {fileID: 2299538689924734847}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.12, z: 0}
+  m_LocalPosition: {x: 0, y: 1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7396283014325533767}
   - {fileID: 4386762821312987666}
@@ -111,6 +253,7 @@ Transform:
   - {fileID: 2925970725993367964}
   - {fileID: 3342120123808862758}
   - {fileID: 8096149748383692485}
+  - {fileID: 7761236340509973489}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4589112820868682361
@@ -164,7 +307,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -175,8 +318,167 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 3cd41bc59d8e2db45aefba267533d3c2, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 51e5538b6fd93d34a863c282582cc76c, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &5405175968633134790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638855171259198342}
+  - component: {fileID: 2224804801660665670}
+  m_Layer: 0
+  m_Name: Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &638855171259198342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405175968633134790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.6, y: 2.43, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7761236340509973489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2224804801660665670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405175968633134790}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 23.72624, y: 22.288868, z: 50.046494}
+  m_Center: {x: 11.36312, y: 10.644434, z: 0.4708786}
+--- !u!1 &5998528095647298317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4158994328535971431}
+  - component: {fileID: 6681176013911758638}
+  m_Layer: 0
+  m_Name: Wall (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4158994328535971431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5998528095647298317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.4, y: 2.43, z: 25.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7761236340509973489}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &6681176013911758638
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5998528095647298317}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 19.734268, y: 22.288868, z: 50.11278}
+  m_Center: {x: -9.367136, y: 10.644434, z: 0.4377365}
+--- !u!1 &7592383584671938186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4806471603595833191}
+  - component: {fileID: 3317325645657810356}
+  m_Layer: 0
+  m_Name: Wall (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4806471603595833191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592383584671938186}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.5, y: 2.43, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7761236340509973489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3317325645657810356
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592383584671938186}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 31.428581, y: 22.641294, z: 50.046494}
+  m_Center: {x: -15.214291, y: 10.820647, z: 0.4708786}
 --- !u!1001 &464064387355497159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +546,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -352,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -459,6 +769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -549,6 +863,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9af6cc143eafe9945bec0ffbe404fb58, type: 3}
       propertyPath: m_Name
       value: EsytructuraMovida
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9af6cc143eafe9945bec0ffbe404fb58, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -658,6 +976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -764,6 +1086,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -872,6 +1198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -978,6 +1308,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1086,6 +1420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1192,6 +1530,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1300,6 +1642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1406,6 +1752,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1514,6 +1864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1620,6 +1974,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1728,6 +2086,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1834,6 +2196,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1942,6 +2308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2048,6 +2418,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2156,6 +2530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2262,6 +2640,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2370,6 +2752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2476,6 +2862,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2584,6 +2974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2690,6 +3084,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2798,6 +3196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2905,6 +3307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2995,6 +3401,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9af6cc143eafe9945bec0ffbe404fb58, type: 3}
       propertyPath: m_Name
       value: EsytructuraMovida (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9af6cc143eafe9945bec0ffbe404fb58, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3104,6 +3514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3210,6 +3624,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3318,6 +3736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3424,6 +3846,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3532,6 +3958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3638,6 +4068,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3746,6 +4180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3852,6 +4290,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3960,6 +4402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4067,6 +4513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cb4f3e5ae46bde488b0eeede82f2f74, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4091,7 +4541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3596746933591803418, guid: ff4fe7f2f5af10449a97d8ba8aebae6d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4644814175458196171, guid: ff4fe7f2f5af10449a97d8ba8aebae6d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4211,6 +4661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4317,6 +4771,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4425,6 +4883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4474,15 +4936,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bc6062f143a54e347982d5a4e0777d67, type: 3}
       propertyPath: m_LocalScale.x
-      value: 300
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6062f143a54e347982d5a4e0777d67, type: 3}
       propertyPath: m_LocalScale.y
-      value: 300
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6062f143a54e347982d5a4e0777d67, type: 3}
       propertyPath: m_LocalScale.z
-      value: 134.64081
+      value: 44.880272
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6062f143a54e347982d5a4e0777d67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4694,6 +5156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4800,6 +5266,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4908,6 +5378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5014,6 +5488,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5122,6 +5600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5229,6 +5711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmera (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5335,6 +5821,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
       propertyPath: m_Name
       value: Palmera (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8880846cf26b2694bbfaee3cc4cc1d10, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

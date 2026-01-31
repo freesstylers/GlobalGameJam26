@@ -136,6 +136,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-1983707140427216846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerEvents/Steps
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerEvents/Steps
+  Guid:
+    Data1: -1042414812
+    Data2: 1126555032
+    Data3: 1317427135
+    Data4: 1019120352
+  Banks:
+  - {fileID: 8303229763501287309}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 80412064130185814}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 490
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,13 +185,68 @@ MonoBehaviour:
   - {fileID: -3316225381366523103}
   - {fileID: -7940121278917768085}
   - {fileID: -5423073828974421482}
+  - {fileID: -1983707140427216846}
+  - {fileID: 617347652538401187}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639054817749669381
+  cacheTime: 639054935057798978
   cacheVersion: 131635
+--- !u!114 &80412064130185814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Steps/Running
+  m_EditorClassIdentifier: 
+  Name: Running
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 227079594
+    data2: 3774011721
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - False
+  - True
+  Exists: 1
+--- !u!114 &617347652538401187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameMusic
+  m_EditorClassIdentifier: 
+  Path: event:/GameMusic
+  Guid:
+    Data1: 426238102
+    Data2: 1250585231
+    Data3: -1645811295
+    Data4: -2071260027
+  Banks:
+  - {fileID: 8303229763501287309}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1890415173179361372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +289,10 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639054817749669381
+  lastModified: 639054935057798978
   FileSizes:
   - Name: Desktop
-    Value: 986
+    Value: 1136
   Exists: 1
 --- !u!114 &8303229763501287309
 MonoBehaviour:
@@ -226,8 +309,8 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639054817749570722
+  lastModified: 639054935057798978
   FileSizes:
   - Name: Desktop
-    Value: 105024
+    Value: 118848
   Exists: 1

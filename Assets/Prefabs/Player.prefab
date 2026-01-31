@@ -88,10 +88,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 4.7735453
+  m_Height: 11.9977
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 4.0332394, z: 0}
 --- !u!54 &5191598017259849621
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,10 +144,10 @@ MonoBehaviour:
   gunBobHorizontalDelta: 2
   gunBobRotationDelta: 5
   cameraLeanAccumulation: 5
-  cameraLeanMax: 10
+  cameraLeanMax: 20
   cameraLeanRecoverySpeed: 5
-  sprintSpeed: 25
-  sprintFOVReduction: 5
+  sprintSpeed: 13
+  sprintFOVReduction: 10
   fovTransitionSpeed: 5
   dashSpeed: 25
   dashDuration: 0.3
