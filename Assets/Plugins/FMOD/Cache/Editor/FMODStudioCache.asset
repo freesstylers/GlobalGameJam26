@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8787490789751548091
+--- !u!114 &-8913891172467813254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,12 +69,12 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639054726896238017
+  lastModified: 639054757029171657
   FileSizes:
   - Name: Desktop
-    Value: 13888
+    Value: 70368
   Exists: 1
---- !u!114 &-5660151491807205224
+--- !u!114 &-2410545521482225672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,8 +153,35 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639054726896277918
+  lastModified: 639054757029198811
   FileSizes:
   - Name: Desktop
-    Value: 766
+    Value: 940
   Exists: 1
+--- !u!114 &7314148716055799863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerEvents/Shoot
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerEvents/Shoot
+  Guid:
+    Data1: 668174498
+    Data2: 1088860136
+    Data3: 42667436
+    Data4: 864590682
+  Banks:
+  - {fileID: -5931708681355036526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
