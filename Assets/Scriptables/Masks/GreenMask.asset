@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c42ef82f21e2c409d3cde5aeafd6f1, type: 3}
   m_Name: GreenMask
   m_EditorClassIdentifier: 
-  color_: 2
+  color_: 1
   stats_: {fileID: 11400000, guid: 831453e60eb5eff4386ade4e053413f5, type: 2}

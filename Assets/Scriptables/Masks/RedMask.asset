@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c42ef82f21e2c409d3cde5aeafd6f1, type: 3}
   m_Name: RedMask
   m_EditorClassIdentifier: 
-  color_: 1
+  color_: 0
   stats_: {fileID: 11400000, guid: df30603ed90c77e42ad3c22614042418, type: 2}
