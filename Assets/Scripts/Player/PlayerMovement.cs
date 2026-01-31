@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("SHADER")]
     public Material screenMaterial;
 
+    [Header("AUDIO")]
+    private FMOD.Studio.EventInstance dashInstance_;
+
 
     ////////////////////////////////////////////
 
@@ -62,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
         FlowManager.instance.SuscribeMaskChange(OnMaskChange);
         currentMask_ = FlowManager.instance.GetCurrentMask();
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
+
+        dashInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Dash");
     }
 
     void Update()
@@ -128,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _isDashing = true;
             _dashTimer = dashDuration;
+            dashInstance_.start();
         }
 
         if (_isDashing && _dashTimer <= 0f)
