@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AmmoUpgrade
   m_EditorClassIdentifier: 
   class_: 3
+  level_: 0
   mult_: 1.2
   value_: 10
+  cost_: 125
   pegatina_: {fileID: 2800000, guid: 13a830f129107b04d9a9b213877618f0, type: 3}
