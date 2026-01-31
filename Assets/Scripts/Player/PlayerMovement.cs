@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
     public GameObject cameraContainer;
 
+    public bool playerCanInteract = true;
     [Header("MOUSE LOOK")]
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 90f;
@@ -80,13 +81,24 @@ public class PlayerMovement : MonoBehaviour
         HandleSteps();
     }
 
+    public void SetPlayerCanInteract(bool newValue)
+    {
+        playerCanInteract = newValue;
+    }
+
     private void HandleMouseLook()
     {
         if (!playerCamera)
             return;
+
+        float mouseX = 0;
+        float mouseY = 0;
+        if(playerCanInteract)
+        {
+            mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
+            mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
+        }
         //Saca el input de rotacion
-        float mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
-        float mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
         //if (mouseX <= 0.02f)
         //    mouseX = 0;
 
@@ -109,8 +121,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
-        float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
+        float horizontal = 0;
+        float vertical = 0;
+        if(playerCanInteract)
+        {
+            horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
+            vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
+        }
+
         Vector3 moveInput = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
         _moveDirection = moveInput;
         float movementSpeed = _isDashing ? dashSpeed : (_isSprinting ? sprintSpeed : currentMask_.stats_.realSpeed_);
@@ -119,7 +137,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleSprint()
     {
-        bool sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
+        bool sprintInput = false;
+        if(playerCanInteract)
+            sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
         if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
             _isSprinting = true;
         else
@@ -128,12 +148,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        bool dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
+        bool dashInput = false;
+        if(playerCanInteract)
+            dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
+
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
         {
             _isDashing = true;
             _dashTimer = dashDuration;
             dashInstance_.start();
+            FlowManager.instance.NextMask();
         }
 
         if (_isDashing && _dashTimer <= 0f)
@@ -151,9 +175,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleCameraLean()
     {
-        //Saca el lado al que inclinarse segun input
-        float horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
-        float vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
+        float horizontal = 0;
+        float vertical = 0;
+        if(!playerCanInteract)
+        {
+            //Saca el lado al que inclinarse segun input
+            horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
+            vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
+        }
+        
         Vector3 targetLean = Vector3.zero;
         if (Mathf.Abs(horizontal) > 0.01f)
             targetLean.z -= horizontal * cameraLeanAccumulation;

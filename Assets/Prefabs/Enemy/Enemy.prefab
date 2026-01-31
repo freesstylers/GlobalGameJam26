@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11018d871276bb64b97accbb8dbef29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyColor: 0
   maxHp_: 20
   spawning_: 0
   dying_: 0

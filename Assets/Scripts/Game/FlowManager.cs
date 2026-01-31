@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
+using static UnityEngine.Rendering.DebugUI;
 
 public class FlowManager : MonoBehaviour
 {
@@ -16,6 +19,9 @@ public class FlowManager : MonoBehaviour
     public EnemyPoolManager spawnerManager;
 
     public Material[] enemyFilters_;
+    private int fadeOutMaterialIndex = -1;
+    private int fadeInMaterialIndex = -1;
+
     //Mask
     public List<Mask> masks_;
     private Mask currentMask_;
@@ -149,8 +155,18 @@ public class FlowManager : MonoBehaviour
 
     public void SetMask(int maskId)
     {
-        if(masks_.Count <= maskId)
+        Debug.Log("PUTA " + maskId + " COUNT: " + masks_.Count);
+        if (maskId < masks_.Count)
         {
+            Debug.Log("COÑO " + maskId);
+            fadeOutMaterialIndex = currentMaskId_;
+            fadeInMaterialIndex = maskId;
+            Debug.Log("Changing Mask from " + currentMaskId_ + " to " + maskId);
+            //enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", 0);
+            //enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", 1);
+            StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity",value), 1, 0, .5f));
+            StartCoroutine(LerpFloat(value => enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity",value), 0, 1, .5f));
+
             currentMaskId_ = maskId;
             onMaskChange.Invoke(GetCurrentMask());
         }
@@ -158,16 +174,32 @@ public class FlowManager : MonoBehaviour
 
     public void NextMask()
     {
-        currentMaskId_++;
-        currentMaskId_ = currentMaskId_ % masks_.Count;
-        onMaskChange.Invoke(GetCurrentMask());
+        Debug.Log("Next Mask");
+        SetMask((currentMaskId_ + 1) % masks_.Count);
     }
 
     public void PrevMask()
     {
-        currentMaskId_--;
-        currentMaskId_ = currentMaskId_ < 0 ? 0 : currentMaskId_;
-        onMaskChange.Invoke(GetCurrentMask());
+        if(currentMaskId_ == 0)
+            SetMask(masks_.Count - 1);
+        else 
+            SetMask(currentMaskId_ - 1);
     }
+
+    private IEnumerator LerpFloat(System.Action<float> onValueChanged,float startValue, float targetValue, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+            onValueChanged?.Invoke(Mathf.Lerp(startValue, targetValue, t));
+            yield return null;
+        }
+
+        onValueChanged?.Invoke(targetValue);
+    }
+
     #endregion
 }
