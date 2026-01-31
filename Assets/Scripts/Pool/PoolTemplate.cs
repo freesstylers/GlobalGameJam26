@@ -9,7 +9,7 @@ public class PoolTemplate : MonoBehaviour
 
     protected ObjectPool<GameObject> pool_;
 
-    public void Awake()
+    public void Init()
     {
         // Create a pool with the four core callbacks.
         pool_ = new ObjectPool<GameObject>(

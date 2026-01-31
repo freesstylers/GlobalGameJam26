@@ -5,15 +5,13 @@ using System.Collections.Generic;
 
 public class FlowManager : MonoBehaviour
 {
+    [Serializable]
     public enum enemyType { dolphin, skibido }
 
 
     public enum State { Cooldown, Spawn, Round, Improvement, EndGame };
     public int[] timers = { 10, 5, 60, -1, -1 };
     public static FlowManager instance;
-
-    [SerializeField]
-    GameObject spawnerParent;
 
     public EnemyPoolManager spawnerManager;
 
@@ -43,12 +41,25 @@ public class FlowManager : MonoBehaviour
 
     public static event Action<State> onStateChange;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentState = State.Cooldown;
 
-        spawnerManager = spawnerParent.transform.GetComponentInChildren<EnemyPoolManager>();
+        spawnerManager = GameObject.FindAnyObjectByType<EnemyPoolManager>();
     }
 
     private void onStateChanged()
@@ -70,6 +81,10 @@ public class FlowManager : MonoBehaviour
                 timerValue = 0.0f;
             }
         }
+#if UNITY_EDITOR
+        if (currentState == State.Improvement)
+            advanceState();
+#endif
     }
 
     public void setState (State state)
@@ -84,8 +99,6 @@ public class FlowManager : MonoBehaviour
 
     public void advanceState()
     {
-        Debug.LogError("Changing State: " + currentState);
-
         switch (currentState)
         {
             case State.Cooldown:
@@ -114,6 +127,8 @@ public class FlowManager : MonoBehaviour
             //    GoToMenu();
             //    break;
         }
+
+        Debug.LogError("Changing State: " + currentState);
     }
 
     public void GoToMenu()

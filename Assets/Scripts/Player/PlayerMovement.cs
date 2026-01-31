@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.3f;
     public float dashCooldown = 0.5f;
 
+    [Header("SHADER")]
+    public Material screenMaterial;
+
+
     ////////////////////////////////////////////
 
     public Vector3 _moveDirection;
@@ -78,6 +82,12 @@ public class PlayerMovement : MonoBehaviour
         //Saca el input de rotacion
         float mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
         float mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
+        //if (mouseX <= 0.02f)
+        //    mouseX = 0;
+
+        //if (mouseY <= 0.02f)
+        //    mouseY = 0;
+
         float xRotation = mouseX * mouseSensitivity;
         float yRotation = mouseY * mouseSensitivity;
 
@@ -104,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleSprint()
     {
-        bool sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("Dash");
+        bool sprintInput = Rewired.ReInput.players.GetPlayer(0).GetButton("sprint");
         if (sprintInput && _moveDirection.sqrMagnitude > 0.01f)
             _isSprinting = true;
         else
@@ -113,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        bool dashInput = false;// Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
+        bool dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
         {
             _isDashing = true;
@@ -158,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         float targetFOV = _isSprinting ? _baseFOV - sprintFOVReduction : _baseFOV;
+        screenMaterial.SetFloat("_mask1VisualObstructionStremgth", 1 - ((Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime) - (_baseFOV - sprintFOVReduction)) / sprintFOVReduction));
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime);
     }
 

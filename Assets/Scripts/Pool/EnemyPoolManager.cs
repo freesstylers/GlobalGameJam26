@@ -18,9 +18,11 @@ public class EnemyPoolManager : MonoBehaviour
 
     public void Awake()
     {
-        for (int i = 0; i < Enum.GetNames(typeof(enemyType)).Length; i++)
+        enemyPools = new PoolTemplate[Enum.GetNames(typeof(enemyType)).Length];
+        for (int i = 0; i < enemyPools.Length; i++)
         {
             enemyPools[i] = new PoolTemplate();
+            enemyPools[i].Init();
             enemyPools[i].prefab = enemyTypes[i].prefab;
         }
 
@@ -29,6 +31,8 @@ public class EnemyPoolManager : MonoBehaviour
 
     public void onRoundChange(int r)
     {
+        Debug.LogError("Pool Manager - Round change");
+
         spawnersInMind.Clear();
 
         for (int i = 0; i < spawners.Count; i++) //Para que no spawneen en tu puta cara
