@@ -91,9 +91,16 @@ public class PlayerMovement : MonoBehaviour
         playerCanInteract = newValue;
     }
 
+    bool playerLook = true;
+
+    public void SetPlayerLook(bool state)
+    {
+        playerLook = state;
+    }
+
     private void HandleMouseLook()
     {
-        if (!playerCamera)
+        if (!playerCamera || !playerLook)
             return;
 
         float mouseX = 0;
