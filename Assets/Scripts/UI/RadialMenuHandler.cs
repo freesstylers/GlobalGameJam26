@@ -13,9 +13,9 @@ public class RadialMenuHandler : MonoBehaviour
     public TextMeshProUGUI statDataTxt;
     public MaskColor currentMask;
 
-    Vector2 mousePosStart;
-
     bool radialOn = false;
+
+    Vector2 MouseAccumulaMov;
 
     void Update()
     {
@@ -23,32 +23,49 @@ public class RadialMenuHandler : MonoBehaviour
         {
             FlowManager.instance.SlowDown(true);
 
-            mousePosStart = Rewired.ReInput.players.Players[0].controllers.Mouse.screenPosition;
+            MouseAccumulaMov = Vector2.zero;
             RadialMenuDisplay.SetActive(true);
 
             radialOn = true;
+
+            FlowManager.instance.currentPlayer.SetPlayerLook(false);
         }
         else if (radialOn && Rewired.ReInput.players.Players[0].GetButtonUp("radial"))
         {
+            if (currentMask != MaskColor.NONE)
+                SelectMask();
+
+
             FlowManager.instance.SlowDown(false);
 
             RadialMenuDisplay.SetActive(false);
 
             radialOn = false;
+
+            FlowManager.instance.currentPlayer.SetPlayerLook(true);
         }
 
 
         if (!radialOn)
             return;
 
-        Vector2 mov = Rewired.ReInput.players.Players[0].controllers.Mouse.screenPosition - mousePosStart;
+        //Debug.Log(mov);
 
-        if (Rewired.ReInput.players.Players[0].controllers.GetLastActiveController() != Rewired.ReInput.players.Players[0].controllers.Mouse)
-            mov = new Vector2(Rewired.ReInput.players.Players[0].GetAxis("xCamera"), Rewired.ReInput.players.Players[0].GetAxis("yCamera"));
+        if (Rewired.ReInput.players.Players[0].controllers.GetLastActiveController() == Rewired.ReInput.players.Players[0].controllers.Mouse || Rewired.ReInput.players.Players[0].controllers.GetLastActiveController() == Rewired.ReInput.players.Players[0].controllers.Keyboard)
+            MouseAccumulaMov += new Vector2(Rewired.ReInput.players.Players[0].GetAxis("xCamera"), Rewired.ReInput.players.Players[0].GetAxis("yCamera"));
+        else
+            MouseAccumulaMov = new Vector2(Rewired.ReInput.players.Players[0].GetAxis("xCamera"), Rewired.ReInput.players.Players[0].GetAxis("yCamera"));
 
-        if(Mathf.Abs(mov.magnitude) >= deadzoneJoystick)
+
+
+        Debug.Log(Rewired.ReInput.players.Players[0].controllers.GetLastActiveController());
+
+        if (Mathf.Abs(MouseAccumulaMov.magnitude) >= deadzoneJoystick)
         {
-            float deg = Mathf.Rad2Deg * Mathf.Atan2(mov.x, mov.y);
+            float deg = Mathf.Rad2Deg * Mathf.Atan2(MouseAccumulaMov.x, MouseAccumulaMov.y);
+
+            if (deg < 0)
+                deg += 360;
 
             MaskColor selected;
 
@@ -61,13 +78,13 @@ public class RadialMenuHandler : MonoBehaviour
 
             if (selected != currentMask)
             {
-                if(currentMask != MaskColor.NONE)
+                if (currentMask != MaskColor.NONE)
                     slots[(int)currentMask].SetBool("selected", false);
                 slots[(int)selected].SetBool("selected", true);
                 UpdateSelectedMask(selected);
             }
         }
-        else if(currentMask != MaskColor.NONE)
+        else if (currentMask != MaskColor.NONE)
         {
             slots[(int)currentMask].SetBool("selected", false);
             UpdateSelectedMask(MaskColor.NONE);
