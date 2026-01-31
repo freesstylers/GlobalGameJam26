@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2527798246699803747}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   color_: 0
   filter_: {fileID: 0}
   hurtAnimation_: {fileID: 8229428785150436188}
+  reference: {fileID: 0}
 --- !u!1 &4530706651017940706
 GameObject:
   m_ObjectHideFlags: 0

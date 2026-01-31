@@ -53,6 +53,7 @@ MonoBehaviour:
   color_: 0
   filter_: {fileID: 0}
   hurtAnimation_: {fileID: 8239305069247775940}
+  reference: {fileID: 0}
 --- !u!1 &1437818560261948746
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 6113051506734040255}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
