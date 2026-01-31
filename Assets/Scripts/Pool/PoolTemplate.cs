@@ -51,4 +51,9 @@ public class PoolTemplate : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void Release(GameObject gameObject)
+    {
+        pool_.Release(gameObject);
+    }
 }
