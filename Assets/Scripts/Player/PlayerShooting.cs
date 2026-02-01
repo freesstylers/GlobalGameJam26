@@ -144,6 +144,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot(Vector3 dir)
     {
+        shootInstance_.start();
         BasicBullet bb = shPool.Get().GetComponent<BasicBullet>();
         bb.SetDir(dir);
         recoilTimer = recoilDuration;
@@ -157,8 +158,6 @@ public class PlayerShooting : MonoBehaviour
         }
 
         currentCadence = 0.0f;
-
-        shootInstance_.start();
     }
 
     private System.Collections.IEnumerator ReturnAfter(GameObject gameObject, float seconds)

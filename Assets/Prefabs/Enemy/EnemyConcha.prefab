@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyColor: 0
-  maxHp_: 20
+  maxHp_: 100
   spawning_: 0
   dying_: 0
   scaleChangeRate_: 0.8
