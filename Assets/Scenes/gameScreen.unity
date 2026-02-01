@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_RenderPostProcessing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: 'm_Cameras.Array.data[0]'
@@ -350,6 +350,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207386138296855447, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442342462973465017, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6436032727010865052, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
