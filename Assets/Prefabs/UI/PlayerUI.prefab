@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0002, y: -0.0001}
-  m_SizeDelta: {x: 325.6346, y: 106.5483}
+  m_AnchoredPosition: {x: 0.0002, y: -3.9794}
+  m_SizeDelta: {x: 325.6346, y: 103.3648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5075710569016403338
 CanvasRenderer:
@@ -140,11 +140,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"<sprite=5>HP: \" + maxPlayerHP_ + \"\\n\" +\r\n                \"<sprite=0>Da\xF1o:
-    \" + realDmg_ + \"\\n\" +\r\n                \"<sprite=1>RoF: \" + realRate_
-    + \"\\n\" +\r\n                \"<sprite=2>Max Ammo: \" + realAmmo_ + \"\\n\"
-    +\r\n                \"<sprite=3>Player Speed: \" + realSpeed_ + \"\\n\" +\r\n               
-    \"<sprite=4>Reload Speed: \" + realReload_;"
+  m_text: '"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_
+    + ''\n''"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_
+    + ''\n''"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_ '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -171,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 18.1
+  m_fontSizeBase: 18.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -183,7 +181,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -20
+  m_lineSpacing: 20.85
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1300,7 +1298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5788320938849167385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2844,7 +2842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5358938711601456355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3395,7 +3393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5013060044035307036
 RectTransform:
   m_ObjectHideFlags: 0
