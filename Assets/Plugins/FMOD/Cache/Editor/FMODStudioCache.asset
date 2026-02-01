@@ -129,7 +129,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 8303229763501287309}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -274,7 +274,7 @@ MonoBehaviour:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639055399364893013
+  cacheTime: 639055436590097834
   cacheVersion: 131635
 --- !u!114 &80412064130185814
 MonoBehaviour:
@@ -331,7 +331,7 @@ MonoBehaviour:
   - {fileID: -4000317176844265284}
   MinDistance: 1
   MaxDistance: 20
-  Length: 131447
+  Length: 152047
 --- !u!114 &1890415173179361372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055396280279148
+  lastModified: 639055403925738350
   FileSizes:
   - Name: Desktop
     Value: 1216
@@ -394,8 +394,8 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055399364893013
+  lastModified: 639055436590097834
   FileSizes:
   - Name: Desktop
-    Value: 4417632
+    Value: 5305760
   Exists: 1

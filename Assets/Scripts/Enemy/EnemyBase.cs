@@ -123,15 +123,8 @@ public class EnemyBase : MonoBehaviour
             //Vector3 heading = other.transform.position - transform.position;
             //float distence = heading.magnitude;
             //Vector3 direction = heading / distence;
-
+            other.GetComponent<PlayerMovement>().GetHurt(transform_.position, 5f);
             //other.GetComponent<Rigidbody>().AddForce(direction * 300);
-
-
-            //Screen Effect
-            if (!FlowManager.instance.blending)
-            {
-                FlowManager.instance.StartCoroutine(FlowManager.instance.setBlend());
-            }
         }
     }
 }

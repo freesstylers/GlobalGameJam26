@@ -1,5 +1,6 @@
-using UnityEngine;
+using Rewired;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -116,6 +117,17 @@ public class PlayerMovement : MonoBehaviour
         playerLook = state;
     }
 
+    public void GetHurt(Vector3 damageSourcePosition, float knockbackForce = 5f)
+    {
+        Vector3 knockbackDirection = (transform.position - damageSourcePosition).normalized;
+        GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+        //Screen Effect
+        if (!FlowManager.instance.blending)
+        {
+            FlowManager.instance.StartCoroutine(FlowManager.instance.setBlend());
+        }
+    }
+
     private void HandleMouseLook()
     {
         if (!playerCamera || !playerLook)
@@ -202,7 +214,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
         {
-            //ChangeMask();
             _isDashing = true;
             _dashTimer = dashDuration;
             dashInstance_.start();
