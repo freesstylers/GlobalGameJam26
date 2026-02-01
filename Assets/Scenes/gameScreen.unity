@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: spreadIntensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6733365717481982374, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 640
+      objectReference: {fileID: 0}
     - target: {fileID: 6801613791750011127, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
@@ -378,6 +382,14 @@ PrefabInstance:
     - target: {fileID: 6801613791750011127, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_VolumeLayerMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116068800542959440, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 384
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386724438057310812, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 7779029095823078111, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_Name
