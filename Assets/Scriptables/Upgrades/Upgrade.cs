@@ -9,7 +9,7 @@ public class Upgrade
     }
 
     private float[] DMGPerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
-    private float[] RatePerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+    private float[] RatePerLevel = { 0.97f, 0.94f, 0.9f, 0.86f, 0.83f };
     private float[] SpeedPerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
     private int[] AmmoPerLevel = { 10, 20, 30, 40, 50 };
     private float[] ReloadPerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };

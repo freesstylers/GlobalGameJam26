@@ -55,7 +55,7 @@ public class Stats : ScriptableObject
                     realDmg_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.RATE:
-                    realRate_ += u.value_;
+                    realRate_ *= u.value_;
                     break;
                 case Upgrade.UpgradeClass.SPEED:
                     realSpeed_ += u.value_;
