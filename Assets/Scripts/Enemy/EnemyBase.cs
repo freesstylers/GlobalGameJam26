@@ -39,16 +39,27 @@ public class EnemyBase : MonoBehaviour
 
     public void EnemyInit(Mask.MaskColor c)
     {
+        int layer;
+
         switch (c)
         {
             case Mask.MaskColor.RED:
                 filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[0];
+
+                layer = LayerMask.NameToLayer("RedC");
+                gameObject.layer = layer;
                 break;
             case Mask.MaskColor.BLUE:
                 filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
+
+                layer = LayerMask.NameToLayer("BlueC");
+                gameObject.layer = layer;
                 break;
             case Mask.MaskColor.YELLOW:
                 filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
+
+                layer = LayerMask.NameToLayer("YellowC");
+                gameObject.layer = layer;
                 break;
             case Mask.MaskColor.NONE:
                 break;
