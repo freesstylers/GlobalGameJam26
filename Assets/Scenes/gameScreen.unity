@@ -1070,6 +1070,10 @@ PrefabInstance:
       propertyPath: yellowCamera
       value: 
       objectReference: {fileID: 573003327}
+    - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
+      propertyPath: screenMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bf6a1abbe8a346408707d370059efc5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

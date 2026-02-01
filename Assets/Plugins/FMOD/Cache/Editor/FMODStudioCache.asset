@@ -54,6 +54,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6981847698862979945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameMusic/Color
+  m_EditorClassIdentifier: 
+  Name: Color
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 2419586292
+    data2: 652797043
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Red
+  - Blue
+  - Green
+  Exists: 1
 --- !u!114 &-5842225682128159415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +219,7 @@ MonoBehaviour:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639054935057798978
+  cacheTime: 639055361081090654
   cacheVersion: 131635
 --- !u!114 &80412064130185814
 MonoBehaviour:
@@ -240,13 +267,15 @@ MonoBehaviour:
     Data4: -2071260027
   Banks:
   - {fileID: 8303229763501287309}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6981847698862979945}
+  - {fileID: 8890954125744465750}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 421500
 --- !u!114 &1890415173179361372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,10 +318,10 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639054935057798978
+  lastModified: 639055361081090654
   FileSizes:
   - Name: Desktop
-    Value: 1136
+    Value: 1176
   Exists: 1
 --- !u!114 &8303229763501287309
 MonoBehaviour:
@@ -309,8 +338,34 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639054935057798978
+  lastModified: 639055361081080283
   FileSizes:
   - Name: Desktop
-    Value: 118848
+    Value: 6270784
+  Exists: 1
+--- !u!114 &8890954125744465750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameMusic/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1493143259
+    data2: 1939907119
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Round
+  - Upgrade
   Exists: 1
