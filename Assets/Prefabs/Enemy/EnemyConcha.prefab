@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 809368497814136723}
   - component: {fileID: -3118246403224019485}
   - component: {fileID: 7421998894358488206}
+  - component: {fileID: 1559923400284682953}
   m_Layer: 0
   m_Name: EnemyConcha
   m_TagString: Untagged
@@ -216,6 +217,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   minDist: 2
+--- !u!54 &1559923400284682953
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4328285716984632412}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4530706651017940706
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +253,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379679592454602831}
-  - component: {fileID: 3507628700731509457}
   m_Layer: 0
   m_Name: EnemyObject
   m_TagString: Untagged
@@ -250,33 +277,6 @@ Transform:
   - {fileID: 1160698588515158507}
   m_Father: {fileID: 6184844828176049466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &3507628700731509457
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4530706651017940706}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!1001 &4869206364287083771
 PrefabInstance:
   m_ObjectHideFlags: 0
