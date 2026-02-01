@@ -24,17 +24,22 @@ public class EnemyBase : MonoBehaviour
 
     public PoolTemplate reference;
 
-    void Awake()
+    //void Awake()
+    //{
+    //    hp_ = maxHp_;
+    //    enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
+    //}
+
+    //private void Start()
+    //{
+    //    transform_ = GetComponent<Transform>();
+    //}
+
+    private void OnEnable()
     {
         hp_ = maxHp_;
-
         enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
-    }
-
-    private void Start()
-    {
-        //movement_ = GetComponent<BasicEnemyMovement>();
-        transform_ = GetComponent<Transform>();
+        EnemyInit(color_);
     }
 
     public void EnemyInit(Mask.MaskColor c)
@@ -44,19 +49,19 @@ public class EnemyBase : MonoBehaviour
         switch (c)
         {
             case Mask.MaskColor.RED:
-                filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[0];
+                //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[0];
 
                 layer = LayerMask.NameToLayer("RedC");
                 gameObject.layer = layer;
                 break;
             case Mask.MaskColor.BLUE:
-                filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
+                //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
 
                 layer = LayerMask.NameToLayer("BlueC");
                 gameObject.layer = layer;
                 break;
             case Mask.MaskColor.YELLOW:
-                filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
+                //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
 
                 layer = LayerMask.NameToLayer("YellowC");
                 gameObject.layer = layer;
