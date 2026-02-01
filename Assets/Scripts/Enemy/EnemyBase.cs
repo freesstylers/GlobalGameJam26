@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using static FlowManager;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -58,20 +59,21 @@ public class EnemyBase : MonoBehaviour
 
                 layer = LayerMask.NameToLayer("RedC");
                 SetGameLayerRecursive(gameObject, layer);
-                
+                FlowManager.instance.redEnemies += 1;
                 break;
             case Mask.MaskColor.BLUE:
                 //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
 
                 layer = LayerMask.NameToLayer("BlueC");
                 SetGameLayerRecursive(gameObject, layer);
-
+                FlowManager.instance.blueEnemies += 1;
                 break;
             case Mask.MaskColor.YELLOW:
                 //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
 
                 layer = LayerMask.NameToLayer("YellowC");
                 SetGameLayerRecursive(gameObject, layer);
+                FlowManager.instance.yellowEnemies += 1;
                 break;
             case Mask.MaskColor.NONE:
                 break;
@@ -108,6 +110,21 @@ public class EnemyBase : MonoBehaviour
     {
         //movement_.Stop();
         dying_ = true;
+
+        switch (enemyColor)
+        {
+            case Mask.MaskColor.RED:
+                FlowManager.instance.redEnemies -= 1;
+                break;
+            case Mask.MaskColor.BLUE:
+                FlowManager.instance.blueEnemies -= 1;
+                break;
+            case Mask.MaskColor.YELLOW:
+                FlowManager.instance.yellowEnemies -= 1;
+                break;
+            case Mask.MaskColor.NONE:
+                break;
+        }
     }
 
     public void ReceiveDamage(int dmg)

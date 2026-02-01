@@ -234,6 +234,10 @@ public class FlowManager : MonoBehaviour
         }
     }
 
+    public int yellowEnemies;
+    public int redEnemies;
+    public int blueEnemies;
+
     public void NextRound()
     {
         setState(State.Cooldown);
