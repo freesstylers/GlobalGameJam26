@@ -205,6 +205,26 @@ public class FlowManager : MonoBehaviour
         musicInstance_.setParameterByName("LowHealth", 1.0f);
     }
 
+    public Material blendMaterial;
+    public bool blending = false;
+
+    public IEnumerator setBlend()
+    {
+        blending = true;
+        float f = 0.15f;
+
+        while (f > 0.02f)
+        {
+            f -= (Time.deltaTime * 0.5f);
+            blendMaterial.SetFloat("_Blend", f);
+            yield return null;
+        }
+
+        f = 0.0f;
+        blendMaterial.SetFloat("_Blend", 0.0f);
+        blending = false;
+    }
+
     #region MASK
     public Mask GetCurrentMask()
     {

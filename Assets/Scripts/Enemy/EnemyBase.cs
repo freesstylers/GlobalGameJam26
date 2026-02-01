@@ -117,6 +117,21 @@ public class EnemyBase : MonoBehaviour
         if (other.tag == "Player")
         {
             FlowManager.instance.GetCurrentMask().stats_.playerHP_ -= 1;
+
+            //Collision??
+
+            //Vector3 heading = other.transform.position - transform.position;
+            //float distence = heading.magnitude;
+            //Vector3 direction = heading / distence;
+
+            //other.GetComponent<Rigidbody>().AddForce(direction * 300);
+
+
+            //Screen Effect
+            if (!FlowManager.instance.blending)
+            {
+                FlowManager.instance.StartCoroutine(FlowManager.instance.setBlend());
+            }
         }
     }
 }
