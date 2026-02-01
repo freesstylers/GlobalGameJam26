@@ -188,10 +188,17 @@ public class FlowManager : MonoBehaviour
                 }
                 break;
             case State.Improvement:
+                SHopUI.SetActive(true);
                 musicInstance_.setParameterByName("GameState", 1.0f);
-                setState(State.Cooldown);
                 break;
         }
+    }
+
+    public void NextRound()
+    {
+        setState(State.Cooldown);
+        SHopUI.SetActive(false);
+        musicInstance_.setParameterByName("GameState", 0.0f);
     }
 
     public void GoToMenu()
