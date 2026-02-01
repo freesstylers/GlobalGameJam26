@@ -54,7 +54,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-6981847698862979945
+--- !u!114 &-7202825954308536149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,6 +135,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4000317176844265284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameMusic/LowHealth
+  m_EditorClassIdentifier: 
+  Name: LowHealth
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 268098428
+    data2: 306204707
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - True
+  - False
+  Exists: 1
 --- !u!114 &-3316225381366523103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +217,35 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 490
+--- !u!114 &-348267941805671804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameMusic/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 1493143259
+    data2: 1939907119
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Round
+  - Upgrade
+  - Menu
+  - Win
+  - Lose
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +274,7 @@ MonoBehaviour:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639055361081090654
+  cacheTime: 639055389762167224
   cacheVersion: 131635
 --- !u!114 &80412064130185814
 MonoBehaviour:
@@ -271,11 +326,12 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -6981847698862979945}
-  - {fileID: 8890954125744465750}
+  - {fileID: -7202825954308536149}
+  - {fileID: -348267941805671804}
+  - {fileID: -4000317176844265284}
   MinDistance: 1
   MaxDistance: 20
-  Length: 421500
+  Length: 131447
 --- !u!114 &1890415173179361372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,10 +374,10 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055361081090654
+  lastModified: 639055389762167224
   FileSizes:
   - Name: Desktop
-    Value: 1176
+    Value: 1216
   Exists: 1
 --- !u!114 &8303229763501287309
 MonoBehaviour:
@@ -338,34 +394,8 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055361081080283
+  lastModified: 639055389761890351
   FileSizes:
   - Name: Desktop
-    Value: 6270784
-  Exists: 1
---- !u!114 &8890954125744465750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/GameMusic/GameState
-  m_EditorClassIdentifier: 
-  Name: GameState
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1493143259
-    data2: 1939907119
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Round
-  - Upgrade
+    Value: 4417632
   Exists: 1

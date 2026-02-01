@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.03.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{992951c5-bd62-41c4-bcd2-0ece7ba72c84}">
 		<property name="name">
 			<value>Color</value>

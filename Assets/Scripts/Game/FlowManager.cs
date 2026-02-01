@@ -158,6 +158,7 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 0.0f);
                 if (currentAliveEnemies == 0)
                 {
+                    currentRound += 1;
                     setState(State.Improvement);
                 }
                 else
@@ -169,9 +170,6 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 1.0f);
                 setState(State.Cooldown);
                 break;
-            //case State.EndGame:
-            //    GoToMenu();
-            //    break;
         }
 
         Debug.LogError("Changing State: " + currentState);
@@ -201,6 +199,11 @@ public class FlowManager : MonoBehaviour
 
     public List<Animator> Masks;
 
+    public void SetMusicToTension()
+    {
+        musicInstance_.setParameterByName("LowHealth", 1.0f);
+    }
+
     #region MASK
     public Mask GetCurrentMask()
     {
@@ -220,11 +223,7 @@ public class FlowManager : MonoBehaviour
             fadeInMaterialIndex = maskId;
             //enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", 0);
             //enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", 1);
-
-            //StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", value), 1, 0, .5f));
-            //StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", value), 1, 0, .5f));
-            //StartCoroutine(LerpFloat(value => enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", value), 0, 1, .5f));
-
+            
             String[] offsetNames = { "_mask1YOffset", "_mask2YOffset", "_mask3YOffset" }; //_mask1VisualObstructionStremgth
             String[] obstructionNames = { "_mask1VisualObstructionStrength", "_mask2VisualObstructionStrength", "_mask3VisualObstructionStrength" }; //_mask1VisualObstructionStremgth
             float overallSPeed = .25f;
@@ -236,6 +235,8 @@ public class FlowManager : MonoBehaviour
             StartCoroutine(ExecuteAfterDelay(() =>
             {
                 currentMaskId_ = maskId;
+                musicInstance_.setParameterByName("Color", currentMaskId_);
+
                 if (onMaskChange != null)
                 {
                     onMaskChange.Invoke(GetCurrentMask());
