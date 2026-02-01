@@ -60,6 +60,7 @@ MonoBehaviour:
   blueCamera: {fileID: 0}
   yellowCamera: {fileID: 0}
   screenMaterial: {fileID: 0}
+  currentState_: 0
   currentRound: 0
   currentPlayer: {fileID: 0}
   currentAliveEnemies: 0
@@ -698,6 +699,42 @@ PrefabInstance:
     - target: {fileID: 7737095153989132720, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
       propertyPath: m_SizeDelta.x
       value: 54.361755
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211225765314660148, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915628321128697293, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6654776270333122626}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextRound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FlowManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995350183168028139, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8743379673077369361, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
