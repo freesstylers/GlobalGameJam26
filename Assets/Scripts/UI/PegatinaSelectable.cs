@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEditor.Rendering.Universal;
 
 public class PegatinaSelectable :  MonoBehaviour
 {

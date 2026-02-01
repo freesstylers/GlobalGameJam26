@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -92,7 +91,6 @@ public class FlowManager : MonoBehaviour
         {
             instance = this;
             ResetMaterialVariables();
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -178,10 +176,9 @@ public class FlowManager : MonoBehaviour
                 timerValue = 0.0f;
             }
         }
-#if UNITY_EDITOR
+
         if (currentState == State.Improvement)
             advanceState();
-#endif
     }
 
     public void setState (State state)
