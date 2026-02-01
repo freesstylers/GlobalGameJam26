@@ -31,8 +31,6 @@ public class EnemyPoolManager : MonoBehaviour
 
     public void onRoundChange(int r)
     {
-        Debug.LogError("Pool Manager - Round change");
-
         spawnersInMind.Clear();
 
         for (int i = 0; i < spawners.Count; i++) //Para que no spawneen en tu puta cara
