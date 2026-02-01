@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class FlowManager : MonoBehaviour
@@ -126,6 +127,19 @@ public class FlowManager : MonoBehaviour
         points.text = currentPoints_.ToString();
     }
 
+    public Slider HP;
+    public TextMeshProUGUI ammo;
+
+    public void UpdateHP(float current, float max)
+    {
+        HP.value = current / max;
+    }
+
+    public void UpdateAmmo(int amt)
+    {
+        ammo.text = amt.ToString();
+    }
+
     public float slowTimeScale = 0.1f;
 
     public void SlowDown(bool state)
@@ -136,6 +150,8 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateHP(currentMask_.stats_.playerHP_, currentMask_.stats_.maxPlayerHP_);
+
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {
             setState(State.EndGame);

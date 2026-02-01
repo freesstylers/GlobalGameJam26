@@ -50,6 +50,8 @@ public class PlayerShooting : MonoBehaviour
 
         currentAmo = maxAmo;
 
+        FlowManager.instance.UpdateAmmo(currentAmo);
+
         shootInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Shoot");
         reloadInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Reload");
         
@@ -112,6 +114,8 @@ public class PlayerShooting : MonoBehaviour
             {
                 reload = false;
                 currentAmo = maxAmo;
+
+                FlowManager.instance.UpdateAmmo(currentAmo);
             }
         }
     }
@@ -161,6 +165,8 @@ public class PlayerShooting : MonoBehaviour
         StartCoroutine(ReturnAfter(bb.gameObject, bulletLt));
 
         currentAmo--;
+
+        FlowManager.instance.UpdateAmmo(currentAmo);
         if (currentAmo <= 0)
         {
             Reload();
