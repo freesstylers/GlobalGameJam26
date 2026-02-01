@@ -197,7 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_fontSize
-      value: 14.4
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
+      propertyPath: m_margin.x
+      value: -5.3119583
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_lineSpacing
@@ -205,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_fontSizeBase
-      value: 14.4
+      value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_VerticalAlignment

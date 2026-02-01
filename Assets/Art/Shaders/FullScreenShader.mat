@@ -70,7 +70,7 @@ Material:
     - _mask2YOffset: 0
     - _mask3ColorBlendStrength: 0
     - _mask3VisualObstructionStrength: 0
-    - _mask3YOffset: 1
+    - _mask3YOffset: 0
     - _strength: 0.9999863
     m_Colors:
     - _mask1Color: {r: 1, g: 0, b: 0.018810749, a: 0}
