@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{db8b8943-1f0a-441c-85fc-33d1b19bedc5}">
 		<property name="assetPath">
 			<value>reload.ogg</value>
