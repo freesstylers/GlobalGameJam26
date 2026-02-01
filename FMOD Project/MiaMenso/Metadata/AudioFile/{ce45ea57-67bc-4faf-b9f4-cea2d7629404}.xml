@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.03.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ce45ea57-67bc-4faf-b9f4-cea2d7629404}">
 		<property name="assetPath">
 			<value>Music/Daft Punk - Giorgio By Moroder.wav</value>

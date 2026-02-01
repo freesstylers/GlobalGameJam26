@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.03.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5f0f933a-72be-480c-9339-02e84ffe56d9}">
 		<property name="assetPath">
 			<value>Steps/steps-stone (4).ogg</value>
