@@ -20,7 +20,7 @@ public class ShopMenuMan : MonoBehaviour
     public SerializedDictionary<Upgrade.UpgradeClass, ShopSlot> CostAndLevel;
     public Dictionary<Upgrade.UpgradeClass, int> Tiers;
 
-    public TextMeshProUGUI RefreshCost;
+    public TextMeshProUGUI RefreshCostTxt;
     public Button RefreshCostButton;
 
     public int maxLevelRandom = 5;
@@ -30,17 +30,18 @@ public class ShopMenuMan : MonoBehaviour
 
     int timesRefreshed = 0;
 
+    public int BaseRefreshCost = 100;
+
     private void OnEnable()
     {
         timesRefreshed = 0;
         RefreshSales();
     }
 
-    public void RefreshSales(int refreshCost = 0)
+    public void RefreshSales()
     {
-        if (refreshCost > 0)
-            timesRefreshed++;
         //restar cost
+        FlowManager.instance.pointsInterface -= timesRefreshed * BaseRefreshCost;
 
 
         bool comprobacion;
@@ -68,17 +69,32 @@ public class ShopMenuMan : MonoBehaviour
 
         comprobacion = true;
 
-        RefreshCost.text = (timesRefreshed * 100).ToString();
-        RefreshCost.color = comprobacion ? CanBuy : CanNOTBuy;
+        RefreshCostTxt.text = "-" + (timesRefreshed * BaseRefreshCost);
+        RefreshCostTxt.color = comprobacion ? CanBuy : CanNOTBuy;
         RefreshCostButton.interactable = comprobacion;
+
+        timesRefreshed++;
+    }
+
+    public PegatinaSelectable pegatinaBase;
+    public Transform pegatinaContainer;
+    public List<PegatinaSelectable> pegatinas;
+
+
+    public void Buy(int upgrade)
+    {
+        Buy((Upgrade.UpgradeClass)upgrade);
     }
 
     public void Buy(Upgrade.UpgradeClass upgrade)
     {
-        int cost = new Upgrade(upgrade, Tiers[upgrade]).cost_;
+        Upgrade u = new Upgrade(upgrade, Tiers[upgrade]);
+        int cost = u.cost_;
 
         //restar cost
+        FlowManager.instance.pointsInterface -= cost;
 
+        Instantiate(pegatinaBase, pegatinaContainer).upgrade_ = u;
 
 
         bool comprobacion;
@@ -99,16 +115,28 @@ public class ShopMenuMan : MonoBehaviour
 
         comprobacion = true;
 
-        RefreshCost.color = comprobacion ? CanBuy : CanNOTBuy;
+        RefreshCostTxt.color = comprobacion ? CanBuy : CanNOTBuy;
         RefreshCostButton.interactable = comprobacion;
     }
 
-    public void Apply(Upgrade.UpgradeClass upgrade, Mask.MaskColor col)
+    public void Apply(PegatinaSelectable p, Mask.MaskColor col)
     {
-        int tier = Tiers[upgrade];
+        if (pegatinas.Contains(p))
+        {
 
 
-        //temp?
-        FlowManager.instance.masks_[(int)col].AddUpgrade(new Upgrade(upgrade, tier));
+            //temp?
+            FlowManager.instance.masks_[(int)col].AddUpgrade(p.upgrade_);
+
+
+            pegatinas.Remove(p);
+
+            DestroyImmediate(p.gameObject);
+        }
+    }
+
+    public void CloseMenu()
+    {
+        FlowManager.instance.UpdateMasks();
     }
 }

@@ -63,7 +63,21 @@ public class FlowManager : MonoBehaviour
     [HideInInspector]
     public PlayerMovement currentPlayer;
 
-    public int currentPoints = 0;
+    public int pointsInterface
+    {
+        get
+        {
+            return currentPoints_;
+        }
+        set
+        {
+            currentPoints_ = value;
+
+            onPointsChanged();
+        }
+    }
+
+    private int currentPoints_ = 0;
 
     public int currentAliveEnemies = 0;
 
@@ -84,7 +98,7 @@ public class FlowManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentPoints = 0;
+        currentPoints_ = 0;
         currentAliveEnemies = 0;
         currentState = State.Cooldown;
 
@@ -101,6 +115,10 @@ public class FlowManager : MonoBehaviour
     }
 
     private void onStateChanged()
+    {
+    }
+
+    private void onPointsChanged()
     {
     }
 
@@ -203,6 +221,14 @@ public class FlowManager : MonoBehaviour
     public void SetMusicToTension()
     {
         musicInstance_.setParameterByName("LowHealth", 1.0f);
+    }
+
+    public void UpdateMasks()
+    {
+        foreach (var m in masks_)
+        {
+            m.stats_.UpdateStats();
+        }
     }
 
     public Material blendMaterial;
