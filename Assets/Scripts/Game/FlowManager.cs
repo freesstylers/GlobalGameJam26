@@ -39,6 +39,7 @@ public class FlowManager : MonoBehaviour
     Camera yellowCamera;
 
     private FMOD.Studio.EventInstance musicInstance_;
+    private FMOD.Studio.EventInstance giantMaskInstance_;
     [SerializeField]
     Material screenMaterial;
 
@@ -63,6 +64,8 @@ public class FlowManager : MonoBehaviour
 
     [HideInInspector]
     public PlayerMovement currentPlayer;
+
+    public GameObject giantMask;
 
     public int pointsInterface
     {
@@ -112,6 +115,7 @@ public class FlowManager : MonoBehaviour
         }
 
         musicInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/GameMusic");
+        giantMaskInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/GiantMask");
         musicInstance_.start();
     }
 
@@ -193,6 +197,8 @@ public class FlowManager : MonoBehaviour
                 break;
             case State.Improvement:
                 SHopUI.SetActive(true);
+                giantMask.GetComponent<Animator>().SetTrigger("NewRound");
+                giantMaskInstance_.start();
                 musicInstance_.setParameterByName("GameState", 1.0f);
                 break;
         }

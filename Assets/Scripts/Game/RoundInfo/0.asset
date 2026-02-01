@@ -16,4 +16,4 @@ MonoBehaviour:
   roundEnemies:
     _serializedList:
     - Key: 1
-      Value: 10
+      Value: 1
