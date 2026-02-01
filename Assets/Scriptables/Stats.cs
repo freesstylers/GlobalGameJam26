@@ -97,11 +97,11 @@ public class Stats : ScriptableObject
 
     public string GetTextDump()
     {
-        return "<sprite=5>HP: " + maxPlayerHP_ + "\n" +
-                "<sprite=0>Daño: " + realDmg_ + "\n" +
-                "<sprite=1>RoF: " + realRate_ + "\n" +
-                "<sprite=2>Max Ammo: " + realAmmo_ + "\n" +
-                "<sprite=3>Player Speed: " + realSpeed_ + "\n" +
-                "<sprite=4>Reload Speed: " + realReload_;
+        return "HP: " + maxPlayerHP_ + "\n" +
+                "DMG: " + realDmg_ + "\n" +
+                "RoF: " + realRate_ + "\n" +
+                "AMM: " + realAmmo_ + "\n" +
+                "SPE: " + realSpeed_ + "\n" +
+                "REL: " + realReload_;
     }
 }
