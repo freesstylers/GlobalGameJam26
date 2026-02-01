@@ -27,4 +27,9 @@ public class BasicBullet : MonoBehaviour
         }
     }
 
+    virtual public void SetDir(Vector3 newDir)
+    {
+        dir = newDir;
+    }
+
 }

@@ -32,4 +32,11 @@ public class PlayerBullet : BasicBullet
         //Le asignamos a lo que necesite el color
         color = particleColors[((int)newMask.color_)];
     }
+
+    override public void SetDir(Vector3 newDir)
+    {
+        dir = newDir;
+
+        vfx.SetVector3("Direction", -dir);
+    }
 }

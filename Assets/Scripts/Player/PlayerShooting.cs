@@ -147,7 +147,7 @@ public class PlayerShooting : MonoBehaviour
     private void Shoot(Vector3 dir)
     {
         BasicBullet bb = shPool.Get().GetComponent<BasicBullet>();
-        bb.dir = dir;
+        bb.SetDir(dir);
         recoilTimer = recoilDuration;
         bb.pool = shPool;
         StartCoroutine(ReturnAfter(bb.gameObject, bulletLt));
