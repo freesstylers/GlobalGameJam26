@@ -156,6 +156,11 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Rewired.ReInput.players.Players[0].GetButtonDown("esc"))
+        {
+            Pause(Time.timeScale != 0.0f);
+        }
+        
         UpdateHP(GetCurrentMask().stats_.playerHP_, GetCurrentMask().stats_.maxPlayerHP_);
 
         if (GetCurrentMask().stats_.playerHP_ <= 0)
