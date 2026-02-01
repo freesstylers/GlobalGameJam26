@@ -21,8 +21,8 @@ MonoBehaviour:
   baseReload_: 1
   basePlayerHP_: 10
   realDmg_: 5
-  realRate_: 3
+  realRate_: 100
   realAmmo_: 20
-  realSpeed_: 5
+  realSpeed_: 100
   realReload_: 1
   spawnerCollider: {fileID: 0}

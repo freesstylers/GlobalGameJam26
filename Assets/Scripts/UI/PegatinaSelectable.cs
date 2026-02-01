@@ -27,7 +27,7 @@ public class PegatinaSelectable :  MonoBehaviour
 
     void OnClick()
     {
-        Debug.Log(upgrade_.class_);
+
     }
 
     public void OnHoverStart()
