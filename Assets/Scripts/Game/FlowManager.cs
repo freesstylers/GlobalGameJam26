@@ -267,13 +267,12 @@ public class FlowManager : MonoBehaviour
             StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(obstructionNames[fadeOutMaterialIndex], value), screenMaterial.GetFloat(obstructionNames[fadeOutMaterialIndex]), 0, overallSPeed, overallSPeed));
             StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(offsetNames[fadeInMaterialIndex], value), screenMaterial.GetFloat(offsetNames[fadeInMaterialIndex]), 0, overallSPeed, overallSPeed));
             StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(obstructionNames[fadeInMaterialIndex], value), screenMaterial.GetFloat(obstructionNames[fadeInMaterialIndex]), 0.0f, overallSPeed, overallSPeed*2));
-            Debug.Log("IN: " + obstructionNames[fadeInMaterialIndex] + " OUT: " + obstructionNames[fadeOutMaterialIndex]);
+
         }
     }
 
     public void NextMask()
     {
-        Debug.Log("Next Mask");
         SetMask((currentMaskId_ + 1) % masks_.Count);
     }
 

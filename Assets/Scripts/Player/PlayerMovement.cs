@@ -340,7 +340,5 @@ public class PlayerMovement : MonoBehaviour
     private void OnMaskChange(Mask newMask)
     {
         currentMask_ = newMask;
-        Debug.Log(newMask.stats_.baseSpeed_);
-        Debug.Log(newMask.stats_.realSpeed_);
     }
 }
