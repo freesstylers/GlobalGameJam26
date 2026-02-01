@@ -156,7 +156,7 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHP(currentMask_.stats_.playerHP_, currentMask_.stats_.maxPlayerHP_);
+        UpdateHP(GetCurrentMask().stats_.playerHP_, GetCurrentMask().stats_.maxPlayerHP_);
 
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {

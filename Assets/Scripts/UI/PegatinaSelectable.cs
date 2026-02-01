@@ -16,12 +16,6 @@ public class PegatinaSelectable :  MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        image_ = GetComponent<Image>();
-
-        boton_ = GetComponent<Button>();
-        boton_.onClick.AddListener(OnClick);
-
-        animator_ = GetComponent<Animator>();
     }
 
     ShopMenuMan menuInstance;
@@ -29,6 +23,12 @@ public class PegatinaSelectable :  MonoBehaviour
     public void Init(ShopMenuMan me)
     {
         menuInstance = me;
+        image_ = GetComponent<Image>();
+
+        boton_ = GetComponent<Button>();
+        boton_.onClick.AddListener(OnClick);
+
+        animator_ = GetComponent<Animator>();
         image_.sprite = upgrade_.pegatina_;
     }
 

@@ -191,23 +191,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_text
-      value: "\"<sprite=5>HP: \" + maxPlayerHP_ + \"\\n\" +\n\"<sprite=0>Da\xF1o:
-        \" + realDmg_ + \"\\n\" +\r\n                \"<sprite=1>RoF: \" + realRate_
-        + \"\\n\" +\r\n                \"<sprite=2>Max Ammo: \" + realAmmo_ + \"\\n\"
-        +\r\n                \"<sprite=3>Player Speed: \" + realSpeed_ + \"\\n\"
-        +\r\n                \"<sprite=4>Reload Speed: \" + realReload_;"
+      value: '"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_
+        + ''\n''"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_
+        + ''\n''"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_ '
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_fontSize
-      value: 11
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_lineSpacing
-      value: -20
+      value: 11.2
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_fontSizeBase
-      value: 11
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_VerticalAlignment
