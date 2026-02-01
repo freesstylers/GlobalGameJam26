@@ -35,6 +35,7 @@ public class EnemyBase : MonoBehaviour
     private void Start()
     {
         hitInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/EnemyHit");
+        transform_ = GetComponent<Transform>();
     }
 
     private void OnEnable()
