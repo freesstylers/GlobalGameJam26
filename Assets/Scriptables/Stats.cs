@@ -80,6 +80,7 @@ public class Stats : ScriptableObject
     public void AddUpgrade(Upgrade u)
     {
         upgrades_.Add(u);
+        ResetStats();
     }
 
     public void ResetStats()
@@ -92,5 +93,15 @@ public class Stats : ScriptableObject
         realAmmo_ = baseAmmo_;
         realReload_ = baseReload_;
         realSpeed_ = baseSpeed_;
+    }
+
+    public string GetTextDump()
+    {
+        return "<sprite=5>HP: " + maxPlayerHP_ + "\n" +
+                "<sprite=0>Daño: " + realDmg_ + "\n" +
+                "<sprite=1>RoF: " + realRate_ + "\n" +
+                "<sprite=2>Max Ammo: " + realAmmo_ + "\n" +
+                "<sprite=3>Player Speed: " + realSpeed_ + "\n" +
+                "<sprite=4>Reload Speed: " + realReload_;
     }
 }

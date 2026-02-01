@@ -40,6 +40,16 @@ public class ShopMenuMan : MonoBehaviour
 
         Tiers = new Dictionary<Upgrade.UpgradeClass, int>();
 
+        foreach (var m in MaskButtons)
+        {
+            m.interactable = false;
+        }
+
+        for (int i = 0; i < MaskStatTexts.Count; i++)
+        {
+            MaskStatTexts[i].text = FlowManager.instance.masks_[i].stats_.GetTextDump();
+        }
+
         RefreshSales();
     }
 
@@ -66,15 +76,13 @@ public class ShopMenuMan : MonoBehaviour
             CostAndLevel[i].lvl.text = "Lvl." + (rand + 1);
             CostAndLevel[i].cost.text = cost.ToString();
 
-
-            comprobacion = true;
+            comprobacion = FlowManager.instance.pointsInterface >= cost;
 
             CostAndLevel[i].cost.color = comprobacion ? CanBuy : CanNOTBuy;
             CostAndLevel[i].b.interactable = comprobacion;
         }
 
-
-        comprobacion = true;
+        comprobacion = FlowManager.instance.pointsInterface >= timesRefreshed * BaseRefreshCost;
 
         RefreshCostTxt.text = "-" + (timesRefreshed * BaseRefreshCost);
         RefreshCostTxt.color = comprobacion ? CanBuy : CanNOTBuy;
@@ -99,7 +107,11 @@ public class ShopMenuMan : MonoBehaviour
         //restar cost
         FlowManager.instance.pointsInterface -= cost;
 
-        Instantiate(pegatinaBase, pegatinaContainer).upgrade_ = u;
+        PegatinaSelectable p = Instantiate(pegatinaBase, pegatinaContainer);
+        p.Init(this);
+        p.SetUpgrade(u);
+        p.gameObject.SetActive(true);
+        pegatinas.Add(p);
 
 
         bool comprobacion;
@@ -112,13 +124,13 @@ public class ShopMenuMan : MonoBehaviour
 
             int costAux = aux.cost_;
 
-            comprobacion = true;
+            comprobacion = FlowManager.instance.pointsInterface >= costAux;
 
             CostAndLevel[i].cost.color = comprobacion ? CanBuy : CanNOTBuy;
             CostAndLevel[i].b.interactable = comprobacion;
         }
 
-        comprobacion = true;
+        comprobacion = FlowManager.instance.pointsInterface >= timesRefreshed * BaseRefreshCost;
 
         RefreshCostTxt.color = comprobacion ? CanBuy : CanNOTBuy;
         RefreshCostButton.interactable = comprobacion;
@@ -145,5 +157,46 @@ public class ShopMenuMan : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
         FlowManager.instance.UpdateMasks();
+    }
+
+    [HideInInspector]
+    public PegatinaSelectable upgradeApplied;
+
+    public List<Button> MaskButtons;
+    public List<TextMeshProUGUI> MaskStatTexts;
+
+    public void PrepareMasksForUpgrade(PegatinaSelectable u)
+    {
+        if (upgradeApplied != null)
+            upgradeApplied.Unselected();
+
+        upgradeApplied = u;
+
+        foreach (var m in MaskButtons)
+        {
+            m.interactable = true;
+        }
+    }
+
+    public void ApplyUpgrade(int mask)
+    {
+        Apply(upgradeApplied, (Mask.MaskColor)mask);
+
+        for (int i = 0; i < MaskStatTexts.Count; i++)
+        {
+            MaskStatTexts[i].text = FlowManager.instance.masks_[i].stats_.GetTextDump();
+        }
+
+        NoMasksUpgrade();
+    }
+
+    public void NoMasksUpgrade()
+    {
+        upgradeApplied = null;
+
+        foreach (var m in MaskButtons)
+        {
+            m.interactable = false;
+        }
     }
 }

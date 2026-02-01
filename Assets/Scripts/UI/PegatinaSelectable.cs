@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEditor.Rendering.Universal;
 
 public class PegatinaSelectable :  MonoBehaviour
 {
 
     public Upgrade upgrade_;
 
-    private RawImage image_;
+    private Image image_;
     private Button boton_;
     private Animator animator_;
     private EventTrigger eventTrigger_;
@@ -15,17 +16,31 @@ public class PegatinaSelectable :  MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        image_ = GetComponent<RawImage>();
-        image_.texture = upgrade_.pegatina_;
+        image_ = GetComponent<Image>();
+        image_.sprite = upgrade_.pegatina_;
 
         boton_ = GetComponent<Button>();
         boton_.onClick.AddListener(OnClick);
 
         animator_ = GetComponent<Animator>();
-        eventTrigger_ = GetComponent<EventTrigger>();
+    }
+
+    ShopMenuMan menuInstance;
+
+    public void Init(ShopMenuMan me)
+    {
+        menuInstance = me;
     }
 
     void OnClick()
+    {
+        if (menuInstance.upgradeApplied == this)
+            menuInstance.NoMasksUpgrade();
+        else
+            menuInstance.PrepareMasksForUpgrade(this);
+    }
+
+    public void Unselected()
     {
 
     }
@@ -38,5 +53,10 @@ public class PegatinaSelectable :  MonoBehaviour
     public void OnHoverExit()
     {
         animator_.SetBool("Hovering", false);
+    }
+
+    public void SetUpgrade(Upgrade u)
+    {
+        upgrade_ = u;
     }
 }

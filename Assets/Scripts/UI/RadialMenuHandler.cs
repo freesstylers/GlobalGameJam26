@@ -118,13 +118,7 @@ public class RadialMenuHandler : MonoBehaviour
         {
             Stats s = FlowManager.instance.masks_[(int)currentMask].stats_;
 
-            string statTxt =
-                "<sprite=5>HP: " + s.maxPlayerHP_ + "\n" +
-                "<sprite=0>Daño: " + s.realDmg_ + "\n" +
-                "<sprite=1>RoF: " + s.realRate_ + "\n" +
-                "<sprite=2>Max Ammo: " + s.realAmmo_ + "\n" +
-                "<sprite=3>Player Speed: " + s.realSpeed_ + "\n" +
-                "<sprite=4>Reload Speed: " + s.realReload_;
+            string statTxt = s.GetTextDump();
 
 
             statDataTxt.gameObject.SetActive(true);

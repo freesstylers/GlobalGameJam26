@@ -23,7 +23,7 @@ public class Upgrade
     public int cost_ = 100;
     public int baseCost_ = 100;
 
-    public Texture2D pegatina_;
+    public Sprite pegatina_;
 
     public Upgrade(UpgradeClass type, int level)
     {
@@ -37,32 +37,32 @@ public class Upgrade
         switch(class_) {
             case UpgradeClass.DMG:
                 mult_ = DMGPerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * level_;
+                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
                 name_ = "Pegata poderosa";
                 break;
             case UpgradeClass.RATE:
                 mult_ = RatePerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * level_;
+                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
                 name_ = "Papela cañera";
                 break;
             case UpgradeClass.SPEED:
                 mult_ = SpeedPerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * level_;
+                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
                 name_ = "Pegatinilla rapidilla";
                 break;
             case UpgradeClass.RELOAD:
                 mult_ = ReloadPerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * level_;
+                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
                 name_ = "Adhesivo preparado";
                 break;
             case UpgradeClass.AMMO:
                 value_ = AmmoPerLevel[level_];
-                cost_ = (int)(baseCost_ + value_) * level_;
+                cost_ = (int)(baseCost_ + value_) * (level_ + 1);
                 name_ = "Etiqueta cargada";
                 break;
             case UpgradeClass.HP:
                 value_ = HPPerLevel[level_];
-                cost_ = (int)(baseCost_ + value_) * level_;
+                cost_ = (int)(baseCost_ + value_) * (level_ + 1);
                 name_ = "Sticker grueso";
                 break;
         }
