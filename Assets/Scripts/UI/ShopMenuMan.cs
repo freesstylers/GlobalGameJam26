@@ -35,6 +35,11 @@ public class ShopMenuMan : MonoBehaviour
     private void OnEnable()
     {
         timesRefreshed = 0;
+
+        Cursor.lockState = CursorLockMode.None; //pilla el foco
+
+        Tiers = new Dictionary<Upgrade.UpgradeClass, int>();
+
         RefreshSales();
     }
 
@@ -46,15 +51,19 @@ public class ShopMenuMan : MonoBehaviour
 
         bool comprobacion;
 
+        timesRefreshed++;
+
         for (Upgrade.UpgradeClass i = Upgrade.UpgradeClass.DMG; i <= Upgrade.UpgradeClass.HP; i++)
         {
-            int rand = UnityEngine.Random.Range(1, maxLevelRandom + 1);
+            int rand = UnityEngine.Random.Range(0, maxLevelRandom);
+
+            Tiers[i] = rand;
 
             Upgrade aux = new Upgrade(i, rand);
 
             int cost = aux.cost_;
 
-            CostAndLevel[i].lvl.text = rand.ToString();
+            CostAndLevel[i].lvl.text = "Lvl." + (rand + 1);
             CostAndLevel[i].cost.text = cost.ToString();
 
 
@@ -62,8 +71,6 @@ public class ShopMenuMan : MonoBehaviour
 
             CostAndLevel[i].cost.color = comprobacion ? CanBuy : CanNOTBuy;
             CostAndLevel[i].b.interactable = comprobacion;
-
-            Tiers[i] = rand;
         }
 
 
@@ -72,8 +79,6 @@ public class ShopMenuMan : MonoBehaviour
         RefreshCostTxt.text = "-" + (timesRefreshed * BaseRefreshCost);
         RefreshCostTxt.color = comprobacion ? CanBuy : CanNOTBuy;
         RefreshCostButton.interactable = comprobacion;
-
-        timesRefreshed++;
     }
 
     public PegatinaSelectable pegatinaBase;
@@ -83,7 +88,7 @@ public class ShopMenuMan : MonoBehaviour
 
     public void Buy(int upgrade)
     {
-        Buy((Upgrade.UpgradeClass)upgrade);
+        Buy((Upgrade.UpgradeClass)upgrade + 1);
     }
 
     public void Buy(Upgrade.UpgradeClass upgrade)
@@ -137,6 +142,8 @@ public class ShopMenuMan : MonoBehaviour
 
     public void CloseMenu()
     {
+
+        Cursor.lockState = CursorLockMode.Locked; //pilla el foco
         FlowManager.instance.UpdateMasks();
     }
 }

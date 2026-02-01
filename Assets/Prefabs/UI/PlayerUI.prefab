@@ -823,7 +823,7 @@ MonoBehaviour:
         lvl: {fileID: 8463421712421751272}
         cost: {fileID: 4819779987872872725}
         b: {fileID: 2773013880973057140}
-  RefreshCostTxt: {fileID: 0}
+  RefreshCostTxt: {fileID: 346871892377333486}
   RefreshCostButton: {fileID: 4457114780541131352}
   maxLevelRandom: 5
   CanBuy: {r: 1, g: 1, b: 1, a: 1}
