@@ -54,6 +54,7 @@ public class PoolTemplate : MonoBehaviour
 
     public void Release(GameObject gameObject)
     {
-        pool_.Release(gameObject);
+        if(gameObject.activeInHierarchy)
+            pool_.Release(gameObject);
     }
 }

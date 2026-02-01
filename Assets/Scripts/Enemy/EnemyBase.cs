@@ -30,10 +30,10 @@ public class EnemyBase : MonoBehaviour
     //    enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
     //}
 
-    //private void Start()
-    //{
-    //    transform_ = GetComponent<Transform>();
-    //}
+    private void Start()
+    {
+        transform_ = GetComponent<Transform>();
+    }
 
     private void OnEnable()
     {
