@@ -61,5 +61,6 @@ public class EnemyPoolManager : MonoBehaviour
 
         FlowManager.instance.UpdateEnemyCount();
         FlowManager.instance.advanceState();
+        FlowManager.instance.UpdateEnemyCount();
     }
 }

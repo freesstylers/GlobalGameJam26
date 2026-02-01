@@ -32,13 +32,13 @@ public class PoolTemplate : MonoBehaviour
     virtual protected GameObject CreateItem()
     {
         GameObject gameObject = Instantiate(prefab);
-        gameObject.SetActive(false);
         return gameObject;
     }
 
     virtual protected void OnGet(GameObject gameObject)
     {
-        gameObject.SetActive(true);
+        if(!gameObject.activeSelf)
+            gameObject.SetActive(true);
     }
 
 

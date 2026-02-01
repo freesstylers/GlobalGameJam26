@@ -173,7 +173,7 @@ public class EnemyBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject != null && other.gameObject.tag == "Bullet" && (enemyColor == FlowManager.instance.GetCurrentMask().color_ || enemyColor == Mask.MaskColor.NONE))
+        if (other.gameObject != null && other.gameObject.tag == "Bullet" && (enemyColor == FlowManager.instance.GetCurrentMask().color_ || enemyColor == Mask.MaskColor.NONE) && !dying_)
         {
             //Guarrada historica
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
