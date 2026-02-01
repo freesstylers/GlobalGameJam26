@@ -171,9 +171,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 6527927937375881461}
   maxSize: 100
   bulletLt: 3
-  spreadIntensity: 1
+  spreadIntensity: 0.1
   maxAmo: 30
-  cadence: 0.1
+  cadence: 2
   reloadTime: 1
   gunObject: {fileID: 4513209138056664890}
   recoilOffset: {x: 0, y: 0, z: -0.2}

@@ -5,7 +5,7 @@
 			<value>Reload</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{44e8362c-8472-41a6-9304-0435051adecf}</destination>
@@ -99,7 +99,6 @@
 	<object class="MixerBusEffectChain" id="{cc17bd6c-753a-4272-a0c6-bcce1ea23da6}">
 		<relationship name="effects">
 			<destination>{6b71faee-014c-4c4c-88cd-bc7870ab8335}</destination>
-			<destination>{9b561654-b7bb-4fe7-8391-85fdd597856b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f8a12981-138d-434d-9b6b-62d8ea495494}" />
@@ -110,12 +109,4 @@
 	</object>
 	<object class="MixerBusFader" id="{a08364ad-02e2-47d7-a8cc-c80e653735ce}" />
 	<object class="MixerBusFader" id="{6b71faee-014c-4c4c-88cd-bc7870ab8335}" />
-	<object class="PannerEffect" id="{9b561654-b7bb-4fe7-8391-85fdd597856b}">
-		<property name="stereoPan">
-			<value>22</value>
-		</property>
-		<property name="overridingOutputFormat">
-			<value>1</value>
-		</property>
-	</object>
 </objects>

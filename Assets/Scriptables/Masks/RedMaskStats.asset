@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: RedMaskStats
   m_EditorClassIdentifier: 
   maxPlayerHP_: 20
-  playerHP_: 10
+  playerHP_: 20
   baseDmg_: 10
-  baseRate_: 5
+  baseRate_: 1
   baseAmmo_: 10
   baseSpeed_: 3
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 1
-  realRate_: 0.1
-  realAmmo_: 100
-  realSpeed_: 6
+  realDmg_: 10
+  realRate_: 5
+  realAmmo_: 10
+  realSpeed_: 3
   realReload_: 1
   spawnerCollider: {fileID: 0}

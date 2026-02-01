@@ -111,8 +111,6 @@ public class PlayerShooting : MonoBehaviour
                 currentAmo = maxAmo;
             }
         }
-
-
     }
 
     void Reload()
@@ -157,7 +155,8 @@ public class PlayerShooting : MonoBehaviour
         {
             Reload();
         }
-        currentCadence = 0f;
+
+        currentCadence = 0.0f;
 
         shootInstance_.start();
     }
