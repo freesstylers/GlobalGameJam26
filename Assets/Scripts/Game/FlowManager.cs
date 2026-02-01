@@ -68,6 +68,8 @@ public class FlowManager : MonoBehaviour
     public GameObject giantMask;
     public Animator nextRoundText;
 
+    public TextMeshProUGUI finalpoints;
+
     public int pointsInterface
     {
         get
@@ -223,8 +225,15 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 0.0f);
                 if (currentAliveEnemies == 0)
                 {
-                    currentRound += 1;
-                    setState(State.Improvement);
+                    if (currentRound < 6)
+                    {
+                        currentRound += 1;
+                        setState(State.Improvement);
+                    }
+                    else
+                    {
+                        setState(State.EndGame);
+                    }
                 }
                 break;
             case State.Improvement:
