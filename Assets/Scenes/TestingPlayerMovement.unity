@@ -854,6 +854,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1.2939987
       objectReference: {fileID: 0}
+    - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
+      propertyPath: SHopUI
+      value: 
+      objectReference: {fileID: 1787138421}
     - target: {fileID: 6924664865320543991, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.2939987
@@ -887,6 +891,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
+--- !u!1 &1787138421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4263491753009847764, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
+  m_PrefabInstance: {fileID: 1045126611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

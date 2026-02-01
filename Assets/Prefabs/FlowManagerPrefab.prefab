@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: 65057351678141661}
   blendMaterial: {fileID: 0}
   blending: 0
+  SHopUI: {fileID: 4263491753009847764}
 --- !u!1 &2978508633796763775
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +708,11 @@ PrefabInstance:
 --- !u!224 &167671579600172502 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2745548381312261102, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
+  m_PrefabInstance: {fileID: 2614785835106250296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4263491753009847764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2261760238280422380, guid: 22f1ae0594c22a74d86ab5341f530060, type: 3}
   m_PrefabInstance: {fileID: 2614785835106250296}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4925805638319920073 stripped

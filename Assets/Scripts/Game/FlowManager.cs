@@ -370,5 +370,7 @@ public class FlowManager : MonoBehaviour
             screenMaterial.SetFloat(obstructionName, 0f);
     }
 
+    public GameObject SHopUI;
+
     #endregion
 }
