@@ -156,6 +156,7 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 0.0f);
                 if (currentAliveEnemies == 0)
                 {
+                    currentRound += 1;
                     setState(State.Improvement);
                 }
                 else
@@ -167,9 +168,6 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 1.0f);
                 setState(State.Cooldown);
                 break;
-            //case State.EndGame:
-            //    GoToMenu();
-            //    break;
         }
 
         Debug.LogError("Changing State: " + currentState);
