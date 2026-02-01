@@ -199,6 +199,11 @@ public class FlowManager : MonoBehaviour
 
     public List<Animator> Masks;
 
+    public void SetMusicToTension()
+    {
+        musicInstance_.setParameterByName("LowHealth", 1.0f);
+    }
+
     #region MASK
     public Mask GetCurrentMask()
     {
@@ -222,6 +227,7 @@ public class FlowManager : MonoBehaviour
             StartCoroutine(LerpFloat(value => enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", value), 0, 1, .5f));
 
             currentMaskId_ = maskId;
+            musicInstance_.setParameterByName("Color", currentMaskId_);
 
             if (onMaskChange != null)
             {
