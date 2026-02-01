@@ -72,6 +72,7 @@ public class FlowManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            ResetMaterialVariables();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -311,6 +312,17 @@ public class FlowManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         action?.Invoke();
+    }
+
+    public void ResetMaterialVariables()
+    {
+        Debug.Log("Reset Material Variables");
+        String[] offsetNames = { "_mask1YOffset", "_mask2YOffset", "_mask3YOffset" };
+        String[] obstructionNames = { "_mask1VisualObstructionStrength", "_mask2VisualObstructionStrength", "_mask3VisualObstructionStrength" };
+        foreach (string offsetName in offsetNames)
+            screenMaterial.SetFloat(offsetName, 0f);
+        foreach (string obstructionName in obstructionNames)
+            screenMaterial.SetFloat(obstructionName, 0f);
     }
 
     #endregion
