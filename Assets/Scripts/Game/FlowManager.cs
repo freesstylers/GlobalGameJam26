@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -118,8 +119,11 @@ public class FlowManager : MonoBehaviour
     {
     }
 
+    public TextMeshProUGUI points;
+
     private void onPointsChanged()
     {
+        points.text = currentPoints_.ToString();
     }
 
     public float slowTimeScale = 0.1f;

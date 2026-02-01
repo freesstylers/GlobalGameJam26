@@ -17,7 +17,6 @@ public class PegatinaSelectable :  MonoBehaviour
     void Start()
     {
         image_ = GetComponent<Image>();
-        image_.sprite = upgrade_.pegatina_;
 
         boton_ = GetComponent<Button>();
         boton_.onClick.AddListener(OnClick);
@@ -30,6 +29,7 @@ public class PegatinaSelectable :  MonoBehaviour
     public void Init(ShopMenuMan me)
     {
         menuInstance = me;
+        image_.sprite = upgrade_.pegatina_;
     }
 
     void OnClick()
