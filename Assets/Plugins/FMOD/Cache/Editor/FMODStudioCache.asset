@@ -270,12 +270,13 @@ MonoBehaviour:
   - {fileID: -1983707140427216846}
   - {fileID: 617347652538401187}
   - {fileID: 4762521258437430230}
+  - {fileID: 9023282001184889402}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639055479772051799
+  cacheTime: 639055495731185615
   cacheVersion: 131635
 --- !u!114 &80412064130185814
 MonoBehaviour:
@@ -402,10 +403,10 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055479772051799
+  lastModified: 639055495731185615
   FileSizes:
   - Name: Desktop
-    Value: 1254
+    Value: 1288
   Exists: 1
 --- !u!114 &8303229763501287309
 MonoBehaviour:
@@ -422,8 +423,35 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055479772036897
+  lastModified: 639055495731165396
   FileSizes:
   - Name: Desktop
-    Value: 5308480
+    Value: 5443840
   Exists: 1
+--- !u!114 &9023282001184889402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerEvents/Hit
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerEvents/Hit
+  Guid:
+    Data1: -1905858370
+    Data2: 1225376383
+    Data3: 641645721
+    Data4: -2119640698
+  Banks:
+  - {fileID: 8303229763501287309}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0

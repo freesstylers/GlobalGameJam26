@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("AUDIO")]
     private FMOD.Studio.EventInstance dashInstance_;
     private FMOD.Studio.EventInstance stepsInstance_;
+    private FMOD.Studio.EventInstance hitInstance_;
 
 
     ////////////////////////////////////////////
@@ -91,7 +92,9 @@ public class PlayerMovement : MonoBehaviour
 
         dashInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Dash");
         stepsInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Steps");
+        hitInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Hit");
     }
+
 
     void Update()
     {
@@ -121,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 knockbackDirection = (transform.position - damageSourcePosition).normalized;
         GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+        hitInstance_.start();
         //Screen Effect
         if (!FlowManager.instance.blending)
         {
