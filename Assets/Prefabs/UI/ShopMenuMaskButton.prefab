@@ -191,9 +191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_text
-      value: '"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_
-        + ''\n''"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_
-        + ''\n''"<sprite=5>HP: " + maxPlayerHP_ + ''\n''"<sprite=5>HP: " + maxPlayerHP_ '
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_fontSize
@@ -204,12 +202,24 @@ PrefabInstance:
       value: -5.3119583
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_lineSpacing
       value: 11.2
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_fontSizeBase
       value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2525254401914321115, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_VerticalAlignment
@@ -331,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -334700830, guid: 970f16c874703944bafb70affdc8dd46, type: 3}
+    - target: {fileID: 3845488169152030245, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3845488169152030245, guid: b56194f111fbb954b9794cdf3411ca07, type: 3}
       propertyPath: m_RaycastTarget
       value: 0

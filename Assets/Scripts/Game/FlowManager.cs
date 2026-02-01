@@ -104,6 +104,13 @@ public class FlowManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Time.timeScale = 1.0f;
+        FlowManager.instance.currentPlayer.SetPlayerLook(true);
+        FlowManager.instance.currentPlayer.SetPlayerCanInteract(true);
+        Cursor.lockState = CursorLockMode.Locked;
+
+
+
         currentPoints_ = 0;
         currentAliveEnemies = 0;
         currentState = State.Cooldown;
@@ -121,6 +128,7 @@ public class FlowManager : MonoBehaviour
         musicInstance_.start();
 
         currentMask_ = masks_[0];
+        SetMask(0);
     }
 
     private void onStateChanged()
@@ -239,7 +247,7 @@ public class FlowManager : MonoBehaviour
             case State.Improvement:
                 SHopUI.SetActive(true);
                 giantMask.GetComponent<Animator>().SetTrigger("NewRound");
-                nextRoundText.SetTrigger("NextRound");
+                //nextRoundText.SetTrigger("NextRound");
                 giantMaskInstance_.start();
                 FlowManager.instance.currentPlayer.SetPlayerLook(false);
                 FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
@@ -286,6 +294,7 @@ public class FlowManager : MonoBehaviour
         if (RadialMenuHandler == null || RadialMenuHandler.radialOn)
             return;
 
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = state ? 0.0f : 1.0f;
         PauseMenu.SetActive(state);
     }

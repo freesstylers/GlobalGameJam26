@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool playerCanInteract = true;
     [Header("MOUSE LOOK")]
-    public float mouseSensitivity = 2f;
+    public float mouseSensitivity = 0.9f;
     public float maxLookAngle = 90f;
 
     [Header("STEPS")]

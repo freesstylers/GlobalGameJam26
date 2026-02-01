@@ -52,19 +52,19 @@ public class Stats : ScriptableObject
             switch(u.class_)
             {
                 case Upgrade.UpgradeClass.DMG:
-                    realDmg_ *= u.mult_;
+                    realDmg_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.RATE:
-                    realRate_ *= u.mult_;
+                    realRate_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.SPEED:
-                    realSpeed_ *= u.mult_;
+                    realSpeed_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.AMMO:
                     realAmmo_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.RELOAD:
-                    realReload_ *= u.mult_;
+                    realReload_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.HP:
                     maxPlayerHP_ += u.value_;
@@ -80,7 +80,7 @@ public class Stats : ScriptableObject
     public void AddUpgrade(Upgrade u)
     {
         upgrades_.Add(u);
-        ResetStats();
+        UpdateStats();
     }
 
     public void ResetStats()

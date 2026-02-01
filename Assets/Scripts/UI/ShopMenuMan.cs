@@ -142,8 +142,6 @@ public class ShopMenuMan : MonoBehaviour
     {
         if (pegatinas.Contains(p))
         {
-
-
             //temp?
             FlowManager.instance.masks_[(int)col].AddUpgrade(p.upgrade_);
 
