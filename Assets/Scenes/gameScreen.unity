@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4429713558553708375, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1143
+      value: 7287
       objectReference: {fileID: 0}
     - target: {fileID: 5207386138296855447, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_LocalScale.x
@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6436032727010865052, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: spreadIntensity
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6801613791750011127, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: m_RenderPostProcessing

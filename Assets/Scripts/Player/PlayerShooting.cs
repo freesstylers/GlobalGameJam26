@@ -124,9 +124,12 @@ public class PlayerShooting : MonoBehaviour
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
-
+        int layerCollide = (1 << LayerMask.NameToLayer("YellowC")) | 
+            (1 << LayerMask.NameToLayer("BlueC")) |
+            (1 << LayerMask.NameToLayer("RedC")) |
+            (1 << LayerMask.NameToLayer("Mask"));
         Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerCollide))
         {
             targetPoint = hit.point;
         }
@@ -136,6 +139,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         Vector3 direction = targetPoint - spawnPoint.transform.position;
+        Debug.LogWarning(direction);
         float x = UnityEngine.Random.Range(-1f, 1f);
         float y = UnityEngine.Random.Range(-1f, 1f);
 
@@ -146,6 +150,8 @@ public class PlayerShooting : MonoBehaviour
     {
         shootInstance_.start();
         BasicBullet bb = shPool.Get().GetComponent<BasicBullet>();
+        bb.gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        bb.gameObject.GetComponent<Rigidbody>().AddForce(dir * 2, ForceMode.Impulse);
         bb.SetDir(dir);
         recoilTimer = recoilDuration;
         bb.pool = shPool;

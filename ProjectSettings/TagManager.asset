@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - BlueC
   - YellowC
   - NonWalkable
-  - 
-  - 
+  - Bullet
+  - Player
   - 
   - 
   - 

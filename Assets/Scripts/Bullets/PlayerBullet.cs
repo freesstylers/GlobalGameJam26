@@ -5,8 +5,6 @@ using UnityEngine.VFX;
 public class PlayerBullet : BasicBullet
 {
     public Color[] particleColors = { Color.red, Color.green, Color.blue };
-
-    private VisualEffect vfx;
     
     private void Awake()
     {
@@ -16,7 +14,7 @@ public class PlayerBullet : BasicBullet
     private void Start()
     {
         Mask currentMask = FlowManager.instance.GetCurrentMask();
-        vfx = GetComponent<VisualEffect>();
+        VisualEffect vfx = GetComponent<VisualEffect>();
         vfx.SetVector4("MaskColor", particleColors[(int)currentMask.color_]);
         vfx.SetVector3("Direction", -dir);
         //Setting stats
@@ -28,6 +26,7 @@ public class PlayerBullet : BasicBullet
 
     public void OnMaskChange(Mask newMask)
     {
+        VisualEffect vfx = GetComponent<VisualEffect>();
         vfx.SetVector4("MaskColor", particleColors[(int)newMask.color_]);
         //Le asignamos a lo que necesite el color
         color = particleColors[((int)newMask.color_)];
@@ -36,7 +35,7 @@ public class PlayerBullet : BasicBullet
     override public void SetDir(Vector3 newDir)
     {
         dir = newDir;
-
+        VisualEffect vfx = GetComponent<VisualEffect>();
         vfx.SetVector3("Direction", -dir);
     }
 }

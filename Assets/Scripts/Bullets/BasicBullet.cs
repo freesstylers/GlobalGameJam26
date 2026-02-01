@@ -13,7 +13,13 @@ public class BasicBullet : MonoBehaviour
     public Color color; 
     void Update()
     {
-        transform.Translate(dir * speed * Time.deltaTime);
+        //transform.Translate(dir * speed * Time.deltaTime);
+    }
+
+
+    private void OnEnable()
+    {
+        //GetComponent<Rigidbody>().AddForce(dir * speed, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +31,17 @@ public class BasicBullet : MonoBehaviour
             other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().ReceiveDamage((int)dmg);
             pool.Release(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject != null && other.gameObject.tag == collideWith)
+        {
+            //Guarrada historica
+            float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
+            other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().ReceiveDamage((int)dmg);
+        }
+        pool.Release(this.gameObject);
     }
 
     virtual public void SetDir(Vector3 newDir)

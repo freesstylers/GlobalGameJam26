@@ -128,19 +128,13 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject != null && other.gameObject.tag == "Bullet")
         {
-            FlowManager.instance.GetCurrentMask().stats_.playerHP_ -= 1;
-
-            //Collision??
-
-            //Vector3 heading = other.transform.position - transform.position;
-            //float distence = heading.magnitude;
-            //Vector3 direction = heading / distence;
-            other.GetComponent<PlayerMovement>().GetHurt(transform_.position, 5f);
-            //other.GetComponent<Rigidbody>().AddForce(direction * 300);
+            //Guarrada historica
+            float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
+            ReceiveDamage((int)dmg);
         }
     }
 }
