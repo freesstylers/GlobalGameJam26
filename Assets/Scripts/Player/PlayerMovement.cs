@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
         float mouseX = 0;
         float mouseY = 0;
-        if (playerCanInteract)
+        if (playerCanInteract && FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0)
         {
             mouseX = Rewired.ReInput.players.GetPlayer(0).GetAxis("xCamera");
             mouseY = Rewired.ReInput.players.GetPlayer(0).GetAxis("yCamera");
@@ -177,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = 0;
         float vertical = 0;
-        if (playerCanInteract)
+        if (playerCanInteract && FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0)
         {
             horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
             vertical = Rewired.ReInput.players.GetPlayer(0).GetAxis("yAxis");
@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleDash()
     {
         bool dashInput = false;
-        if (playerCanInteract)
+        if (playerCanInteract && FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0)
             dashInput = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Dash");
 
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
@@ -248,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = 0;
         float vertical = 0;
-        if (playerCanInteract)
+        if (playerCanInteract && FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0)
         {
             //Saca el lado al que inclinarse segun input
             horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");

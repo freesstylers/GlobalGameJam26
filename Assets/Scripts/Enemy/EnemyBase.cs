@@ -78,8 +78,6 @@ public class EnemyBase : MonoBehaviour
             case Mask.MaskColor.NONE:
                 break;
         }
-
-        FlowManager.instance.UpdateEnemyCount();
     }
 
     private void SetGameLayerRecursive(GameObject _go, int _layer)
