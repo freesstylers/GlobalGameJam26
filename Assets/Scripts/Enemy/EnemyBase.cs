@@ -111,4 +111,12 @@ public class EnemyBase : MonoBehaviour
             reference.Release(gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            FlowManager.instance.GetCurrentMask().stats_.playerHP_ -= 1;
+        }
+    }
 }

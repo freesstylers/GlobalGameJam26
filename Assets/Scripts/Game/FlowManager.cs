@@ -114,6 +114,12 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetCurrentMask().stats_.playerHP_ <= 0)
+        {
+            setState(State.EndGame);
+            //Do stuff
+        }
+
         if (currentState == State.Cooldown)
         {
             if (timerValue < timers[(int)currentState])
@@ -161,10 +167,6 @@ public class FlowManager : MonoBehaviour
                 {
                     currentRound += 1;
                     setState(State.Improvement);
-                }
-                else
-                {
-                    setState(State.EndGame);
                 }
                 break;
             case State.Improvement:
