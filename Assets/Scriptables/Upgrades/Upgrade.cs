@@ -1,9 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Upgrade", menuName = "Scriptable Objects/Upgrade")]
 
-
-public class Upgrade : ScriptableObject
+public class Upgrade
 {
     public enum UpgradeClass
     {
@@ -23,44 +21,52 @@ public class Upgrade : ScriptableObject
     public float mult_ = 2.0f;
     public int value_ = 10;
     public int cost_ = 100;
+    public int baseCost_ = 100;
 
     public Texture2D pegatina_;
 
-    private void Awake()
+    public Upgrade(UpgradeClass type, int level)
+    {
+        class_ = type;
+        level_ = level;
+        Refresh();
+    }
+
+    private void Refresh()
     {
         switch(class_) {
             case UpgradeClass.DMG:
                 mult_ = DMGPerLevel[level_];
-                cost_ = (int)(cost_ * mult_);
+                cost_ = (int)(baseCost_ * mult_) * level_;
                 name_ = "Pegata poderosa";
                 break;
             case UpgradeClass.RATE:
                 mult_ = RatePerLevel[level_];
-                cost_ = (int)(cost_ * mult_);
+                cost_ = (int)(baseCost_ * mult_) * level_;
                 name_ = "Papela cañera";
                 break;
             case UpgradeClass.SPEED:
                 mult_ = SpeedPerLevel[level_];
-                cost_ = (int)(cost_ * mult_);
+                cost_ = (int)(baseCost_ * mult_) * level_;
                 name_ = "Pegatinilla rapidilla";
                 break;
             case UpgradeClass.RELOAD:
                 mult_ = ReloadPerLevel[level_];
-                cost_ = (int)(cost_ * mult_);
+                cost_ = (int)(baseCost_ * mult_) * level_;
                 name_ = "Adhesivo preparado";
                 break;
             case UpgradeClass.AMMO:
                 value_ = AmmoPerLevel[level_];
-                cost_ = (int)(cost_ + value_);
+                cost_ = (int)(baseCost_ + value_) * level_;
                 name_ = "Etiqueta cargada";
                 break;
             case UpgradeClass.HP:
                 value_ = HPPerLevel[level_];
-                cost_ = (int)(cost_ + value_);
+                cost_ = (int)(baseCost_ + value_) * level_;
                 name_ = "Sticker grueso";
                 break;
         }
-        cost_ += (int)Random.Range(10.0f, 30.0f);
+        //cost_ += (int)Random.Range(10.0f, 30.0f);
 
         name += " level " + level_.ToString();
     }
