@@ -1124,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowManagerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4993304428465124834, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -275.40985
+      objectReference: {fileID: 0}
     - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
       propertyPath: redCamera
       value: 

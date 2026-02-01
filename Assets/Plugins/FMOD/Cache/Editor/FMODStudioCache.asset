@@ -269,12 +269,13 @@ MonoBehaviour:
   - {fileID: -5423073828974421482}
   - {fileID: -1983707140427216846}
   - {fileID: 617347652538401187}
+  - {fileID: 4762521258437430230}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639055458596627811
+  cacheTime: 639055470222799753
   cacheVersion: 131635
 --- !u!114 &80412064130185814
 MonoBehaviour:
@@ -359,6 +360,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &4762521258437430230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EnemyHit
+  m_EditorClassIdentifier: 
+  Path: event:/EnemyHit
+  Guid:
+    Data1: -472421926
+    Data2: 1271190462
+    Data3: -1992241732
+    Data4: 297933619
+  Banks:
+  - {fileID: 8303229763501287309}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7219437428552000617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,10 +402,10 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055389762167224
+  lastModified: 639055470222799753
   FileSizes:
   - Name: Desktop
-    Value: 1216
+    Value: 1254
   Exists: 1
 --- !u!114 &8303229763501287309
 MonoBehaviour:
@@ -394,8 +422,8 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055458596627811
+  lastModified: 639055470222671388
   FileSizes:
   - Name: Desktop
-    Value: 5305760
+    Value: 5308480
   Exists: 1

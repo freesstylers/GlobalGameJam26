@@ -8,7 +8,7 @@ public class BasicBullet : MonoBehaviour
 
     public PoolTemplate pool;
 
-
+    public GameObject Particles;
     //Asignamos el color a las particulas de las balas
     public Color color; 
     void Update()
@@ -27,9 +27,11 @@ public class BasicBullet : MonoBehaviour
         if (other.gameObject != null && other.gameObject.tag == collideWith)
         {
             //Guarrada historica
+            GameObject.Instantiate(Particles, this.transform.position, Quaternion.identity);
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
             other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().ReceiveDamage((int)dmg);
             pool.Release(this.gameObject);
+
         }
     }
 
@@ -38,6 +40,7 @@ public class BasicBullet : MonoBehaviour
         if (other.gameObject != null && other.gameObject.tag == collideWith)
         {
             //Guarrada historica
+            GameObject.Instantiate(Particles, this.transform.position, Quaternion.identity);
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
             other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().ReceiveDamage((int)dmg);
         }
