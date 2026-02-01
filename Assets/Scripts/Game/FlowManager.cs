@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class FlowManager : MonoBehaviour
@@ -130,6 +131,19 @@ public class FlowManager : MonoBehaviour
         points.text = currentPoints_.ToString();
     }
 
+    public Slider HP;
+    public TextMeshProUGUI ammo;
+
+    public void UpdateHP(float current, float max)
+    {
+        HP.value = current / max;
+    }
+
+    public void UpdateAmmo(int amt)
+    {
+        ammo.text = amt.ToString();
+    }
+
     public float slowTimeScale = 0.1f;
 
     public void SlowDown(bool state)
@@ -140,9 +154,13 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateHP(currentMask_.stats_.playerHP_, currentMask_.stats_.maxPlayerHP_);
+
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {
             setState(State.EndGame);
+            EndGameUI.SetActive(true);
+            Time.timeScale = 0.0f;
             //Do stuff
         }
 
@@ -174,12 +192,21 @@ public class FlowManager : MonoBehaviour
         return currentState; 
     }
 
+    public void GoBackToMainMenu()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("mainMenu");
+    }
+
     public void advanceState()
     {
         switch (currentState)
         {
             case State.Cooldown:
                 setState(State.Spawn);
+                FlowManager.instance.currentPlayer.SetPlayerLook(true);
+                FlowManager.instance.currentPlayer.SetPlayerCanInteract(true);
+                Cursor.lockState = CursorLockMode.Locked;
 
                 spawnerManager.onRoundChange(currentRound);
 
@@ -199,6 +226,9 @@ public class FlowManager : MonoBehaviour
                 SHopUI.SetActive(true);
                 giantMask.GetComponent<Animator>().SetTrigger("NewRound");
                 giantMaskInstance_.start();
+                FlowManager.instance.currentPlayer.SetPlayerLook(false);
+                FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
+                Cursor.lockState = CursorLockMode.None;
                 musicInstance_.setParameterByName("GameState", 1.0f);
                 break;
         }
@@ -388,6 +418,7 @@ public class FlowManager : MonoBehaviour
     }
 
     public GameObject SHopUI;
+    public GameObject EndGameUI;
 
     #endregion
 }

@@ -4,7 +4,7 @@ using static FlowManager;
 
 public class EnemyBase : MonoBehaviour
 {
-    public Mask.MaskColor enemyColor;
+    public Mask.MaskColor enemyColor = Mask.MaskColor.NONE;
     public int maxHp_;
     [SerializeField]
     private int hp_;
@@ -42,7 +42,7 @@ public class EnemyBase : MonoBehaviour
     {
         transform_ = GetComponent<Transform>();
         hp_ = maxHp_;
-        enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
+        enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length - 1);
         EnemyInit(enemyColor);
         transform_.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
@@ -83,6 +83,7 @@ public class EnemyBase : MonoBehaviour
         _go.layer = _layer;
         foreach (Transform child in _go.transform)
         {
+            if (child.gameObject.name == "Aura") continue;
             child.gameObject.layer = _layer;
 
             Transform _HasChildren = child.GetComponentInChildren<Transform>();
@@ -150,13 +151,28 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+
+
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject != null && other.gameObject.tag == "Bullet")
+        if (other.gameObject != null && other.gameObject.tag == "Bullet" && (enemyColor == FlowManager.instance.GetCurrentMask().color_ || enemyColor == Mask.MaskColor.NONE))
         {
             //Guarrada historica
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
             ReceiveDamage((int)dmg);
         }
+        else if (other.gameObject != null && other.gameObject.tag == "Player")
+        {
+            other.collider.gameObject.GetComponent<PlayerMovement>().GetHurt(transform.position);
+        }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject != null && other.gameObject.tag == "Player")
+    //    {
+    //        other.GetComponent<PlayerMovement>().GetHurt(transform.position);
+    //    }
+    //}
+
 }

@@ -50,6 +50,8 @@ public class PlayerShooting : MonoBehaviour
 
         currentAmo = maxAmo;
 
+        FlowManager.instance.UpdateAmmo(currentAmo);
+
         shootInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Shoot");
         reloadInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Reload");
         
@@ -91,10 +93,13 @@ public class PlayerShooting : MonoBehaviour
 
     void HandleShooting()
     {
-        if (Rewired.ReInput.players.GetPlayer(0).GetButton("shoot") && !reload && currentAmo > 0 && currentCadence > cadence)
+        if (FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0 && Rewired.ReInput.players.GetPlayer(0).GetButton("shoot") && !reload && currentAmo > 0 && currentCadence > cadence)
         {
-            Vector3 dir = CalculateDirectionSpread().normalized;
-            Shoot(dir);
+            if (FlowManager.instance.GetState() != FlowManager.State.Improvement)
+            {
+                Vector3 dir = CalculateDirectionSpread().normalized;
+                Shoot(dir);
+            }
         }
 
         if(currentCadence < cadence)
@@ -109,6 +114,8 @@ public class PlayerShooting : MonoBehaviour
             {
                 reload = false;
                 currentAmo = maxAmo;
+
+                FlowManager.instance.UpdateAmmo(currentAmo);
             }
         }
     }
@@ -158,6 +165,8 @@ public class PlayerShooting : MonoBehaviour
         StartCoroutine(ReturnAfter(bb.gameObject, bulletLt));
 
         currentAmo--;
+
+        FlowManager.instance.UpdateAmmo(currentAmo);
         if (currentAmo <= 0)
         {
             Reload();
