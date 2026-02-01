@@ -118,6 +118,8 @@ public class FlowManager : MonoBehaviour
         musicInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/GameMusic");
         giantMaskInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/GiantMask");
         musicInstance_.start();
+
+        currentMask_ = masks_[0];
     }
 
     private void onStateChanged()
