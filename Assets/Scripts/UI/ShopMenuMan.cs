@@ -73,7 +73,7 @@ public class ShopMenuMan : MonoBehaviour
 
             int cost = aux.cost_;
 
-            CostAndLevel[i].lvl.text = "Lvl." + (rand + 1);
+            CostAndLevel[i].lvl.text = "" + (rand + 1);
             CostAndLevel[i].cost.text = cost.ToString();
 
             comprobacion = FlowManager.instance.pointsInterface >= cost;
@@ -92,6 +92,7 @@ public class ShopMenuMan : MonoBehaviour
     public PegatinaSelectable pegatinaBase;
     public Transform pegatinaContainer;
     public List<PegatinaSelectable> pegatinas;
+    public List<Sprite> pegatinasSprites;
 
 
     public void Buy(int upgrade)
@@ -102,14 +103,15 @@ public class ShopMenuMan : MonoBehaviour
     public void Buy(Upgrade.UpgradeClass upgrade)
     {
         Upgrade u = new Upgrade(upgrade, Tiers[upgrade]);
+        u.pegatina_ = pegatinasSprites[(int)upgrade];
         int cost = u.cost_;
 
         //restar cost
         FlowManager.instance.pointsInterface -= cost;
 
         PegatinaSelectable p = Instantiate(pegatinaBase, pegatinaContainer);
-        p.Init(this);
         p.SetUpgrade(u);
+        p.Init(this);
         p.gameObject.SetActive(true);
         pegatinas.Add(p);
 
