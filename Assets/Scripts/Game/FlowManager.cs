@@ -67,6 +67,7 @@ public class FlowManager : MonoBehaviour
     public PlayerMovement currentPlayer;
 
     public GameObject giantMask;
+    public Animator nextRoundText;
 
     public int pointsInterface
     {
@@ -232,6 +233,7 @@ public class FlowManager : MonoBehaviour
             case State.Improvement:
                 SHopUI.SetActive(true);
                 giantMask.GetComponent<Animator>().SetTrigger("NewRound");
+                nextRoundText.SetTrigger("NextRound");
                 giantMaskInstance_.start();
                 FlowManager.instance.currentPlayer.SetPlayerLook(false);
                 FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
