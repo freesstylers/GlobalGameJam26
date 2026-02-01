@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _SampleTexture2D_4d9c7d469f9447158e8bfd3391eed661_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 4ceaecc402e9593418a4af722c450ae2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2a31cdd982c3f074a8d596a2b1784dc4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_bf2dd3db7f694b399bb60d60f697af55_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 4ceaecc402e9593418a4af722c450ae2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9022898e7d885c942bf2b2a6c68c854d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_f2736a64b3da4b1aabca59db49661b2b_Texture_1_Texture2D:
@@ -51,10 +51,14 @@ Material:
     m_Floats:
     - _mask1ColorBlendStrength: 0
     - _mask1VisualObstructionStremgth: 0
+    - _mask1VisualObstructionStrength: 0
+    - _mask1YOffset: 0
     - _mask2ColorBlendStrength: 0
     - _mask2VisualObstructionStrength: 0
+    - _mask2YOffset: 0
     - _mask3ColorBlendStrength: 0
     - _mask3VisualObstructionStrength: 0
+    - _mask3YOffset: 0
     - _strength: 0.9999863
     m_Colors:
     - _mask1Color: {r: 1, g: 0, b: 0.018810749, a: 0}

@@ -16,13 +16,13 @@ MonoBehaviour:
   playerHP_: 10
   baseDmg_: 1
   baseRate_: 0.1
-  baseAmmo_: 100
-  baseSpeed_: 4
+  baseAmmo_: 50
+  baseSpeed_: 8
   baseReload_: 1
   basePlayerHP_: 10
   realDmg_: 1
   realRate_: 0.1
   realAmmo_: 100
-  realSpeed_: 1
+  realSpeed_: 4
   realReload_: 1
   spawnerCollider: {fileID: 0}

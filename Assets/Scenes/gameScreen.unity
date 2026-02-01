@@ -277,6 +277,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250002045979316399, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       propertyPath: 'm_Cameras.Array.data[0]'
       value: 
       objectReference: {fileID: 573003327}
@@ -432,6 +436,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3006249484406027447, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2035697053}
+    - targetCorrespondingSourceObject: {fileID: 3006249484406027447, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2035697054}
   m_SourcePrefab: {fileID: 100100000, guid: 5c94803551bae54468c1df48fefed3e3, type: 3}
 --- !u!20 &573003327 stripped
 Camera:
@@ -1006,6 +1013,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 0}
+--- !u!114 &2035697054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035697048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86832f84a0cf34eb9b89129d49b7a15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startConfig: {fileID: 11400000, guid: 450a8e910a399432b98807bbfdd5d299, type: 2}
+  crtRenderSettings: {fileID: 11400000, guid: 2d929546960894d169f1999a321e4ff4, type: 2}
+  _runtimeMaterial: {fileID: 0}
+  data:
+    pixelationAmount: 155
+    maxColorChannels:
+      red: 1
+      green: 1
+      blue: 2
+      greyScale: 0.115
+    dithering4: 0
+    dithering8: 0.442
+    vignette: 0.561
+    innerCurve: 4.7
+    monitorCurve: 0.082
+    monitorInnerSize:
+      width: 0
+      height: 0
+    monitorOutterSize:
+      width: 0.058
+      height: 0.1
+    zoom: 1.17
+    monitorRoundness: 0.2
+    monitorTexture: {fileID: 2800000, guid: a5e897f9f29eb488ba4791cd52d004b5, type: 3}
+    monitorColor: {r: 0.12867041, g: 0.1254902, b: 0.21568628, a: 0.5254902}
+    innerMonitorDarkness: 0.215
+    innerMonitorShine: 0.067
+    colorScans:
+      greenChannelMultiplier: -0.183
+      redBlueChannelMultiplier: 0.173
+      sizeMultiplier: 0.5
+    innerMonitorShineRadius: -0.087
+    innerMonitorShineCurve: 10
 --- !u!1001 &850078984726952773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1070,6 +1122,10 @@ PrefabInstance:
       propertyPath: yellowCamera
       value: 
       objectReference: {fileID: 573003327}
+    - target: {fileID: 6654776270333122626, guid: 1c4e75d35fd1c2042a626b31c9287996, type: 3}
+      propertyPath: screenMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bf6a1abbe8a346408707d370059efc5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

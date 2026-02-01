@@ -68,7 +68,7 @@ public class Upgrade
         }
         //cost_ += (int)Random.Range(10.0f, 30.0f);
 
-        name += " level " + level_.ToString();
+        name_ += " level " + level_.ToString();
     }
 
 }

@@ -203,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (dashInput && !_isDashing && _dashCooldownTimer <= 0f && _moveDirection.sqrMagnitude > 0.01f)
         {
+            //ChangeMask();
             _isDashing = true;
             _dashTimer = dashDuration;
             dashInstance_.start();

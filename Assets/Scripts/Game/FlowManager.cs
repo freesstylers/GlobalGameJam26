@@ -38,6 +38,8 @@ public class FlowManager : MonoBehaviour
     Camera yellowCamera;
 
     private FMOD.Studio.EventInstance musicInstance_;
+    [SerializeField]
+    Material screenMaterial;
 
     public State currentState
     { 
@@ -156,6 +158,7 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 0.0f);
                 if (currentAliveEnemies == 0)
                 {
+                    currentRound += 1;
                     setState(State.Improvement);
                 }
                 else
@@ -167,9 +170,6 @@ public class FlowManager : MonoBehaviour
                 musicInstance_.setParameterByName("GameState", 1.0f);
                 setState(State.Cooldown);
                 break;
-            //case State.EndGame:
-            //    GoToMenu();
-            //    break;
         }
 
         Debug.LogError("Changing State: " + currentState);
@@ -223,40 +223,53 @@ public class FlowManager : MonoBehaviour
             fadeInMaterialIndex = maskId;
             //enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", 0);
             //enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", 1);
-            StartCoroutine(LerpFloat(value => enemyFilters_[fadeOutMaterialIndex].SetFloat("_opacity", value), 1, 0, .5f));
-            StartCoroutine(LerpFloat(value => enemyFilters_[fadeInMaterialIndex].SetFloat("_opacity", value), 0, 1, .5f));
-
-            currentMaskId_ = maskId;
-            musicInstance_.setParameterByName("Color", currentMaskId_);
-
-            if (onMaskChange != null)
+            
+            String[] offsetNames = { "_mask1YOffset", "_mask2YOffset", "_mask3YOffset" }; //_mask1VisualObstructionStremgth
+            String[] obstructionNames = { "_mask1VisualObstructionStrength", "_mask2VisualObstructionStrength", "_mask3VisualObstructionStrength" }; //_mask1VisualObstructionStremgth
+            float overallSPeed = .25f;
+            //Te quitas la mascara y se vuelve todo negro
+            StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(offsetNames[fadeOutMaterialIndex], value), screenMaterial.GetFloat(offsetNames[fadeOutMaterialIndex]), 1, overallSPeed, 0));
+            StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(offsetNames[fadeInMaterialIndex], value), screenMaterial.GetFloat(offsetNames[fadeInMaterialIndex]), 1, overallSPeed, 0));
+            StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(obstructionNames[fadeInMaterialIndex], value), screenMaterial.GetFloat(obstructionNames[fadeInMaterialIndex]), 1.0f, overallSPeed, 0));
+            //Cambia la mascara "logicamente"
+            StartCoroutine(ExecuteAfterDelay(() =>
             {
-                onMaskChange.Invoke(GetCurrentMask());
-            }
+                currentMaskId_ = maskId;
+                musicInstance_.setParameterByName("Color", currentMaskId_);
 
-            switch (currentMaskId_)
-            {
-                case 0:
-                    redCamera.gameObject.SetActive(true);
-                    blueCamera.gameObject.SetActive(false);
-                    yellowCamera.gameObject.SetActive(false);
-                    break;
-                case 1:
-                    redCamera.gameObject.SetActive(false);
-                    blueCamera.gameObject.SetActive(false);
-                    yellowCamera.gameObject.SetActive(true);
-                    break;
-                case 2:
-                    redCamera.gameObject.SetActive(false);
-                    blueCamera.gameObject.SetActive(true);
-                    yellowCamera.gameObject.SetActive(false);
-                    break;
-                case -1:
-                    redCamera.gameObject.SetActive(false);
-                    blueCamera.gameObject.SetActive(false);
-                    yellowCamera.gameObject.SetActive(false);
-                    break;
-            }
+                if (onMaskChange != null)
+                {
+                    onMaskChange.Invoke(GetCurrentMask());
+                }
+                switch (currentMaskId_)
+                {
+                    case 0:
+                        redCamera.gameObject.SetActive(true);
+                        blueCamera.gameObject.SetActive(false);
+                        yellowCamera.gameObject.SetActive(false);
+                        break;
+                    case 1:
+                        redCamera.gameObject.SetActive(false);
+                        blueCamera.gameObject.SetActive(false);
+                        yellowCamera.gameObject.SetActive(true);
+                        break;
+                    case 2:
+                        redCamera.gameObject.SetActive(false);
+                        blueCamera.gameObject.SetActive(true);
+                        yellowCamera.gameObject.SetActive(false);
+                        break;
+                    case -1:
+                        redCamera.gameObject.SetActive(false);
+                        blueCamera.gameObject.SetActive(false);
+                        yellowCamera.gameObject.SetActive(false);
+                        break;
+                }
+            }, overallSPeed));
+            //Ponte la mascara que toca y baja la obstruccion 0
+            StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(obstructionNames[fadeOutMaterialIndex], value), screenMaterial.GetFloat(obstructionNames[fadeOutMaterialIndex]), 0, overallSPeed, overallSPeed));
+            StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(offsetNames[fadeInMaterialIndex], value), screenMaterial.GetFloat(offsetNames[fadeInMaterialIndex]), 0, overallSPeed, overallSPeed));
+            StartCoroutine(LerpFloat(value => screenMaterial.SetFloat(obstructionNames[fadeInMaterialIndex], value), screenMaterial.GetFloat(obstructionNames[fadeInMaterialIndex]), 0.0f, overallSPeed, overallSPeed*2));
+            Debug.Log("IN: " + obstructionNames[fadeInMaterialIndex] + " OUT: " + obstructionNames[fadeOutMaterialIndex]);
         }
     }
 
@@ -274,8 +287,13 @@ public class FlowManager : MonoBehaviour
             SetMask(currentMaskId_ - 1);
     }
 
-    private IEnumerator LerpFloat(System.Action<float> onValueChanged,float startValue, float targetValue, float duration)
+    private IEnumerator LerpFloat(System.Action<float> onValueChanged, float startValue, float targetValue, float duration, float delay = 0f)
     {
+        if (delay > 0f)
+        {
+            yield return new WaitForSeconds(delay);
+        }
+
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
@@ -287,6 +305,12 @@ public class FlowManager : MonoBehaviour
         }
 
         onValueChanged?.Invoke(targetValue);
+    }
+
+    private IEnumerator ExecuteAfterDelay(System.Action action, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        action?.Invoke();
     }
 
     #endregion
