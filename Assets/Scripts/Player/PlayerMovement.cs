@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMouseLook()
     {
-        if (!playerCamera || !playerLook)
+        if (!playerCamera || !playerLook || Time.timeScale < 1.0f)
             return;
 
         float mouseX = 0;
