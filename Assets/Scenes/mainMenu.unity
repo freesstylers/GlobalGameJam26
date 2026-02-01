@@ -173,15 +173,23 @@ PrefabInstance:
         Mask: Q
 
 
-        Different masks show different things...'
+        Your enemies hide... reveal them with
+        their color''s mask
+
+        And don''t forget to upgrade your mask in the
+        shop!'
       objectReference: {fileID: 0}
     - target: {fileID: 1646990669613800938, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_fontSize
-      value: 34.29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1646990669613800938, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_fontSizeBase
-      value: 34.29
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646990669613800938, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2528789625275405270, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -212,8 +220,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4174144197511751527, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -69.7408
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174144197511751527, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -264.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174144197511751527, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -26.927612
+      value: -18.263
       objectReference: {fileID: 0}
     - target: {fileID: 4655305498389197826, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_Name
@@ -316,6 +332,10 @@ PrefabInstance:
       value: How to play
       objectReference: {fileID: 0}
     - target: {fileID: 6362743467236882603, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535557420652682769, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
