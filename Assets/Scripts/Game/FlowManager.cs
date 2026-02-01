@@ -234,9 +234,20 @@ public class FlowManager : MonoBehaviour
         }
     }
 
-    public int yellowEnemies;
+    public int greenEnemies;
     public int redEnemies;
     public int blueEnemies;
+
+    public TextMeshProUGUI redEnemies_;
+    public TextMeshProUGUI greenEnemies_;
+    public TextMeshProUGUI blueEnemies_;
+
+    public void UpdateEnemyCount()
+    {
+        redEnemies_.text = redEnemies.ToString();
+        greenEnemies_.text = greenEnemies.ToString();
+        blueEnemies_.text = blueEnemies.ToString();
+    }
 
     public void NextRound()
     {

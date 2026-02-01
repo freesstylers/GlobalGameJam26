@@ -73,11 +73,13 @@ public class EnemyBase : MonoBehaviour
 
                 layer = LayerMask.NameToLayer("YellowC");
                 SetGameLayerRecursive(gameObject, layer);
-                FlowManager.instance.yellowEnemies += 1;
+                FlowManager.instance.greenEnemies += 1;
                 break;
             case Mask.MaskColor.NONE:
                 break;
         }
+
+        FlowManager.instance.UpdateEnemyCount();
     }
 
     private void SetGameLayerRecursive(GameObject _go, int _layer)
@@ -120,11 +122,13 @@ public class EnemyBase : MonoBehaviour
                 FlowManager.instance.blueEnemies -= 1;
                 break;
             case Mask.MaskColor.YELLOW:
-                FlowManager.instance.yellowEnemies -= 1;
+                FlowManager.instance.greenEnemies -= 1;
                 break;
             case Mask.MaskColor.NONE:
                 break;
         }
+
+        FlowManager.instance.UpdateEnemyCount();
     }
 
     public void ReceiveDamage(int dmg)
