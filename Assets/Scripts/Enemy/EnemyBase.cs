@@ -150,6 +150,8 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject != null && other.gameObject.tag == "Bullet")
@@ -158,5 +160,18 @@ public class EnemyBase : MonoBehaviour
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
             ReceiveDamage((int)dmg);
         }
+        else if (other.gameObject != null && other.gameObject.tag == "Player")
+        {
+            other.collider.gameObject.GetComponent<PlayerMovement>().GetHurt(transform.position);
+        }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject != null && other.gameObject.tag == "Player")
+    //    {
+    //        other.GetComponent<PlayerMovement>().GetHurt(transform.position);
+    //    }
+    //}
+
 }

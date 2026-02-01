@@ -135,6 +135,8 @@ public class FlowManager : MonoBehaviour
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {
             setState(State.EndGame);
+            EndGameUI.SetActive(true);
+            Time.timeScale = 0.0f;
             //Do stuff
         }
 
@@ -166,12 +168,21 @@ public class FlowManager : MonoBehaviour
         return currentState; 
     }
 
+    public void GoBackToMainMenu()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("mainMenu");
+    }
+
     public void advanceState()
     {
         switch (currentState)
         {
             case State.Cooldown:
                 setState(State.Spawn);
+                FlowManager.instance.currentPlayer.SetPlayerLook(true);
+                FlowManager.instance.currentPlayer.SetPlayerCanInteract(true);
+                Cursor.lockState = CursorLockMode.Locked;
 
                 spawnerManager.onRoundChange(currentRound);
 
@@ -189,6 +200,9 @@ public class FlowManager : MonoBehaviour
                 break;
             case State.Improvement:
                 SHopUI.SetActive(true);
+                FlowManager.instance.currentPlayer.SetPlayerLook(false);
+                FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
+                Cursor.lockState = CursorLockMode.None;
                 musicInstance_.setParameterByName("GameState", 1.0f);
                 break;
         }
@@ -378,6 +392,7 @@ public class FlowManager : MonoBehaviour
     }
 
     public GameObject SHopUI;
+    public GameObject EndGameUI;
 
     #endregion
 }

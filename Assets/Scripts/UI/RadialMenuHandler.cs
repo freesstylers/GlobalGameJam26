@@ -43,6 +43,7 @@ public class RadialMenuHandler : MonoBehaviour
             chooseInstance_.start();
 
             FlowManager.instance.currentPlayer.SetPlayerLook(false);
+            FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
         }
         else if (radialOn && Rewired.ReInput.players.Players[0].GetButtonUp("radial"))
         {
@@ -57,6 +58,7 @@ public class RadialMenuHandler : MonoBehaviour
             radialOn = false;
 
             FlowManager.instance.currentPlayer.SetPlayerLook(true);
+            FlowManager.instance.currentPlayer.SetPlayerCanInteract(true);
         }
 
 

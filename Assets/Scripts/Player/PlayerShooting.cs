@@ -91,10 +91,13 @@ public class PlayerShooting : MonoBehaviour
 
     void HandleShooting()
     {
-        if (Rewired.ReInput.players.GetPlayer(0).GetButton("shoot") && !reload && currentAmo > 0 && currentCadence > cadence)
+        if (FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0 && Rewired.ReInput.players.GetPlayer(0).GetButton("shoot") && !reload && currentAmo > 0 && currentCadence > cadence)
         {
-            Vector3 dir = CalculateDirectionSpread().normalized;
-            Shoot(dir);
+            if (FlowManager.instance.GetState() != FlowManager.State.Improvement)
+            {
+                Vector3 dir = CalculateDirectionSpread().normalized;
+                Shoot(dir);
+            }
         }
 
         if(currentCadence < cadence)

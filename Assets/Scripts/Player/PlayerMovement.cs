@@ -126,10 +126,18 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
         hitInstance_.start();
         //Screen Effect
-        if (!FlowManager.instance.blending)
+        FlowManager.instance.GetCurrentMask().stats_.playerHP_ -= 1;
+        if(FlowManager.instance.GetCurrentMask().stats_.playerHP_ <= 0)
         {
-            FlowManager.instance.StartCoroutine(FlowManager.instance.setBlend());
+            Cursor.lockState = CursorLockMode.None;
+            playerCanInteract = false;
         }
+        Debug.Log("Player HP: " + FlowManager.instance.GetCurrentMask().stats_.playerHP_);
+        //Screen Effect
+        //if (!FlowManager.instance.blending)
+        //{
+        //    FlowManager.instance.StartCoroutine(FlowManager.instance.setBlend());
+        //}
     }
 
     private void HandleMouseLook()
@@ -240,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = 0;
         float vertical = 0;
-        if (!playerCanInteract)
+        if (playerCanInteract)
         {
             //Saca el lado al que inclinarse segun input
             horizontal = Rewired.ReInput.players.GetPlayer(0).GetAxis("xAxis");
