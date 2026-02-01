@@ -63,8 +63,6 @@ public class RadialMenuHandler : MonoBehaviour
         if (!radialOn)
             return;
 
-        //Debug.Log(mov);
-
         if (Rewired.ReInput.players.Players[0].controllers.GetLastActiveController() == Rewired.ReInput.players.Players[0].controllers.Mouse || Rewired.ReInput.players.Players[0].controllers.GetLastActiveController() == Rewired.ReInput.players.Players[0].controllers.Keyboard)
             MouseAccumulaMov += new Vector2(Rewired.ReInput.players.Players[0].GetAxis("xCamera"), Rewired.ReInput.players.Players[0].GetAxis("yCamera"));
         else

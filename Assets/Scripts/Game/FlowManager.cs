@@ -171,8 +171,6 @@ public class FlowManager : MonoBehaviour
                 setState(State.Cooldown);
                 break;
         }
-
-        Debug.LogError("Changing State: " + currentState);
     }
 
     public void GoToMenu()

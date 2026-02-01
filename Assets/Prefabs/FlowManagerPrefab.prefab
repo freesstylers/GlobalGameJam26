@@ -59,9 +59,11 @@ MonoBehaviour:
   redCamera: {fileID: 0}
   blueCamera: {fileID: 0}
   yellowCamera: {fileID: 0}
+  screenMaterial: {fileID: 0}
   currentRound: 0
   currentPlayer: {fileID: 0}
   currentPoints: 0
+  currentAliveEnemies: 0
   slowTimeScale: 0.1
   PauseMenu: {fileID: 5545700421007859757}
   RadialMenuHandler: {fileID: 4925805638319920073}
@@ -80,7 +82,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3272976570996065562}
   - component: {fileID: 4033485415629664005}
-  - component: {fileID: 1143042721515962104}
   - component: {fileID: 7674591426256994671}
   m_Layer: 5
   m_Name: MaskCyan (Blue)
@@ -160,14 +161,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1143042721515962104
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978508633796763775}
-  m_Enabled: 1
 --- !u!114 &7674591426256994671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +253,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6214145692783888773}
   - component: {fileID: 3984696617317301096}
-  - component: {fileID: 1315855784332762225}
   - component: {fileID: 7797834125016756359}
   m_Layer: 5
   m_Name: MaskPink (Red)
@@ -340,14 +332,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1315855784332762225
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378049116862157764}
-  m_Enabled: 1
 --- !u!114 &7797834125016756359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7260923387620729230}
   - component: {fileID: 2705166503599371048}
-  - component: {fileID: 4805726081165946465}
   - component: {fileID: 4843472906671331727}
   m_Layer: 5
   m_Name: MaskYellow (Green)
@@ -482,14 +465,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4805726081165946465
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7751348653597778975}
-  m_Enabled: 1
 --- !u!114 &4843472906671331727
 MonoBehaviour:
   m_ObjectHideFlags: 0

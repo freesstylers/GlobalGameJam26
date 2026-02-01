@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        FlowManager.instance.SuscribeMaskChange(OnMaskChange);
         if (playerCamera != null)
         {
             _cameraBasePosition = playerCamera.transform.localPosition;
@@ -85,8 +86,6 @@ public class PlayerMovement : MonoBehaviour
             _gunBaseRotation = gunContainer.transform.localRotation;
         }
 
-        //FlowManager.instance.SuscribeMaskChange(OnMaskChange);
-        //currentMask_ = FlowManager.instance.GetCurrentMask();
         Cursor.lockState = CursorLockMode.Locked; //pilla el foco
 
         dashInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Dash");
@@ -338,14 +337,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ChangeMask()
-    {
-        FlowManager.instance.NextMask();
-        currentMask_ = FlowManager.instance.GetCurrentMask();
-    }
-
     private void OnMaskChange(Mask newMask)
     {
         currentMask_ = newMask;
+        Debug.Log(newMask.stats_.baseSpeed_);
+        Debug.Log(newMask.stats_.realSpeed_);
     }
 }

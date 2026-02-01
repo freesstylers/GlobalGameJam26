@@ -20,7 +20,7 @@ public class Stats : ScriptableObject
     public float realSpeed_ = 10.0f;
     public float realReload_ = 1.0f;
 
-    private List<Upgrade> upgrades_;
+    private List<Upgrade> upgrades_ = new List<Upgrade>();
     private float radiusToTogleSpawners = 5.0f;
 
     public CapsuleCollider spawnerCollider;
@@ -84,7 +84,8 @@ public class Stats : ScriptableObject
 
     public void ResetStats()
     {
-        upgrades_.Clear();
+        if(upgrades_.Count>0)
+            upgrades_.Clear();
         ResetHP();
         realDmg_ = baseDmg_;
         realRate_ = baseRate_;
