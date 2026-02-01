@@ -9,15 +9,16 @@ public class mainMenuScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-#if UNITY_STANDALONE
-        quit.SetActive(true);
-#else
-        quit.SetActive(false);
-#endif
+//#if UNITY_STANDALONE
+//        quit.SetActive(true);
+//#else
+//        quit.SetActive(false);
+//#endif
     }
 
     public void Play()
     {
+        gameObject.SetActive(false);    
         SceneManager.LoadScene("gameScreen");
     }
 

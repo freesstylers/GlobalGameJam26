@@ -66,6 +66,7 @@ public class FlowManager : MonoBehaviour
     public PlayerMovement currentPlayer;
 
     public GameObject giantMask;
+    public Animator nextRoundText;
 
     public int pointsInterface
     {
@@ -154,7 +155,12 @@ public class FlowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHP(currentMask_.stats_.playerHP_, currentMask_.stats_.maxPlayerHP_);
+        if (Rewired.ReInput.players.Players[0].GetButtonDown("esc"))
+        {
+            Pause(Time.timeScale != 0.0f);
+        }
+        
+        UpdateHP(GetCurrentMask().stats_.playerHP_, GetCurrentMask().stats_.maxPlayerHP_);
 
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {
@@ -224,6 +230,7 @@ public class FlowManager : MonoBehaviour
             case State.Improvement:
                 SHopUI.SetActive(true);
                 giantMask.GetComponent<Animator>().SetTrigger("NewRound");
+                nextRoundText.SetTrigger("NextRound");
                 giantMaskInstance_.start();
                 FlowManager.instance.currentPlayer.SetPlayerLook(false);
                 FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);

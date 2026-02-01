@@ -103,7 +103,7 @@ public class ShopMenuMan : MonoBehaviour
     public void Buy(Upgrade.UpgradeClass upgrade)
     {
         Upgrade u = new Upgrade(upgrade, Tiers[upgrade]);
-        u.pegatina_ = pegatinasSprites[(int)upgrade];
+        u.pegatina_ = pegatinasSprites[(int)upgrade - 1];
         int cost = u.cost_;
 
         //restar cost

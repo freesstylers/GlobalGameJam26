@@ -122,6 +122,7 @@ public class RadialMenuHandler : MonoBehaviour
 
             string statTxt = s.GetTextDump();
 
+            statDataTxt.text = statTxt;
 
             statDataTxt.gameObject.SetActive(true);
         }
