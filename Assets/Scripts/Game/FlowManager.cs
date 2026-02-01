@@ -52,7 +52,7 @@ public class FlowManager : MonoBehaviour
             onStateChanged();
         }
     }
-
+    [SerializeField]
     private State currentState_;
 
     float timerValue = 0.0f;

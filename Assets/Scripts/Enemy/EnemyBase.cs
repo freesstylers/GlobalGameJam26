@@ -6,6 +6,7 @@ public class EnemyBase : MonoBehaviour
 {
     public Mask.MaskColor enemyColor;
     public int maxHp_;
+    [SerializeField]
     private int hp_;
     public bool spawning_;
     public bool dying_;
@@ -17,7 +18,6 @@ public class EnemyBase : MonoBehaviour
 
     public float scaleChangeRate_ = 0.5f;
 
-    public Mask.MaskColor color_;
     public GameObject filter_;
 
     public Animator hurtAnimation_;
@@ -40,9 +40,11 @@ public class EnemyBase : MonoBehaviour
 
     private void OnEnable()
     {
+        transform_ = GetComponent<Transform>();
         hp_ = maxHp_;
         enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
-        EnemyInit(color_);
+        EnemyInit(enemyColor);
+        transform_.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
     public void EnemyInit(Mask.MaskColor c)
@@ -55,22 +57,38 @@ public class EnemyBase : MonoBehaviour
                 //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[0];
 
                 layer = LayerMask.NameToLayer("RedC");
-                gameObject.layer = layer;
+                SetGameLayerRecursive(gameObject, layer);
+                
                 break;
             case Mask.MaskColor.BLUE:
                 //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[1];
 
                 layer = LayerMask.NameToLayer("BlueC");
-                gameObject.layer = layer;
+                SetGameLayerRecursive(gameObject, layer);
+
                 break;
             case Mask.MaskColor.YELLOW:
                 //filter_.GetComponent<MeshRenderer>().materials[1] = FlowManager.instance.enemyFilters_[2];
 
                 layer = LayerMask.NameToLayer("YellowC");
-                gameObject.layer = layer;
+                SetGameLayerRecursive(gameObject, layer);
                 break;
             case Mask.MaskColor.NONE:
                 break;
+        }
+    }
+
+    private void SetGameLayerRecursive(GameObject _go, int _layer)
+    {
+        _go.layer = _layer;
+        foreach (Transform child in _go.transform)
+        {
+            child.gameObject.layer = _layer;
+
+            Transform _HasChildren = child.GetComponentInChildren<Transform>();
+            if (_HasChildren != null)
+                SetGameLayerRecursive(child.gameObject, _layer);
+
         }
     }
 
