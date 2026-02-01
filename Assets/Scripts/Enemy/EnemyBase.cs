@@ -24,16 +24,18 @@ public class EnemyBase : MonoBehaviour
 
     public PoolTemplate reference;
 
+    private FMOD.Studio.EventInstance hitInstance_;
+
     //void Awake()
     //{
     //    hp_ = maxHp_;
     //    enemyColor = (Mask.MaskColor)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mask.MaskColor)).Length);
     //}
 
-    //private void Start()
-    //{
-    //    transform_ = GetComponent<Transform>();
-    //}
+    private void Start()
+    {
+        hitInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/EnemyHit");
+    }
 
     private void OnEnable()
     {
@@ -93,6 +95,7 @@ public class EnemyBase : MonoBehaviour
         hp_ -= dmg;
         if (hp_ <= 0) Die();
         hurtAnimation_.Play("OnHit");
+        hitInstance_.start();
     }
 
     private void SpawnUpdate()
