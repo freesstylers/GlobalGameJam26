@@ -161,16 +161,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1646990669613800938, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_text
-      value: 'Movement: W ASD.
+      value: 'Movement: WASD
 
-        Shoot: Left Click.
+        Shoot: Left Click
 
-        Sprint: Shift.
+        Sprint: Shift
 
         Dash:
-        right click.
+        right click
 
-        Mask: Q.
+        Mask: Q
 
 
         Different masks show different things...'
