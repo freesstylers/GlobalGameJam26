@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ebd3b0a63dd1f4e8c19fe80aac2410, type: 3}
   m_Name: RedMaskStats
   m_EditorClassIdentifier: 
-  maxPlayerHP_: 20
-  playerHP_: 17
-  baseDmg_: 7
-  baseRate_: 0.3
-  baseAmmo_: 10
-  baseSpeed_: 3
+  initPlayerHP_: 18
+  maxPlayerHP_: 18
+  playerHP_: 20
+  baseDmg_: 4
+  baseRate_: 0.5
+  baseAmmo_: 20
+  baseSpeed_: 5
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 10
-  realRate_: 0.3
-  realAmmo_: 10
-  realSpeed_: 3
+  realDmg_: 4
+  realRate_: 0.54
+  realAmmo_: 20
+  realSpeed_: 5
   realReload_: 1
   spawnerCollider: {fileID: 0}

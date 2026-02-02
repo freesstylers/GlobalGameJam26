@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ebd3b0a63dd1f4e8c19fe80aac2410, type: 3}
   m_Name: BlueMaskStats
   m_EditorClassIdentifier: 
-  maxPlayerHP_: 15
-  playerHP_: 15
-  baseDmg_: 4
-  baseRate_: 0.1
-  baseAmmo_: 40
+  initPlayerHP_: 14
+  maxPlayerHP_: 14
+  playerHP_: 11
+  baseDmg_: 7
+  baseRate_: 1
+  baseAmmo_: 30
   baseSpeed_: 5
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 6
-  realRate_: 0.1
-  realAmmo_: 40
+  realDmg_: 7
+  realRate_: 0.9
+  realAmmo_: 30
   realSpeed_: 5
   realReload_: 1
   spawnerCollider: {fileID: 0}

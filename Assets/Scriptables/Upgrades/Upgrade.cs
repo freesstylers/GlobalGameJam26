@@ -8,18 +8,18 @@ public class Upgrade
         NONE, DMG, RATE, SPEED, AMMO, RELOAD, HP
     }
 
-    private float[] DMGPerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
-    private float[] RatePerLevel = { 0.97f, 0.94f, 0.9f, 0.86f, 0.83f };
+    private float[] DMGPerLevel = { .5f, .8f, 1f, 1.5f, 2.0f };
+    private float[] RatePerLevel = { 0.98f, 0.95f, 0.92f, 0.90f, 0.85f };
     private float[] SpeedPerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
     private int[] AmmoPerLevel = { 10, 20, 30, 40, 50 };
     private float[] ReloadPerLevel = { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
-    private int[] HPPerLevel = { 10, 20, 30, 40, 50 };
+    private int[] HPPerLevel = { 2, 4, 6, 8, 10 };
 
     public UpgradeClass class_ = UpgradeClass.NONE;
     private string name_ = "";
     public int level_ = 1;
-    public float mult_ = 2.0f;
-    public int value_ = 10;
+    public float mult_ = 1.0f;
+    public int value_ = 1;
     public int cost_ = 100;
     public int baseCost_ = 100;
 
@@ -37,32 +37,32 @@ public class Upgrade
         switch(class_) {
             case UpgradeClass.DMG:
                 mult_ = DMGPerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
+                cost_ = (int)((baseCost_ * mult_) * (level_ + 1) * 2);
                 name_ = "Pegata poderosa";
                 break;
             case UpgradeClass.RATE:
                 mult_ = RatePerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
+                cost_ = (int)((baseCost_ * mult_) * (level_ + 1) * 2);
                 name_ = "Papela cañera";
                 break;
             case UpgradeClass.SPEED:
                 mult_ = SpeedPerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
+                cost_ = (int)((baseCost_ * mult_) * (level_ + 1) * 2);
                 name_ = "Pegatinilla rapidilla";
                 break;
             case UpgradeClass.RELOAD:
                 mult_ = ReloadPerLevel[level_];
-                cost_ = (int)(baseCost_ * mult_) * (level_ + 1);
+                cost_ = (int)((baseCost_ * mult_) * (level_ + 1) * 2);
                 name_ = "Adhesivo preparado";
                 break;
             case UpgradeClass.AMMO:
                 value_ = AmmoPerLevel[level_];
-                cost_ = (int)(baseCost_ + value_) * (level_ + 1);
+                cost_ = (int)((baseCost_ + value_) * (level_ + 1) * 2);
                 name_ = "Etiqueta cargada";
                 break;
             case UpgradeClass.HP:
                 value_ = HPPerLevel[level_];
-                cost_ = (int)(baseCost_ + value_) * (level_ + 1);
+                cost_ = (int)((baseCost_ + value_) * (level_ + 1) * 2);
                 name_ = "Sticker grueso";
                 break;
         }

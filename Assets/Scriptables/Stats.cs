@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Stats", menuName = "Scriptable Objects/Stats")]
 public class Stats : ScriptableObject
 {
+    public int initPlayerHP_ = 10;
     public int maxPlayerHP_ = 10;
     public int playerHP_ = 10;
     public float baseDmg_ = 1;
@@ -42,7 +43,8 @@ public class Stats : ScriptableObject
 
     public void ResetHP()
     {
-        playerHP_ = maxPlayerHP_;
+        playerHP_ = initPlayerHP_;
+        maxPlayerHP_= initPlayerHP_;
     }
 
     public void UpdateStats()
@@ -81,6 +83,7 @@ public class Stats : ScriptableObject
     {
         upgrades_.Add(u);
         UpdateStats();
+        upgrades_.Remove(u);
     }
 
     public void ResetStats()
