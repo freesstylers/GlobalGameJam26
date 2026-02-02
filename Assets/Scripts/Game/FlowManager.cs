@@ -13,7 +13,7 @@ public class FlowManager : MonoBehaviour
     public enum enemyType { dolphin, skibido, illumiboy, concha }
 
 
-    public enum State { Cooldown, Spawn, Round, Improvement, EndGame };
+    public enum State { Cooldown, Spawn, Round, Improvement, EndGame, WinGame };
     public int[] timers = { 10, 5, 60, -1, -1 };
     public static FlowManager instance;
 
@@ -46,6 +46,10 @@ public class FlowManager : MonoBehaviour
     public TextMeshProUGUI totalScoreText_;
     public TextMeshProUGUI totalEnemiesKilledText_;
     public TextMeshProUGUI totalRoundsText_;
+
+    public TextMeshProUGUI totalScoreTextWin_;
+    public TextMeshProUGUI totalEnemiesKilledTextWin_;
+    public TextMeshProUGUI totalRoundsTextWin_;
 
     public State currentState
     { 
@@ -237,6 +241,18 @@ public class FlowManager : MonoBehaviour
         musicInstance_.setParameterByName("GameState", 4);
     }
 
+    private void setWinGame()
+    {
+        totalScoreTextWin_.text = "Total Score: " + totalPoints_.ToString();
+        totalEnemiesKilledTextWin_.text = "Enemies Killed: " + enemiesKilled_.ToString();
+        totalRoundsTextWin_.text = "Round: " + (currentRound + 1).ToString();
+
+        setState(State.WinGame);
+        WinGameUI.SetActive(true);
+        Time.timeScale = 0.0f;
+        musicInstance_.setParameterByName("GameState", 3);
+    }
+
     public void setState (State state)
     {
         currentState = state;
@@ -280,19 +296,20 @@ public class FlowManager : MonoBehaviour
                     }
                     else
                     {
-                        setState(State.EndGame);
+                        setWinGame();
                     }
                 }
                 break;
             case State.Improvement:
                 SHopUI.SetActive(true);
-                giantMask.GetComponent<Animator>().SetTrigger("NewRound");
-                //nextRoundText.SetTrigger("NextRound");
                 giantMaskInstance_.start();
                 FlowManager.instance.currentPlayer.SetPlayerLook(false);
                 FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
                 Cursor.lockState = CursorLockMode.None;
                 musicInstance_.setParameterByName("GameState", 1.0f);
+                break;
+            case State.WinGame:
+                
                 break;
         }
     }
@@ -322,6 +339,8 @@ public class FlowManager : MonoBehaviour
     {
         setState(State.Cooldown);
         SHopUI.SetActive(false);
+        giantMask.GetComponent<Animator>().SetTrigger("NewRound");
+        nextRoundText.SetTrigger("NextRound");
         musicInstance_.setParameterByName("GameState", 0.0f);
     }
 
@@ -333,7 +352,7 @@ public class FlowManager : MonoBehaviour
     public GameObject PauseMenu;
     public RadialMenuHandler RadialMenuHandler;
 
-    public float mouseSpeedMod = 1.0f;
+    public float mouseSpeedMod = .5f;
 
     public void Pause(bool state)
     {
@@ -512,6 +531,7 @@ public class FlowManager : MonoBehaviour
 
     public GameObject SHopUI;
     public GameObject EndGameUI;
+    public GameObject WinGameUI;
 
     #endregion
 

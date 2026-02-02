@@ -21,8 +21,8 @@ MonoBehaviour:
   baseSpeed_: 5
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 7
-  realRate_: 1
+  realDmg_: 200
+  realRate_: 0.3
   realAmmo_: 30
   realSpeed_: 5
   realReload_: 1

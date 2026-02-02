@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPlayerHP_: 10
   maxPlayerHP_: 10
-  playerHP_: 7
+  playerHP_: 10
   baseDmg_: 1
   baseRate_: 0.1
   baseAmmo_: 150
   baseSpeed_: 5
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 0.8
+  realDmg_: 100
   realRate_: 0.1
   realAmmo_: 150
   realSpeed_: 5
