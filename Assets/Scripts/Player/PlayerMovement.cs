@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
     public GameObject cameraContainer;
 
+    public Animator gunAnimator;
     public bool playerCanInteract = true;
     [Header("MOUSE LOOK")]
     public float mouseSensitivity = 0.9f;
@@ -274,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
         if (!playerCamera)
             return;
 
-        float targetFOV = _isSprinting ? _baseFOV - sprintFOVReduction : _baseFOV;
+        float targetFOV = _isSprinting ? _baseFOV + sprintFOVReduction : _baseFOV;
         screenMaterial.SetFloat("_mask1VisualObstructionStremgth", 1 - ((Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime) - (_baseFOV - sprintFOVReduction)) / sprintFOVReduction));
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, fovTransitionSpeed * Time.deltaTime);
     }
