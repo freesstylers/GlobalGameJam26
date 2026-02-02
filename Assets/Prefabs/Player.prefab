@@ -134,8 +134,9 @@ MonoBehaviour:
   currentMask_: {fileID: 0}
   playerCamera: {fileID: 4429713558553708375}
   cameraContainer: {fileID: 4937823324233529499}
+  gunAnimator: {fileID: 6159210207071771221}
   playerCanInteract: 1
-  mouseSensitivity: 2
+  mouseSensitivity: 1
   maxLookAngle: 90
   stepHeightDelta: 0.25
   stepCadence: 5
@@ -144,10 +145,10 @@ MonoBehaviour:
   gunBobHorizontalDelta: 2
   gunBobRotationDelta: 5
   cameraLeanAccumulation: 5
-  cameraLeanMax: 20
+  cameraLeanMax: 25
   cameraLeanRecoverySpeed: 5
   sprintSpeed: 13
-  sprintFOVReduction: 10
+  sprintFOVReduction: 30
   fovTransitionSpeed: 5
   dashSpeed: 25
   dashDuration: 0.3
@@ -175,6 +176,8 @@ MonoBehaviour:
   maxAmo: 30
   cadence: 2
   reloadTime: 1
+  gunAnimator: {fileID: 6159210207071771221}
+  shootParticles: {fileID: 1735827747936317722}
   gunObject: {fileID: 4513209138056664890}
   recoilOffset: {x: 0, y: 0, z: -0.2}
   recoilHorizontalVariation: 0.1
@@ -245,6 +248,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5207386138296855447}
     m_Modifications:
     - target: {fileID: 701930611594406286, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: field of view
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 701930611594406286, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
       propertyPath: near clip plane
       value: 0.1
       objectReference: {fileID: 0}
@@ -259,6 +266,58 @@ PrefabInstance:
     - target: {fileID: 2124596030940191342, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219819766480049127, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 46.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220073653649627423, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229825356963733443, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229825356963733443, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229825356963733443, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229825356963733443, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4624321581172416422, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
       propertyPath: m_LocalPosition.x
@@ -342,11 +401,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4529983570754823621, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7471089857402571121}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1519760560948547926, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6159210207071771221}
   m_SourcePrefab: {fileID: 100100000, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
 --- !u!4 &727893334519941916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4529983570754823621, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
+  m_PrefabInstance: {fileID: 3802237854874988249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1735827747936317722 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3229825356963733443, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
   m_PrefabInstance: {fileID: 3802237854874988249}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2437297331794706319 stripped
@@ -354,6 +421,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1519760560948547926, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}
   m_PrefabInstance: {fileID: 3802237854874988249}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6159210207071771221
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437297331794706319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 780d5d0ef6cdf464f8a5befcfd9ca2d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!20 &4429713558553708375 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 701930611594406286, guid: 025080a9a15110e43ad78dcc0f2cfd91, type: 3}

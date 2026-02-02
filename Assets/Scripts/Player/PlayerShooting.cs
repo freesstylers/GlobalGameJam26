@@ -10,7 +10,8 @@ public class PlayerShooting : MonoBehaviour
     public int maxAmo = 30;
     public float cadence = 0.1f;
     public float reloadTime = 1f;
-
+    public Animator gunAnimator;
+    public ParticleSystem shootParticles;
     [Header("GUN RECOIL")]
     public GameObject gunObject;
     public Vector3 recoilOffset = new Vector3(0, 0, -0.2f);
@@ -111,7 +112,15 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
-        if(currentCadence < cadence)
+        if (FlowManager.instance.GetCurrentMask().stats_.playerHP_ > 0 && Rewired.ReInput.players.GetPlayer(0).GetButton("thirdAction") && !reload && currentCadence > cadence)
+        {
+            if (FlowManager.instance.GetState() != FlowManager.State.Improvement)
+            {
+                Reload();
+            }
+        }
+
+        if (currentCadence < cadence)
         {
             currentCadence += Time.deltaTime;
         }
@@ -122,6 +131,7 @@ public class PlayerShooting : MonoBehaviour
             if(currentReloadTime >= reloadTime)
             {
                 reload = false;
+                gunAnimator.SetBool("Reload", false);
                 currentAmo = maxAmo;
 
                 FlowManager.instance.UpdateAmmo(currentAmo);
@@ -132,6 +142,7 @@ public class PlayerShooting : MonoBehaviour
     void Reload()
     {
         reload = true;
+        gunAnimator.SetBool("Reload", true);
         currentReloadTime = 0;
         reloadInstance_.start();
     }
@@ -176,6 +187,7 @@ public class PlayerShooting : MonoBehaviour
         currentAmo--;
 
         FlowManager.instance.UpdateAmmo(currentAmo);
+        shootParticles.Play();
         if (currentAmo <= 0)
         {
             Reload();
