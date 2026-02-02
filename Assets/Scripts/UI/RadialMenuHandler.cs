@@ -27,6 +27,15 @@ public class RadialMenuHandler : MonoBehaviour
         chooseInstance_ = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerEvents/Choose");
     }
 
+    private void OnDestroy()
+    {
+        changeInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        chooseInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        changeInstance_.release();
+        chooseInstance_.release();
+    }
+
     void Update()
     {
         if (FlowManager.instance.PauseMenu.activeInHierarchy)

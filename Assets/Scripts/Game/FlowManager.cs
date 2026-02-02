@@ -131,6 +131,16 @@ public class FlowManager : MonoBehaviour
         SetMask(0);
     }
 
+    //Always release FMOD instances on destroy
+    void OnDestroy()
+    {
+        musicInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        giantMaskInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+   
+        musicInstance_.release();
+        giantMaskInstance_.release();
+    }
+
     private void onStateChanged()
     {
     }
@@ -172,11 +182,17 @@ public class FlowManager : MonoBehaviour
         
         UpdateHP(GetCurrentMask().stats_.playerHP_, GetCurrentMask().stats_.maxPlayerHP_);
 
+        //If player HP is below 25%, set music to tension
+        if (GetCurrentMask().stats_.playerHP_ <= (GetCurrentMask().stats_.maxPlayerHP_ * 0.25))
+            SetMusicToTension(true);
+        else SetMusicToTension(false);
+
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {
             setState(State.EndGame);
             EndGameUI.SetActive(true);
             Time.timeScale = 0.0f;
+            musicInstance_.setParameterByName("GameState", 4);
             //Do stuff
         }
 
@@ -304,9 +320,12 @@ public class FlowManager : MonoBehaviour
 
     public List<Animator> Masks;
 
-    public void SetMusicToTension()
+    public void SetMusicToTension(bool lowHP)
     {
-        musicInstance_.setParameterByName("LowHealth", 1.0f);
+        if(lowHP)
+            musicInstance_.setParameterByName("LowHealth", 0f);
+        else
+        musicInstance_.setParameterByName("LowHealth", 1f);
     }
 
     public void UpdateMasks()
@@ -465,4 +484,5 @@ public class FlowManager : MonoBehaviour
     public GameObject EndGameUI;
 
     #endregion
+
 }

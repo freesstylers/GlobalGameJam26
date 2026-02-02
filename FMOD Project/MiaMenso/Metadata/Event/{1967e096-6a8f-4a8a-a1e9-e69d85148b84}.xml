@@ -41,6 +41,7 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{10f998ad-4252-4b7f-ad2e-85296f6c2835}</destination>
+			<destination>{76c13e9c-2416-4010-88ab-2be25e412165}</destination>
 		</relationship>
 		<relationship name="banks">
 			<destination>{5688f787-09c2-486d-9cb9-7f75ecbbfbc3}</destination>
@@ -100,7 +101,7 @@
 	</object>
 	<object class="GroupTrack" id="{0a8ffd3e-16a3-4e55-b5a9-ba95d5506d1e}">
 		<relationship name="automationTracks">
-			<destination>{ee2d5156-6dde-4297-8b64-8580b6e5d760}</destination>
+			<destination>{c5c8e089-9cd8-4ea8-9f3a-0e1f877879ba}</destination>
 		</relationship>
 		<relationship name="modules">
 			<destination>{14f0653c-4fb8-4ad2-a3ec-806140a0e78c}</destination>
@@ -111,7 +112,7 @@
 	</object>
 	<object class="GroupTrack" id="{1db2759d-f378-4b09-a307-8683453e1289}">
 		<relationship name="automationTracks">
-			<destination>{f50baaf3-b92d-4f73-9ad4-e12213a90447}</destination>
+			<destination>{3be7a0d6-84e7-45b8-b936-d86f9eca00c2}</destination>
 		</relationship>
 		<relationship name="modules">
 			<destination>{17dd0cd8-d7bd-4598-9391-9e1468b0e811}</destination>
@@ -172,6 +173,11 @@
 	<object class="ParameterProxy" id="{10f998ad-4252-4b7f-ad2e-85296f6c2835}">
 		<relationship name="preset">
 			<destination>{6db29cb2-d1f2-4d7c-8189-41ce46936d61}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{76c13e9c-2416-4010-88ab-2be25e412165}">
+		<relationship name="preset">
+			<destination>{fe067a12-9712-489c-951b-03d8006fe37f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e43c4484-a780-48c3-a999-a1752091f6fc}">
@@ -275,7 +281,7 @@
 			<destination>{e43c4484-a780-48c3-a999-a1752091f6fc}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationTrack" id="{ee2d5156-6dde-4297-8b64-8580b6e5d760}">
+	<object class="AutomationTrack" id="{c5c8e089-9cd8-4ea8-9f3a-0e1f877879ba}">
 		<relationship name="automator">
 			<destination>{ac370f77-d6b9-41c5-89f9-8a887bdcd307}</destination>
 		</relationship>
@@ -305,7 +311,7 @@
 			<destination>{e43c4484-a780-48c3-a999-a1752091f6fc}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationTrack" id="{f50baaf3-b92d-4f73-9ad4-e12213a90447}">
+	<object class="AutomationTrack" id="{3be7a0d6-84e7-45b8-b936-d86f9eca00c2}">
 		<relationship name="automator">
 			<destination>{afba72e8-d375-46a5-8f15-a640aa2b025e}</destination>
 		</relationship>

@@ -47,6 +47,13 @@ public class EnemyBase : MonoBehaviour
         transform_.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
+    private void OnDestroy()
+    {
+        hitInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        hitInstance_.release();
+    }
+
     public void EnemyInit(Mask.MaskColor c)
     {
         int layer;

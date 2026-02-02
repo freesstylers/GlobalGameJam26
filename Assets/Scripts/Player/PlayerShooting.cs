@@ -66,6 +66,15 @@ public class PlayerShooting : MonoBehaviour
         HandleRecoil();
     }
 
+    private void OnDestroy()
+    {
+        shootInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        reloadInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        shootInstance_.release();
+        reloadInstance_.release();
+    }
+
     private void HandleRecoil()
     {
         if (recoilTimer > 0f)

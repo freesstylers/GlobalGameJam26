@@ -108,6 +108,17 @@ public class PlayerMovement : MonoBehaviour
         HandleGunStep();
     }
 
+    private void OnDestroy()
+    {
+        dashInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        stepsInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        hitInstance_.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        dashInstance_.release();
+        stepsInstance_.release();
+        hitInstance_.release();
+    }
+
     public void SetPlayerCanInteract(bool newValue)
     {
         playerCanInteract = newValue;
