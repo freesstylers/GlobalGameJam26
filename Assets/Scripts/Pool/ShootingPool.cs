@@ -15,6 +15,10 @@ public class ShootingPool : PoolTemplate
 
     protected override void OnGet(GameObject gameObject)
     {
+        if(gameObject == null)
+        {
+            return;
+        }
         gameObject.transform.SetPositionAndRotation(spawnPoint.transform.position, Quaternion.identity);
         base.OnGet(gameObject);
 

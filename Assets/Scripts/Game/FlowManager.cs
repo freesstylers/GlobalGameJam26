@@ -43,6 +43,10 @@ public class FlowManager : MonoBehaviour
     [SerializeField]
     Material screenMaterial;
 
+    public TextMeshProUGUI totalScoreText_;
+    public TextMeshProUGUI totalEnemiesKilledText_;
+    public TextMeshProUGUI totalRoundsText_;
+
     public State currentState
     { 
         get { 
@@ -85,8 +89,13 @@ public class FlowManager : MonoBehaviour
     }
 
     private int currentPoints_ = 0;
+    
 
     public int currentAliveEnemies = 0;
+
+    //To add to the final score
+    private int totalPoints_ = 0;
+    private int enemiesKilled_ = 0;
 
     private void Awake()
     {
@@ -143,6 +152,7 @@ public class FlowManager : MonoBehaviour
 
     private void onStateChanged()
     {
+        
     }
 
     public TextMeshProUGUI points;
@@ -150,6 +160,11 @@ public class FlowManager : MonoBehaviour
     private void onPointsChanged()
     {
         points.text = currentPoints_.ToString();
+    }
+
+    public void AddScore(int score)
+    {
+        totalPoints_ += score;
     }
 
     public Slider HP;
@@ -189,10 +204,7 @@ public class FlowManager : MonoBehaviour
 
         if (GetCurrentMask().stats_.playerHP_ <= 0)
         {
-            setState(State.EndGame);
-            EndGameUI.SetActive(true);
-            Time.timeScale = 0.0f;
-            musicInstance_.setParameterByName("GameState", 4);
+            setEndGame();
             //Do stuff
         }
 
@@ -211,6 +223,18 @@ public class FlowManager : MonoBehaviour
 
         if (currentState == State.Improvement)
             advanceState();
+    }
+
+    private void setEndGame()
+    {
+        totalScoreText_.text = "Total Score: " + totalPoints_.ToString();
+        totalEnemiesKilledText_.text = "Enemies Killed: " + enemiesKilled_.ToString();
+        totalRoundsText_.text = "Round: " + (currentRound+1).ToString();
+
+        setState(State.EndGame);
+        EndGameUI.SetActive(true);
+        Time.timeScale = 0.0f;
+        musicInstance_.setParameterByName("GameState", 4);
     }
 
     public void setState (State state)
@@ -286,6 +310,12 @@ public class FlowManager : MonoBehaviour
         redEnemies_.text = redEnemies.ToString();
         greenEnemies_.text = greenEnemies.ToString();
         blueEnemies_.text = blueEnemies.ToString();
+    }
+
+    public void addEnemyKilled()
+    {
+        //For end of game
+        enemiesKilled_ = enemiesKilled_ + 1;
     }
 
     public void NextRound()

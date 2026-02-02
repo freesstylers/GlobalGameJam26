@@ -133,7 +133,7 @@ public class EnemyBase : MonoBehaviour
             case Mask.MaskColor.NONE:
                 break;
         }
-
+        FlowManager.instance.addEnemyKilled();
         FlowManager.instance.UpdateEnemyCount();
     }
 
@@ -168,7 +168,9 @@ public class EnemyBase : MonoBehaviour
         {
             transform_.localScale = new Vector3(0.0f, 0.0f, 0.0f);
             dying_ = false;
-            FlowManager.instance.pointsInterface += 150 + UnityEngine.Random.Range(50, 150);
+            int addedPoints = 150 + UnityEngine.Random.Range(50, 150);
+            FlowManager.instance.pointsInterface += addedPoints;
+            FlowManager.instance.AddScore(addedPoints);
             FlowManager.instance.currentAliveEnemies -= 1;
             if(FlowManager.instance.currentAliveEnemies == 0)
             {
