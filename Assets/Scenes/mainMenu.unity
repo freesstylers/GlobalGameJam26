@@ -211,9 +211,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -26.927612
       objectReference: {fileID: 0}
+    - target: {fileID: 3561572650241147147, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561572650241147147, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_MinValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4169704354118125842, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169704354118125842, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -237,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4857794663693461709, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4857794663693461709, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -245,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4857794663693461709, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914862696323609368, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_Pivot.x
@@ -332,6 +340,10 @@ PrefabInstance:
       value: How to play
       objectReference: {fileID: 0}
     - target: {fileID: 6362743467236882603, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973399456778645839, guid: 53236d9f51a811946b073fddb7d7b28d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

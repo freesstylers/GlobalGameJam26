@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public float mouseSensitivity = .5f;
     void Awake()
     {
         if (instance == null)

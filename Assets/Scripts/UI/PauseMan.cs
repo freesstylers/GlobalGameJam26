@@ -15,6 +15,7 @@ public class PauseMan : MonoBehaviour
     public void UpdatedSlider(float value)
     {
         FlowManager.instance.SetMouseSpeedMod(value / 10);
+        GameManager.instance.mouseSensitivity = value / 10;
     }
 
     public void UnPause()

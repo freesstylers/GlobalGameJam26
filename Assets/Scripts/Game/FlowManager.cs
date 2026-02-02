@@ -142,6 +142,8 @@ public class FlowManager : MonoBehaviour
 
         currentMask_ = masks_[0];
         SetMask(0);
+
+        SetMouseSpeedMod(GameManager.instance.mouseSensitivity);
     }
 
     //Always release FMOD instances on destroy
@@ -365,7 +367,9 @@ public class FlowManager : MonoBehaviour
     }
 
     public void SetMouseSpeedMod(float mod)
-        { mouseSpeedMod = mod; }
+    { 
+        mouseSpeedMod = mod; 
+    }
 
     public List<Animator> Masks;
 
