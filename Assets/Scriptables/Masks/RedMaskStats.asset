@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: RedMaskStats
   m_EditorClassIdentifier: 
   maxPlayerHP_: 20
-  playerHP_: 20
-  baseDmg_: 10
-  baseRate_: 1
+  playerHP_: 17
+  baseDmg_: 7
+  baseRate_: 0.3
   baseAmmo_: 10
   baseSpeed_: 3
   baseReload_: 1
   basePlayerHP_: 10
   realDmg_: 10
-  realRate_: 5
+  realRate_: 0.3
   realAmmo_: 10
   realSpeed_: 3
   realReload_: 1

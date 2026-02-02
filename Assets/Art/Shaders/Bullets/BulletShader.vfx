@@ -18,8 +18,8 @@ MonoBehaviour:
       serializedVersion: 2
       x: 1345
       y: -1110
-      width: 1320
-      height: 3537
+      width: 857
+      height: 3413
     contents:
     - model: {fileID: 8926484042661616970}
       id: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
   - {fileID: 8926484042661617482}
   - {fileID: 8926484042661617392}
   - {fileID: 8926484042661617543}
-  m_UIPosition: {x: 1600, y: -766}
+  m_UIPosition: {x: 1600, y: -768}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

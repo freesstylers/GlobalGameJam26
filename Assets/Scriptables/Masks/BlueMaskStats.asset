@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerHP_: 15
   playerHP_: 15
-  baseDmg_: 5
-  baseRate_: 0.5
-  baseAmmo_: 20
+  baseDmg_: 4
+  baseRate_: 0.1
+  baseAmmo_: 40
   baseSpeed_: 5
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 5
-  realRate_: 100
-  realAmmo_: 20
+  realDmg_: 6
+  realRate_: 0.1
+  realAmmo_: 40
   realSpeed_: 5
   realReload_: 1
   spawnerCollider: {fileID: 0}

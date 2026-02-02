@@ -50,7 +50,7 @@ public class EnemyBase : MonoBehaviour
     public void EnemyInit(Mask.MaskColor c)
     {
         int layer;
-
+        FlowManager.instance.SuscribeMaskChange(OnMaskChange);
         switch (c)
         {
             case Mask.MaskColor.RED:
@@ -77,6 +77,8 @@ public class EnemyBase : MonoBehaviour
             case Mask.MaskColor.NONE:
                 break;
         }
+
+        OnMaskChange(FlowManager.instance.currentPlayer.currentMask_);
     }
 
     private void SetGameLayerRecursive(GameObject _go, int _layer)
@@ -153,7 +155,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (transform_.localScale.x >= 0.0)
         {
-            transform_.localScale -= new Vector3(scaleChangeRate_, scaleChangeRate_, scaleChangeRate_) * Time.deltaTime;
+            transform_.localScale -= new Vector3(scaleChangeRate_, scaleChangeRate_, scaleChangeRate_) * 5.0f * Time.deltaTime;
         }
         else
         {
@@ -165,6 +167,7 @@ public class EnemyBase : MonoBehaviour
             {
                 FlowManager.instance.advanceState();
             }
+            FlowManager.instance.UnsuscribeMaskChange(OnMaskChange);
             reference.Release(gameObject);
         }
     }
@@ -185,6 +188,17 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    void OnMaskChange(Mask m)
+    {
+        if(m.color_ == enemyColor)
+        {
+            GetComponentInChildren<CapsuleCollider>().enabled = true;
+        }
+        else
+        {
+            GetComponentInChildren<CapsuleCollider>().enabled = false;
+        }
+    }
     //private void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject != null && other.gameObject.tag == "Player")

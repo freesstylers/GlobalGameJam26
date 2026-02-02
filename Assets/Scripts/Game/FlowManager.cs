@@ -348,6 +348,11 @@ public class FlowManager : MonoBehaviour
         onMaskChange += action;
     }
 
+    public void UnsuscribeMaskChange(Action<Mask> action)
+    {
+        onMaskChange -= action;
+    }
+
     public void SetMask(int maskId)
     {
         if (maskId < masks_.Count)
