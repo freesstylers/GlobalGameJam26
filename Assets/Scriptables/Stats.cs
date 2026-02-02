@@ -52,19 +52,19 @@ public class Stats : ScriptableObject
             switch(u.class_)
             {
                 case Upgrade.UpgradeClass.DMG:
-                    realDmg_ += u.value_;
+                    realDmg_ += u.mult_;
                     break;
                 case Upgrade.UpgradeClass.RATE:
-                    realRate_ *= u.value_;
+                    realRate_ *= u.mult_;
                     break;
                 case Upgrade.UpgradeClass.SPEED:
-                    realSpeed_ += u.value_;
+                    realSpeed_ += u.mult_;
                     break;
                 case Upgrade.UpgradeClass.AMMO:
                     realAmmo_ += u.value_;
                     break;
                 case Upgrade.UpgradeClass.RELOAD:
-                    realReload_ += u.value_;
+                    realReload_ += u.mult_;
                     break;
                 case Upgrade.UpgradeClass.HP:
                     maxPlayerHP_ += u.value_;
