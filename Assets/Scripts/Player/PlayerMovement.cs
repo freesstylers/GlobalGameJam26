@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetHurt(Vector3 damageSourcePosition, float knockbackForce = 5f)
     {
-        Vector3 knockbackDirection = (transform.position - damageSourcePosition).normalized;
+        Vector3 knockbackDirection = (transform.position - damageSourcePosition).normalized + Vector3.up;
         GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
         hitInstance_.start();
         //Screen Effect

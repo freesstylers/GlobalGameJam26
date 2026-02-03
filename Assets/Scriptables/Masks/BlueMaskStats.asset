@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: BlueMaskStats
   m_EditorClassIdentifier: 
   initPlayerHP_: 14
-  maxPlayerHP_: 14
-  playerHP_: 14
+  maxPlayerHP_: 20
+  playerHP_: 10
   baseDmg_: 2
-  baseRate_: 0.3
+  baseRate_: 0.4
   baseAmmo_: 30
   baseSpeed_: 5
   baseReload_: 1
   basePlayerHP_: 10
-  realDmg_: 200
-  realRate_: 0.3
+  realDmg_: 9.800001
+  realRate_: 0.243
   realAmmo_: 30
   realSpeed_: 5
   realReload_: 1

@@ -93,7 +93,7 @@ public class EnemyBase : MonoBehaviour
         _go.layer = _layer;
         foreach (Transform child in _go.transform)
         {
-            if (child.gameObject.name == "Aura") continue;
+            if (child.gameObject.name == "Aura" || child.gameObject.name == "Aurilla") continue;
             child.gameObject.layer = _layer;
 
             Transform _HasChildren = child.GetComponentInChildren<Transform>();
@@ -183,17 +183,17 @@ public class EnemyBase : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject != null && other.gameObject.tag == "Bullet" && (enemyColor == FlowManager.instance.GetCurrentMask().color_ || enemyColor == Mask.MaskColor.NONE) && !dying_)
+        /*if (other.gameObject != null && other.gameObject.tag == "Bullet" && (enemyColor == FlowManager.instance.GetCurrentMask().color_ || enemyColor == Mask.MaskColor.NONE) && !dying_)
         {
             //Guarrada historica
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
             ReceiveDamage((int)dmg);
-        }
-        else if (other.gameObject != null && other.gameObject.tag == "Player")
+        }*/
+        if (other.gameObject != null && other.gameObject.tag == "Player")
         {
-            other.collider.gameObject.GetComponent<PlayerMovement>().GetHurt(transform.position);
+            other.gameObject.GetComponent<PlayerMovement>().GetHurt(transform.position);
         }
     }
 

@@ -5,7 +5,7 @@ public class BasicBullet : MonoBehaviour
     public Vector3 dir { get; set; }
     public float speed = 1f;
     public string collideWith = "";
-
+    bool _collided;
     public PoolTemplate pool;
 
     public GameObject Particles;
@@ -22,7 +22,7 @@ public class BasicBullet : MonoBehaviour
         //GetComponent<Rigidbody>().AddForce(dir * speed, ForceMode.Impulse);
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != null && other.gameObject.tag == collideWith)
         {
@@ -33,16 +33,21 @@ public class BasicBullet : MonoBehaviour
             pool.Release(this.gameObject);
 
         }
-    }
+    }*/
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject != null && other.gameObject.tag == collideWith)
+        if (other.gameObject != null && other.gameObject.tag == collideWith && !_collided)
         {
             //Guarrada historica
-            GameObject.Instantiate(Particles, this.transform.position, Quaternion.identity);
             float dmg = FlowManager.instance.GetCurrentMask().stats_.baseDmg_;
-            other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().ReceiveDamage((int)dmg);
+            if(!other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().dying_)
+            {
+                other.gameObject.GetComponentInParent<Transform>().gameObject.GetComponentInParent<EnemyBase>().ReceiveDamage((int)dmg);
+            }
+
+            _collided = true;
+            this.gameObject.SetActive(false);
         }
         pool.Release(this.gameObject);
     }
