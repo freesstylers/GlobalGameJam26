@@ -138,6 +138,9 @@ MonoBehaviour:
   hp_: 0
   spawning_: 0
   dying_: 0
+  collider_to_deactivate:
+  - {fileID: 8135131931109214483}
+  - {fileID: 1559437936867241942}
   scaleChangeRate_: 0.8
   filter_: {fileID: 0}
   hurtAnimation_: {fileID: 3608219866638833217}

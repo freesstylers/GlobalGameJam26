@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static FlowManager;
 
@@ -15,7 +16,7 @@ public class EnemyBase : MonoBehaviour
 
     //private BasicEnemyMovement movement_;
     private Transform transform_;
-
+    public List<Collider> collider_to_deactivate;
     public float scaleChangeRate_ = 0.5f;
 
     public GameObject filter_;
@@ -193,7 +194,11 @@ public class EnemyBase : MonoBehaviour
         }*/
         if (other.gameObject != null && other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerMovement>().GetHurt(transform.position);
+            if(other.gameObject.GetComponent<PlayerMovement>().currentMask_.color_ == enemyColor)
+            {
+                other.gameObject.GetComponent<PlayerMovement>().GetHurt(transform.position);
+            }
+
         }
     }
 
@@ -201,11 +206,17 @@ public class EnemyBase : MonoBehaviour
     {
         if(m.color_ == enemyColor)
         {
-            GetComponentInChildren<CapsuleCollider>().enabled = true;
+            foreach(Collider c in collider_to_deactivate)
+            {
+                c.enabled = true;
+            }
         }
         else
         {
-            GetComponentInChildren<CapsuleCollider>().enabled = false;
+            foreach (Collider c in collider_to_deactivate)
+            {
+                c.enabled = false;
+            }
         }
     }
     //private void OnTriggerEnter(Collider other)

@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _mask1ColorBlendStrength: 0
-    - _mask1VisualObstructionStremgth: -0.00000025431316
+    - _mask1VisualObstructionStremgth: 0
     - _mask1VisualObstructionStrength: 0
     - _mask1YOffset: 1
     - _mask2ColorBlendStrength: 0
