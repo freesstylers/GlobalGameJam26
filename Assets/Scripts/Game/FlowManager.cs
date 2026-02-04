@@ -231,7 +231,7 @@ public class FlowManager : MonoBehaviour
             advanceState();
     }
 
-    private void setEndGame()
+    public void setEndGame()
     {
         totalScoreText_.text = "Total Score: " + totalPoints_.ToString();
         totalEnemiesKilledText_.text = "Enemies Killed: " + enemiesKilled_.ToString();
@@ -240,7 +240,9 @@ public class FlowManager : MonoBehaviour
         setState(State.EndGame);
         EndGameUI.SetActive(true);
         Time.timeScale = 0.0f;
+        Pause(Time.timeScale != 0.0f);
         musicInstance_.setParameterByName("GameState", 4);
+        advanceState();
     }
 
     private void setWinGame()
@@ -283,6 +285,11 @@ public class FlowManager : MonoBehaviour
 
                 spawnerManager.onRoundChange(currentRound);
 
+                break;
+            case State.EndGame:
+                FlowManager.instance.currentPlayer.SetPlayerLook(false);
+                FlowManager.instance.currentPlayer.SetPlayerCanInteract(false);
+                Cursor.lockState = CursorLockMode.None;
                 break;
             case State.Spawn:
                 setState(State.Round);

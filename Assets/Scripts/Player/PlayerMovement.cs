@@ -376,4 +376,12 @@ public class PlayerMovement : MonoBehaviour
     {
         currentMask_ = newMask;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Death"))
+        {
+            FlowManager.instance.setEndGame();
+        }
+    }
 }

@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: 8303229763501287309}
   StringsBanks:
   - {fileID: 7219437428552000617}
-  cacheTime: 639056308870539307
+  cacheTime: 639056552459723218
   cacheVersion: 131635
 --- !u!114 &80412064130185814
 MonoBehaviour:
@@ -431,7 +431,7 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055531922726592
+  lastModified: 639056293102642374
   FileSizes:
   - Name: Desktop
     Value: 1340
@@ -451,7 +451,7 @@ MonoBehaviour:
   Path: FMOD Project/MiaMenso/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639056308870539307
+  lastModified: 639056552459723218
   FileSizes:
   - Name: Desktop
     Value: 5743936
